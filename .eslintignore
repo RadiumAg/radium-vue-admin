@@ -1,0 +1,16 @@
+node_modules
+package.json
+babel.config.js
+webidi-conversions
+lib
+es
+*.sh
+*.md
+# /*.**
+*.scss
+*.json
+.eslintrc.js
+tsconfig.json
+/LICENSE
+auto-imports.d.ts
+# webpack-loader
