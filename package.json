@@ -1,7 +1,9 @@
 {
 	"dependencies": {
+		"@nestjs/swagger": "^5.2.1",
 		"dayjs": "^1.11.1",
 		"pinia": "^2.0.13",
-		"qs": "^6.10.3"
+		"qs": "^6.10.3",
+		"swagger-ui-express": "^4.3.0"
 	}
 }

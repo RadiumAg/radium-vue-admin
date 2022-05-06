@@ -1,0 +1,197 @@
+lockfileVersion: 5.3
+
+specifiers:
+  '@nestjs/swagger': ^5.2.1
+  dayjs: ^1.11.1
+  pinia: ^2.0.13
+  qs: ^6.10.3
+  swagger-ui-express: ^4.3.0
+
+dependencies:
+  '@nestjs/swagger': registry.npmmirror.com/@nestjs/swagger/5.2.1_swagger-ui-express@4.3.0
+  dayjs: registry.npmmirror.com/dayjs/1.11.1
+  pinia: registry.npmmirror.com/pinia/2.0.14
+  qs: registry.npmmirror.com/qs/6.10.3
+  swagger-ui-express: registry.npmmirror.com/swagger-ui-express/4.3.0
+
+packages:
+
+  registry.npmmirror.com/@nestjs/mapped-types/1.0.1:
+    resolution: {integrity: sha512-NFvofzSinp00j5rzUd4tf+xi9od6383iY0JP7o0Bnu1fuItAUkWBgc4EKuIQ3D+c2QI3i9pG1kDWAeY27EMGtg==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/@nestjs/mapped-types/-/mapped-types-1.0.1.tgz}
+    name: '@nestjs/mapped-types'
+    version: 1.0.1
+    peerDependencies:
+      '@nestjs/common': ^7.0.8 || ^8.0.0
+      class-transformer: ^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0
+      class-validator: ^0.11.1 || ^0.12.0 || ^0.13.0
+      reflect-metadata: ^0.1.12
+    peerDependenciesMeta:
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+    dev: false
+
+  registry.npmmirror.com/@nestjs/swagger/5.2.1_swagger-ui-express@4.3.0:
+    resolution: {integrity: sha512-7dNa08WCnTsW/oAk3Ujde+z64JMfNm19DhpXasFR8oJp/9pggYAbYU927HpA+GJsSFJX6adjIRZsCKUqaGWznw==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/@nestjs/swagger/-/swagger-5.2.1.tgz}
+    id: registry.npmmirror.com/@nestjs/swagger/5.2.1
+    name: '@nestjs/swagger'
+    version: 5.2.1
+    peerDependencies:
+      '@nestjs/common': ^8.0.0
+      '@nestjs/core': ^8.0.0
+      fastify-swagger: '*'
+      reflect-metadata: ^0.1.12
+      swagger-ui-express: '*'
+    peerDependenciesMeta:
+      fastify-swagger:
+        optional: true
+      swagger-ui-express:
+        optional: true
+    dependencies:
+      '@nestjs/mapped-types': registry.npmmirror.com/@nestjs/mapped-types/1.0.1
+      lodash: registry.npmmirror.com/lodash/4.17.21
+      path-to-regexp: registry.npmmirror.com/path-to-regexp/3.2.0
+      swagger-ui-express: registry.npmmirror.com/swagger-ui-express/4.3.0
+    transitivePeerDependencies:
+      - class-transformer
+      - class-validator
+    dev: false
+
+  registry.npmmirror.com/@vue/devtools-api/6.1.4:
+    resolution: {integrity: sha512-IiA0SvDrJEgXvVxjNkHPFfDx6SXw0b/TUkqMcDZWNg9fnCAHbTpoo59YfJ9QLFkwa3raau5vSlRVzMSLDnfdtQ==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.1.4.tgz}
+    name: '@vue/devtools-api'
+    version: 6.1.4
+    dev: false
+
+  registry.npmmirror.com/call-bind/1.0.2:
+    resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/call-bind/-/call-bind-1.0.2.tgz}
+    name: call-bind
+    version: 1.0.2
+    dependencies:
+      function-bind: registry.npmmirror.com/function-bind/1.1.1
+      get-intrinsic: registry.npmmirror.com/get-intrinsic/1.1.1
+    dev: false
+
+  registry.npmmirror.com/dayjs/1.11.1:
+    resolution: {integrity: sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/dayjs/-/dayjs-1.11.1.tgz}
+    name: dayjs
+    version: 1.11.1
+    dev: false
+
+  registry.npmmirror.com/function-bind/1.1.1:
+    resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/function-bind/-/function-bind-1.1.1.tgz}
+    name: function-bind
+    version: 1.1.1
+    dev: false
+
+  registry.npmmirror.com/get-intrinsic/1.1.1:
+    resolution: {integrity: sha512-kWZrnVM42QCiEA2Ig1bG8zjoIMOgxWwYCEeNdwY6Tv/cOSeGpcoX4pXHfKUxNKVoArnrEr2e9srnAxxGIraS9Q==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/get-intrinsic/-/get-intrinsic-1.1.1.tgz}
+    name: get-intrinsic
+    version: 1.1.1
+    dependencies:
+      function-bind: registry.npmmirror.com/function-bind/1.1.1
+      has: registry.npmmirror.com/has/1.0.3
+      has-symbols: registry.npmmirror.com/has-symbols/1.0.3
+    dev: false
+
+  registry.npmmirror.com/has-symbols/1.0.3:
+    resolution: {integrity: sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/has-symbols/-/has-symbols-1.0.3.tgz}
+    name: has-symbols
+    version: 1.0.3
+    engines: {node: '>= 0.4'}
+    dev: false
+
+  registry.npmmirror.com/has/1.0.3:
+    resolution: {integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/has/-/has-1.0.3.tgz}
+    name: has
+    version: 1.0.3
+    engines: {node: '>= 0.4.0'}
+    dependencies:
+      function-bind: registry.npmmirror.com/function-bind/1.1.1
+    dev: false
+
+  registry.npmmirror.com/lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz}
+    name: lodash
+    version: 4.17.21
+    dev: false
+
+  registry.npmmirror.com/object-inspect/1.12.0:
+    resolution: {integrity: sha512-Ho2z80bVIvJloH+YzRmpZVQe87+qASmBUKZDWgx9cu+KDrX2ZDH/3tMy+gXbZETVGs2M8YdxObOh7XAtim9Y0g==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/object-inspect/-/object-inspect-1.12.0.tgz}
+    name: object-inspect
+    version: 1.12.0
+    dev: false
+
+  registry.npmmirror.com/path-to-regexp/3.2.0:
+    resolution: {integrity: sha512-jczvQbCUS7XmS7o+y1aEO9OBVFeZBQ1MDSEqmO7xSoPgOPoowY/SxLpZ6Vh97/8qHZOteiCKb7gkG9gA2ZUxJA==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/path-to-regexp/-/path-to-regexp-3.2.0.tgz}
+    name: path-to-regexp
+    version: 3.2.0
+    dev: false
+
+  registry.npmmirror.com/pinia/2.0.14:
+    resolution: {integrity: sha512-0nPuZR4TetT/WcLN+feMSjWJku3SQU7dBbXC6uw+R6FLQJCsg+/0pzXyD82T1FmAYe0lsx+jnEDQ1BLgkRKlxA==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/pinia/-/pinia-2.0.14.tgz}
+    name: pinia
+    version: 2.0.14
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': registry.npmmirror.com/@vue/devtools-api/6.1.4
+      vue-demi: registry.npmmirror.com/vue-demi/0.12.5
+    dev: false
+
+  registry.npmmirror.com/qs/6.10.3:
+    resolution: {integrity: sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/qs/-/qs-6.10.3.tgz}
+    name: qs
+    version: 6.10.3
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: registry.npmmirror.com/side-channel/1.0.4
+    dev: false
+
+  registry.npmmirror.com/side-channel/1.0.4:
+    resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/side-channel/-/side-channel-1.0.4.tgz}
+    name: side-channel
+    version: 1.0.4
+    dependencies:
+      call-bind: registry.npmmirror.com/call-bind/1.0.2
+      get-intrinsic: registry.npmmirror.com/get-intrinsic/1.1.1
+      object-inspect: registry.npmmirror.com/object-inspect/1.12.0
+    dev: false
+
+  registry.npmmirror.com/swagger-ui-dist/4.11.0:
+    resolution: {integrity: sha512-Jo4oq4Nc7LaTYuvyo1VY3z3OWmGZCzZon8s92auKqpIuVCJo3t1Qih+S+Ph8lS5+ZbvF2ugqWvXk83boXQux1w==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/swagger-ui-dist/-/swagger-ui-dist-4.11.0.tgz}
+    name: swagger-ui-dist
+    version: 4.11.0
+    dev: false
+
+  registry.npmmirror.com/swagger-ui-express/4.3.0:
+    resolution: {integrity: sha512-jN46SEEe9EoXa3ZgZoKgnSF6z0w3tnM1yqhO4Y+Q4iZVc8JOQB960EZpIAz6rNROrDApVDwcMHR0mhlnc/5Omw==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/swagger-ui-express/-/swagger-ui-express-4.3.0.tgz}
+    name: swagger-ui-express
+    version: 4.3.0
+    engines: {node: '>= v0.10.32'}
+    dependencies:
+      swagger-ui-dist: registry.npmmirror.com/swagger-ui-dist/4.11.0
+    dev: false
+
+  registry.npmmirror.com/vue-demi/0.12.5:
+    resolution: {integrity: sha512-BREuTgTYlUr0zw0EZn3hnhC3I6gPWv+Kwh4MCih6QcAeaTlaIX0DwOVN0wHej7hSvDPecz4jygy/idsgKfW58Q==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.12.5.tgz}
+    name: vue-demi
+    version: 0.12.5
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dev: false
