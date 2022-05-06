@@ -16,4 +16,8 @@ export class MenuService {
     const createdMenu = this.menuModel.create(createMenuDto);
     return (await createdMenu).save();
   }
+
+  async getAll() {
+    return this.menuModel.find();
+  }
 }

@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import cookieParser from 'cookie-parser';
+import * as cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 import * as compression from 'compression';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -9,7 +9,6 @@ async function bootstrap() {
     .setTitle('Admin API')
     .setDescription('The Radium Admin API description')
     .setVersion('1.0')
-    .addTag('Radium')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

@@ -7,9 +7,7 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     MenuModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://RadiumAg:<Zhangleiyin@123>@cluster0.oqppd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/admin'),
   ],
   controllers: [AppController],
   providers: [AppService],
