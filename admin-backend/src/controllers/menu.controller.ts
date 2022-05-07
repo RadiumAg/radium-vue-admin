@@ -4,9 +4,11 @@ import { CreateMenuDto } from './../dto/menu/CreateMenu';
 https://docs.nestjs.com/controllers#controllers
 */
 
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+
 @ApiTags('menu')
+@ApiBearerAuth()
 @Controller('menu')
 export class MenuController {
   constructor(private menuService: MenuService) {}
