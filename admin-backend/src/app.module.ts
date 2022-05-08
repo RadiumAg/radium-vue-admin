@@ -1,4 +1,4 @@
-import { LoginService } from './services/login.service';
+import { LoginService } from './services/user.service;
 import { MenuModule } from './modules/menu.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
