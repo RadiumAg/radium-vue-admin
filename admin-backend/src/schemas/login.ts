@@ -6,10 +6,13 @@ export type MenuDocument = Menu & Document;
 @Schema()
 export class Menu {
   @Prop()
-  menuName: string;
+  userName: string;
 
   @Prop()
-  menuIcon: string;
+  password: string;
+
+  @Prop()
+  userPassword: string;
 }
 
 export const MenuSchema = SchemaFactory.createForClass(Menu);

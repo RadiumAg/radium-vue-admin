@@ -1,4 +1,4 @@
-import { CreateMenuDto } from './../dto/menu/CreateMenu';
+import { CreateMenuDto } from '@dto/menu/mogodb/CreateMenu';
 /*
 https://docs.nestjs.com/providers#services
 */
@@ -15,6 +15,10 @@ export class MenuService {
   async create(createMenuDto: CreateMenuDto): Promise<Menu> {
     const createdMenu = this.menuModel.create(createMenuDto);
     return (await createdMenu).save();
+  }
+
+  async update(updateMenuDto) {
+    this.menuModel.updateOne(updateMenuDto);
   }
 
   async getAll() {

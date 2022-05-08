@@ -1,3 +1,4 @@
+import { LoginService } from './services/login.service';
 import { MenuModule } from './modules/menu.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -10,6 +11,6 @@ import { AppService } from './app.service';
     MongooseModule.forRoot('mongodb://127.0.0.1:27017/admin'),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [LoginService, AppService],
 })
 export class AppModule {}

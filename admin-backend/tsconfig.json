@@ -16,6 +16,14 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@vo/*": ["./src/vo/*"],
+      "@dto/*": ["./src/dto/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@schemas/*": ["./src/schemas/*"],
+      "@services/*": ["./src/services/*"],
+      "@dcontrollersot/*": ["./src/controllers/*"]
+    }
   }
 }
