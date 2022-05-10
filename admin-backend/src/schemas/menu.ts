@@ -5,11 +5,11 @@ export type MenuDocument = Menu & Document;
 
 @Schema()
 export class Menu {
-  @Prop()
-  menuName: string;
+    @Prop()
+    menuName: string;
 
-  @Prop()
-  menuIcon: string;
+    @Prop()
+    menuIcon: string;
 }
 
 export const MenuSchema = SchemaFactory.createForClass(Menu);

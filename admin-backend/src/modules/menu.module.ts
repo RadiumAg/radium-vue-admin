@@ -9,10 +9,10 @@ import { Menu, MenuSchema } from 'src/schemas/menu';
 import { MenuService } from 'src/services/menu.service';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: Menu.name, schema: MenuSchema }]),
-  ],
-  controllers: [MenuController],
-  providers: [MenuService],
+    imports: [
+        MongooseModule.forFeature([{ name: Menu.name, schema: MenuSchema }]),
+    ],
+    controllers: [MenuController],
+    providers: [MenuService],
 })
 export class MenuModule {}

@@ -23,7 +23,7 @@
       "@modules/*": ["./src/modules/*"],
       "@schemas/*": ["./src/schemas/*"],
       "@services/*": ["./src/services/*"],
-      "@dcontrollersot/*": ["./src/controllers/*"]
+      "@controllers/*": ["./src/controllers/*"]
     }
   }
 }

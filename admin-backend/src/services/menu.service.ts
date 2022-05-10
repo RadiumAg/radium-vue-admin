@@ -1,4 +1,4 @@
-import { CreateMenuDto } from '@dto/menu/mogodb/CreateMenu';
+import { CreateMenuDto } from '@dto/menu/mogodb/CreateMenuDto';
 /*
 https://docs.nestjs.com/providers#services
 */
@@ -10,18 +10,20 @@ import { Menu, MenuDocument } from 'src/schemas/menu';
 
 @Injectable()
 export class MenuService {
-  constructor(@InjectModel(Menu.name) private menuModel: Model<MenuDocument>) {}
+    constructor(
+        @InjectModel(Menu.name) private menuModel: Model<MenuDocument>,
+    ) {}
 
-  async create(createMenuDto: CreateMenuDto): Promise<Menu> {
-    const createdMenu = this.menuModel.create(createMenuDto);
-    return (await createdMenu).save();
-  }
+    async create(createMenuDto: CreateMenuDto): Promise<Menu> {
+        const createdMenu = this.menuModel.create(createMenuDto);
+        return (await createdMenu).save();
+    }
 
-  async update(updateMenuDto) {
-    this.menuModel.updateOne(updateMenuDto);
-  }
+    async update(updateMenuDto) {
+        this.menuModel.updateOne(updateMenuDto);
+    }
 
-  async getAll() {
-    return this.menuModel.find();
-  }
+    async getAll() {
+        return this.menuModel.find();
+    }
 }

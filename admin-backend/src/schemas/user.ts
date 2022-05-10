@@ -15,4 +15,4 @@ export class User {
     avatar: string;
 }
 
-export const MenuSchema = SchemaFactory.createForClass(User);
+export const UserSchema = SchemaFactory.createForClass(User);
