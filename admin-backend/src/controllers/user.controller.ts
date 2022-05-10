@@ -12,7 +12,7 @@ import { UserService } from '@services/user.service';
 export class UserController {
     constructor(private menuService: UserService) {}
 
-    @ApiOperation({ summary: '插入菜单' })
+    @ApiOperation({ summary: '插入用户信息' })
     @Post('insertUserInfo')
     async insertUserInfo(@Body() insertMenu: InsertUserInfoDto) {
         this.menuService.createUserInfo(insertMenu);
