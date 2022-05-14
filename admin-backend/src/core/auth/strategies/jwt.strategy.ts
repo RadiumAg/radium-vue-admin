@@ -8,7 +8,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor() {
         super({
             jwtFromRequest: (request: Request) => {
-                console.log(request);
+                console.log(request['cookies']);
+                return request['cookies']?.['admin-login'];
             },
             ignoreExpiration: false,
             secretOrKey: jwtConstants.secret,

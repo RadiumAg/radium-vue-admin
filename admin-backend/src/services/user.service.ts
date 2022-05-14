@@ -10,6 +10,14 @@ export class UserService {
         @InjectModel(User.name) private userModel: Model<UserDocument>,
     ) {}
 
+    /**
+     * 获得用户信息
+     *
+     * @param {string} userName
+     * @param {string} password
+     * @return {*}
+     * @memberof UserService
+     */
     async getUserInfoByAccount(userName: string, password: string) {
         const userInfo = await this.userModel.findOne({ userName, password });
         return userInfo;
