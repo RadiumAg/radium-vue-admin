@@ -1,13 +1,14 @@
 import { LoginDto } from '@dto/login/view/LoginDto';
-import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '@services/user.service';
+import { AdminResponse } from 'src/core/utils';
 
 @Controller('oAth')
 export class OAthController {
     constructor(
-        private readonly userService: UserService,
         private readonly jwtService: JwtService,
+        private readonly userService: UserService,
     ) {}
 
     @Post('login')
@@ -19,6 +20,15 @@ export class OAthController {
             loginDto.userName,
             loginDto.password,
         );
-        response['cookie']('admin-login', this.jwtService.sign(userInfo));
+
+        if (userInfo) {
+            response['cookie']('admin-login', this.jwtService.sign(userInfo));
+            return AdminResponse.success();
+        } else {
+            return AdminResponse.error(
+                '没有这个账户信息',
+                HttpStatus.UNAUTHORIZED,
+            );
+        }
     }
 }
