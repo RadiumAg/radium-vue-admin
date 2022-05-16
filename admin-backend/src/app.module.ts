@@ -11,11 +11,11 @@ import { jwtConstants } from './core/auth/constants';
         OathModule,
         UserModule,
         MenuModule,
-        MongooseModule.forRoot('mongodb://127.0.0.1:27017/admin'),
         JwtModule.register({
             secret: jwtConstants.secret,
             signOptions: { expiresIn: '60s' },
         }),
+        MongooseModule.forRoot('mongodb://127.0.0.1:27017/admin'),
     ],
     controllers: [],
     providers: [],
