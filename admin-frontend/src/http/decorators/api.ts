@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { defaultConfig } from '../config';
 import { requestInterceptors } from '../interceptors/request';
-import { responseError, responseSussess } from './../interceptors/response';
+import { responseError, responseSuccess } from './../interceptors/response';
 
 type ApiParams = {
   host?: string;
@@ -17,7 +17,7 @@ export const Api = ({ host, prefix }: ApiParams) => {
       baseURL: hostUrl + prefix,
     });
 
-    axios.interceptors.response.use(responseSussess, responseError);
+    axios.interceptors.response.use(responseSuccess, responseError);
     axios.interceptors.request.use(requestInterceptors);
 
     return class extends constructor {

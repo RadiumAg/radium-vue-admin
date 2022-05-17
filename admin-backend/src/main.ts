@@ -4,9 +4,11 @@ import { AppModule } from './app.module';
 import * as compression from 'compression';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { HttpExceptionFilter } from './filter/HttpExceptionFilter';
+import { ResponseInterceptor } from './interceptor/ResponseInterceptor';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     app.useGlobalFilters(new HttpExceptionFilter())
+        // .useGlobalInterceptors(new ResponseInterceptor())
         .use(cookieParser())
         .use(compression());
     const config = new DocumentBuilder()

@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from 'axios';
 
-export const responseSussess = (response: AxiosResponse) => {
+export const responseSuccess = (response: AxiosResponse) => {
   return response;
 };
 
