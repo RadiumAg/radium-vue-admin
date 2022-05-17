@@ -5,9 +5,9 @@ import { UserService } from '@services/user.service';
 import { AdminResponse } from 'src/core/utils';
 import { OAthService } from '@services/oath.service';
 
-@ApiTags('oAth')
-@Controller('oAth')
-export class OAthController {
+@ApiTags('login')
+@Controller('login')
+export class LoginController {
     constructor(
         private readonly userService: UserService,
         private readonly oAthService: OAthService,
