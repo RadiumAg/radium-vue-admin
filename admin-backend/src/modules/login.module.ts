@@ -2,12 +2,12 @@
 https://docs.nestjs.com/modules
 */
 
-import { LoginController } from '@controllers/login.controller';
+import { OAthController } from '@controllers/oath.controller';
 import { Module } from '@nestjs/common';
 
 @Module({
     imports: [],
-    controllers: [LoginController],
+    controllers: [OAthController],
     providers: [],
 })
 export class LoginModule {}
