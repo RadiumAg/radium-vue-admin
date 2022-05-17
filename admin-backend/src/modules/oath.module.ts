@@ -1,15 +1,17 @@
-import { OathService } from './../services/oath.service';
-import { OAthController } from './../controllers/oath.controller';
+import { OAthService } from './../services/oath.service';
 /*
 https://docs.nestjs.com/modules
 */
 
-import { Global, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { UserService } from '@services/user.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from '@schemas/user';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from 'src/core/auth/constants';
+import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from 'src/core/auth/strategies/jwt.strategy';
+import { OAthController } from '@controllers/oath.controller';
 
 @Module({
     imports: [
@@ -18,8 +20,9 @@ import { jwtConstants } from 'src/core/auth/constants';
             secret: jwtConstants.secret,
             signOptions: { expiresIn: '60s' },
         }),
+        PassportModule,
     ],
-    controllers: [],        
-    providers: [OathService, UserService],
+    controllers: [OAthController],
+    providers: [OAthService, JwtStrategy],
 })
-export class OathModule {}
+export class OAthModule {}

@@ -1,4 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
-export class OathService {}
+export class OAthService {
+    constructor(private readonly jwtService: JwtService) {}
+
+    sign(username: string, userId: string) {
+        return this.jwtService.sign({ username, userId });
+    }
+}
