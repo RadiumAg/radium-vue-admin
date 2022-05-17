@@ -3,9 +3,12 @@ import * as cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 import * as compression from 'compression';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { HttpExceptionFilter } from './filter/HttpExceptionFilter';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
-    app.use(cookieParser()).use(compression());
+    app.useGlobalFilters(new HttpExceptionFilter())
+        .use(cookieParser())
+        .use(compression());
     const config = new DocumentBuilder()
         .setTitle('Admin API')
         .setDescription('The Radium Admin API description')

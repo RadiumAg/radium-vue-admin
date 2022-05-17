@@ -19,7 +19,7 @@ export class OAthController {
         @Res({ passthrough: true }) response,
     ) {
         const userInfo = await this.userService.getUserInfoByAccount(
-            loginDto.userName,
+            loginDto.username,
             loginDto.password,
         );
 

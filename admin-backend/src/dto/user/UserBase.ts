@@ -5,7 +5,7 @@ export class UserBase {
         type: String,
         description: '用户名称',
     })
-    userName: string;
+    username: string;
 
     @ApiProperty({
         type: String,

@@ -24,6 +24,13 @@ export class UserService {
     }
 
     async createUserInfo(userInfoDto: CreateUserInfoDto) {
+        const userInfo = this.getUserInfoByAccount(
+            userInfoDto.username,
+            userInfoDto.password,
+        );
+        if (userInfo) {
+            throw new Error('该用户已经存在');
+        }
         const insertUserInfo = this.userModel.create(userInfoDto);
         return (await insertUserInfo).save();
     }
