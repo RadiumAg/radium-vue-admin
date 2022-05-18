@@ -1,0 +1,15 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [
+        "fastify",
+        "nestjs",
+        "prebuild",
+        "unplugin"
+    ],
+    "ignoreWords": [],
+    "import": []
+}

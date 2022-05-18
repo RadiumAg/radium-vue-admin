@@ -9,7 +9,7 @@ type LoginRes = {
 
 @Api({ prefix: 'OAth' })
 export class OAth {
-  private http!: AxiosInstance;
+  private http: AxiosInstance;
 
   /**
    * 登录
