@@ -1,5 +1,6 @@
 import { AxiosInstance } from 'axios';
 import { Api } from '../decorators/api';
+import { IResponse } from './../IResponse';
 
 type LoginRes = {
   userInfo: {
@@ -7,22 +8,22 @@ type LoginRes = {
   };
 };
 
-@Api({ prefix: 'OAth' })
+@Api({ prefix: 'oath' })
 export class OAth {
   private http: AxiosInstance;
 
   /**
    * 登录
    *
-   * @param {string} account
+   * @param {string} username
    * @param {string} password
    * @return {*}
    * @memberof OAth
    */
-  async login(account: string, password: string) {
+  async login(username: string, password: string) {
     return (
-      await this.http.post<LoginRes>('login', {
-        account,
+      await this.http.post<IResponse<never>>('login', {
+        username,
         password,
       })
     ).data;

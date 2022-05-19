@@ -1,12 +1,13 @@
 import { LoginDto } from '@dto/login/view/LoginDto';
-import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, HttpStatus, Post, Res } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { UserService } from '@services/user.service';
 import { AdminResponse } from 'src/core/utils';
 import { OAthService } from '@services/oath.service';
+import { AdminController } from 'src/decorator/AdminController';
 
 @ApiTags('oath')
-@Controller('oath')
+@AdminController('oath')
 export class OAthController {
     constructor(
         private readonly userService: UserService,

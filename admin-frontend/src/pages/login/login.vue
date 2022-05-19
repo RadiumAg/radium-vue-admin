@@ -1,6 +1,7 @@
 <template>
   <div class="login-wrapper">
     <div class="form">
+      <h1 class="title">登录</h1>
       <el-form ref="formRef" :model="loginForm" :rules="rules">
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" size="large"></el-input>
@@ -16,7 +17,11 @@
         </el-form-item>
       </el-form>
 
-      <el-button type="primary" class="login-button" size="large"
+      <el-button
+        type="primary"
+        class="login-button"
+        size="large"
+        @click="loginHandler"
         >登录</el-button
       >
     </div>
@@ -25,8 +30,10 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
-import { useApi } from 'src/http/api-instance';
-import type { FormInstance } from 'element-plus';
+import { useThrottleFn } from '@vueuse/core';
+import { ElMessage, FormInstance } from 'element-plus';
+import { useApi } from '@core/http/api-instance';
+import { defaultThrottleTime } from '@core/utils';
 
 const api = useApi();
 const formRef = ref<FormInstance>();
@@ -49,6 +56,24 @@ const rules = {
     },
   ],
 };
+
+const loginHandler = useThrottleFn(
+  async () => {
+    try {
+      await formRef.value.validate();
+    } catch {
+      return;
+    }
+    try {
+      const res = await api.oath.login(loginForm.username, loginForm.password);
+      ElMessage.success(res.msg);
+    } catch (e) {
+      ElMessage.warning(e instanceof Error && e.message);
+    }
+  },
+  defaultThrottleTime,
+  false,
+);
 </script>
 
 <style lang="scss" scoped>
@@ -71,6 +96,12 @@ const rules = {
   .form {
     width: 500px;
     margin-top: 300px;
+
+    .title {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
 }
 </style>

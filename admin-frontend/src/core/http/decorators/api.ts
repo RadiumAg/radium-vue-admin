@@ -17,8 +17,8 @@ export const Api = ({ host, prefix }: ApiParams) => {
       baseURL: hostUrl + prefix,
     });
 
-    axios.interceptors.response.use(responseSuccess, responseError);
-    axios.interceptors.request.use(requestInterceptors);
+    axiosInstance.interceptors.response.use(responseSuccess, responseError);
+    axiosInstance.interceptors.request.use(requestInterceptors);
 
     return class extends constructor {
       http = axiosInstance;
