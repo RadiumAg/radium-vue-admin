@@ -16,11 +16,14 @@ import { ConfigModule } from '@nestjs/config';
         MenuModule,
         OAthModule,
         PassportModule,
-        ConfigModule.forRoot({ isGlobal: true }),
+        ConfigModule.forRoot({
+            isGlobal: true,
+            envFilePath: ['.env.development'],
+        }),
         MongooseModule.forRoot('mongodb://127.0.0.1:27017/admin'),
         JwtModule.register({
             secret: jwtConstants.secret,
-            signOptions: { expiresIn: '60s' },
+            signOptions: { expiresIn: '1 days' },
         }),
     ],
     controllers: [],

@@ -1,16 +1,21 @@
 <template>
   <div class="layout-wrapper">
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="200px">
+        <admin-slider></admin-slider>
+      </el-aside>
       <el-container>
-        <el-header>Header</el-header>
+        <el-header><admin-header></admin-header></el-header>
         <el-main>Main</el-main>
       </el-container>
     </el-container>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import AdminHeader from './header.vue';
+import AdminSlider from './slider.vue';
+</script>
 
 <style lang="scss" scoped>
 .layout-wrapper {
