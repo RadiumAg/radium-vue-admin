@@ -14,4 +14,18 @@ export class MenuBase {
         required: false,
     })
     menuName: string;
+
+    @ApiProperty({
+        type: String,
+        description: '菜单地址',
+        required: true,
+    })
+    menuUrl: string;
+
+    @ApiProperty({
+        type: [MenuBase],
+        description: '子菜单',
+        required: true,
+    })
+    children: MenuBase[];
 }
