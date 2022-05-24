@@ -1,12 +1,11 @@
-import { CreateMenuDto } from '@dto/menu/mogodb/CreateMenuDto';
 /*
 https://docs.nestjs.com/providers#services
 */
-
+import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
 import { Menu, MenuDocument } from 'src/schemas/menu';
+import { CreateMenuDto } from '@dto/menu/mogodb/CreateMenuDto';
 
 @Injectable()
 export class MenuService {
