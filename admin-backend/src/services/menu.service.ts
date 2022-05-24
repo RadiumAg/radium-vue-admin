@@ -1,12 +1,12 @@
+import { AdminError } from './../../../admin-frontend/src/core/http/admin-error';
 /*
 https://docs.nestjs.com/providers#services
 */
-import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { isValidObjectId, Model } from 'mongoose';
+import { Injectable, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Menu, MenuDocument } from 'src/schemas/menu';
 import { CreateMenuDto } from '@dto/menu/mogodb/CreateMenuDto';
-import { flatMenu } from 'src/core/menu';
 
 @Injectable()
 export class MenuService {
@@ -15,11 +15,19 @@ export class MenuService {
     ) {}
 
     async create(createMenuDto: CreateMenuDto) {
-        console.log(flatMenu(createMenuDto));
-        const createdMenu = this.menuModel.create(flatMenu(createMenuDto));
-        return (await createdMenu).map(c => {
-            return c.save();
-        });
+        try {
+            if (!isValidObjectId(createMenuDto.parent)) {
+                throw new AdminError(
+                    '不是有效的ObjectId',
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                );
+            }
+            await this.getById(createMenuDto.parent);
+            const createdMenu = this.menuModel.create(createMenuDto);
+            return (await createdMenu).save();
+        } catch (e) {
+            throw e;
+        }
     }
 
     async update(updateMenuDto) {
@@ -28,5 +36,9 @@ export class MenuService {
 
     async getAll() {
         return this.menuModel.find();
+    }
+
+    async getById(id: string) {
+        return await this.menuModel.findOne({ id });
     }
 }

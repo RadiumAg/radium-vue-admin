@@ -18,7 +18,7 @@ export class MenuController {
     @ApiOperation({ summary: '插入菜单' })
     @Post('insertMenu')
     async insetMenu(@Body() createMenu: InsertMenuDto) {
-        this.menuService.create(createMenu);
+        await this.menuService.create(createMenu);
         return AdminResponse.success('插入成功');
     }
 

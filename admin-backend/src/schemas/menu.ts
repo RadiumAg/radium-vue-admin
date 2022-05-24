@@ -10,9 +10,6 @@ export class Menu {
 
     @Prop()
     menuIcon: string;
-
-    @Prop()
-    children?: string[];
 }
 
 export const MenuSchema = SchemaFactory.createForClass(Menu);

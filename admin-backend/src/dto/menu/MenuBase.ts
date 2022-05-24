@@ -23,9 +23,9 @@ export class MenuBase {
     menuUrl: string;
 
     @ApiProperty({
-        type: [MenuBase],
-        description: '子菜单',
-        required: true,
+        type: String,
+        description: '父Id',
+        required: false,
     })
-    children?: MenuBase[];
+    parent: string;
 }
