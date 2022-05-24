@@ -6,16 +6,13 @@ export type MenuDocument = Menu & Document;
 @Schema()
 export class Menu {
     @Prop()
-    menuId: string;
-
-    @Prop()
     menuName: string;
 
     @Prop()
     menuIcon: string;
 
     @Prop()
-    children: Menu[];
+    children?: string[];
 }
 
 export const MenuSchema = SchemaFactory.createForClass(Menu);

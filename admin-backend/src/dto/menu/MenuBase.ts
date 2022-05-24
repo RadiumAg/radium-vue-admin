@@ -27,5 +27,5 @@ export class MenuBase {
         description: '子菜单',
         required: true,
     })
-    children: MenuBase[];
+    children?: MenuBase[];
 }
