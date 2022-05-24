@@ -14,7 +14,6 @@ export class MenuService {
     ) {}
 
     async create(createMenuDto: CreateMenuDto): Promise<Menu> {
-        console.log(createMenuDto);
         const createdMenu = this.menuModel.create(createMenuDto);
         return (await createdMenu).save();
     }

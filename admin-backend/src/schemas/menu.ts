@@ -6,6 +6,9 @@ export type MenuDocument = Menu & Document;
 @Schema()
 export class Menu {
     @Prop()
+    menuId: string;
+
+    @Prop()
     menuName: string;
 
     @Prop()
