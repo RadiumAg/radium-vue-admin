@@ -16,6 +16,11 @@ export class Menu {
 
     @Prop()
     parentId: string;
+
+    @Prop()
+    children: Menu[];
 }
 
-export const MenuSchema = SchemaFactory.createForClass(Menu);
+export const MenuSchema = SchemaFactory.createForClass(Menu)
+    .path('parentId')
+    .ref(Menu);
