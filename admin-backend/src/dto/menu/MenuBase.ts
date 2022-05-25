@@ -25,7 +25,7 @@ export class MenuBase {
     @ApiProperty({
         type: String,
         description: '父Id',
-        required: false,
+        required: true,
     })
-    parent: string;
+    parentId: string;
 }
