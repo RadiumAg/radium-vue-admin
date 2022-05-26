@@ -23,7 +23,7 @@ import { ConfigModule } from '@nestjs/config';
         MongooseModule.forRoot('mongodb://127.0.0.1:27017/admin'),
         JwtModule.register({
             secret: jwtConstants.secret,
-            signOptions: { expiresIn: '1 days' },
+            signOptions: { expiresIn: '2 days' },
         }),
     ],
     controllers: [],

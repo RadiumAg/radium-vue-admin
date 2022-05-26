@@ -37,6 +37,6 @@ export class MenuController {
     @Get('getAll')
     async getMenu() {
         const allMenus = await this.menuService.getAll();
-        return AdminResponse.success('获得成功', this.menuService.getAll());
+        return AdminResponse.success('获得成功', allMenus);
     }
 }

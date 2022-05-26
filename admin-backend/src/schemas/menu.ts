@@ -1,5 +1,5 @@
 import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 export type MenuDocument = Menu & Document;
 
@@ -17,10 +17,8 @@ export class Menu {
     @Prop()
     parentId: string;
 
-    @Prop()
+    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Menu' }] })
     children: Menu[];
 }
 
-export const MenuSchema = SchemaFactory.createForClass(Menu)
-    .path('parentId')
-    .ref(Menu);
+export const MenuSchema = SchemaFactory.createForClass(Menu);
