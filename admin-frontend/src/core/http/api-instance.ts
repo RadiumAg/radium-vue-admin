@@ -1,5 +1,6 @@
 import { App, InjectionKey, inject } from 'vue';
-import { OAth } from './apis/login';
+import { OAth } from './apis/oath/login';
+
 export class ApiInstance {
   readonly oath = new OAth();
 }

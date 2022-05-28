@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty } from 'class-validator';
 
 export class MenuBase {
     @ApiProperty({
@@ -27,5 +28,6 @@ export class MenuBase {
         description: '父Id',
         required: true,
     })
+    @IsNotEmpty()
     parentId: string;
 }

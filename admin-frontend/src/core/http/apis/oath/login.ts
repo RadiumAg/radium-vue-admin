@@ -1,12 +1,6 @@
 import { AxiosInstance } from 'axios';
-import { Api } from '../decorators/api';
-import { IResponse } from './../IResponse';
-
-type LoginRes = {
-  userInfo: {
-    avatar: string;
-  };
-};
+import { Api } from '@core/http/decorators/api';
+import { IResponse } from '@core/http/IResponse';
 
 @Api({ prefix: 'oath' })
 export class OAth {

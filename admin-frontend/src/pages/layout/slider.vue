@@ -9,7 +9,9 @@
   </el-menu>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useApi } from '@core/http/api-instance';
+</script>
 
 <style lang="scss" scoped>
 .menu {
