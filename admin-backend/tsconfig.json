@@ -1,29 +1,31 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "paths": {
-      "@vo/*": ["./src/vo/*"],
-      "@dto/*": ["./src/dto/*"],
-      "@modules/*": ["./src/modules/*"],
-      "@schemas/*": ["./src/schemas/*"],
-      "@services/*": ["./src/services/*"],
-      "@controllers/*": ["./src/controllers/*"]
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es2017",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "incremental": true,
+        "skipLibCheck": true,
+        "strictNullChecks": false,
+        "noImplicitAny": false,
+        "strictBindCallApply": false,
+        "forceConsistentCasingInFileNames": false,
+        "noFallthroughCasesInSwitch": false,
+        "paths": {
+            "@vo/*": ["./src/vo/*"],
+            "@dto/*": ["./src/dto/*"],
+            "@core/*": ["./src/core/*"],
+            "@modules/*": ["./src/modules/*"],
+            "@schemas/*": ["./src/schemas/*"],
+            "@services/*": ["./src/services/*"],
+            "@decorator/*": ["./src/decorator/*"],
+            "@controllers/*": ["./src/controllers/*"]
+        }
     }
-  }
 }

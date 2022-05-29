@@ -4,12 +4,14 @@ import { AppModule } from './app.module';
 import * as compression from 'compression';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { HttpExceptionFilter } from './filter/HttpExceptionFilter';
+import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     app.useGlobalFilters(new HttpExceptionFilter())
         // .useGlobalInterceptors(new ResponseInterceptor())
         .use(cookieParser())
-        .use(compression());
+        .use(compression())
+        .useGlobalPipes(new ValidationPipe());
     const config = new DocumentBuilder()
         .setTitle('Admin API')
         .setDescription('The Radium Admin API description')

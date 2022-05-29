@@ -1,7 +1,9 @@
 import { App, InjectionKey, inject } from 'vue';
+import { Menu } from './apis/menu/menu';
 import { OAth } from './apis/oath/login';
 
 export class ApiInstance {
+  readonly menu = new Menu();
   readonly oath = new OAth();
 }
 

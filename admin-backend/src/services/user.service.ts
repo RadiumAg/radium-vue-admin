@@ -19,7 +19,7 @@ export class UserService {
      * @memberof UserService
      */
     async getUserInfoByAccount(userName: string, password: string) {
-        const userInfo = await this.userModel.findOne({ userName, password });
+        const userInfo = this.userModel.findOne({ userName, password });
         return userInfo;
     }
 
@@ -33,5 +33,10 @@ export class UserService {
         }
         const insertUserInfo = this.userModel.create(userInfoDto);
         return (await insertUserInfo).save();
+    }
+
+    async getUserInfoById(id: string) {
+        const userInfo = this.userModel.findById(id);
+        return userInfo;
     }
 }

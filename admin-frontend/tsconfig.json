@@ -8,6 +8,7 @@
     "jsx": "preserve",
     "sourceMap": true,
     "experimentalDecorators": true,
+    "importsNotUsedAsValues": "error",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,

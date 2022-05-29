@@ -21,6 +21,7 @@ export class MenuBase {
         description: '菜单地址',
         required: true,
     })
+    @IsNotEmpty()
     menuUrl: string;
 
     @ApiProperty({

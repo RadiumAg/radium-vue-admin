@@ -12,6 +12,7 @@ export const router = createRouter({
     {
       path: '',
       component: layout,
+      children: [],
     },
   ],
 });

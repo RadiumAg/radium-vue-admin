@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { UserBase } from '../UserBase';
 
-export class CreateUserInfoDto extends UserBase {
+export class InsertUserInfoData extends UserBase {
     @ApiProperty({
         type: String,
         description: '用户密码',

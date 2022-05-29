@@ -12,5 +12,6 @@ export class Result<T> {
 
     @ApiProperty({ type: String })
     private msg: string;
+
     private data: T | null;
 }
