@@ -14,7 +14,7 @@ import { AdminApiResponse } from '@decorator/AdminApiResponse';
 import { OAthService } from '@services/oath.service';
 
 @ApiTags('user')
-@AdminApiExtraModels()
+@AdminApiExtraModels(GetLoginUserInfoRes)
 @AdminController('user')
 export class UserController {
     constructor(
@@ -31,7 +31,7 @@ export class UserController {
     }
 
     @UseGuards(JwtAuthGuard)
-    @AdminApiResponse(String)
+    @AdminApiResponse(GetLoginUserInfoRes)
     @ApiOperation({ summary: '获取当前登录用户信息' })
     @Get('getLoginUserInfo')
     async getLoginUserInfo(@Req() request) {

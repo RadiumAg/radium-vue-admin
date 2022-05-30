@@ -1,6 +1,6 @@
-import { AxiosInstance } from 'axios';
 import { Api } from '@core/http/decorators/api';
-import { IResponse } from '@core/http/IResponse';
+import type { AxiosInstance } from 'axios';
+import type { IResponse } from '@core/http/IResponse';
 
 @Api({ prefix: 'oath' })
 export class OAth {
