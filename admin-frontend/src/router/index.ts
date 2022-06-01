@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { loginBeforeEnter } from './guard/loginBeforeEnter';
 
 const layout = import('@pages/layout/layout.vue');
 
@@ -12,7 +13,13 @@ export const router = createRouter({
     {
       path: '',
       component: layout,
-      children: [],
+      beforeEnter: [loginBeforeEnter],
+      children: [
+        {
+          path: '',
+          component: () => import('@pages/home/home.vue'),
+        },
+      ],
     },
   ],
 });

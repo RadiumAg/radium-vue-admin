@@ -1,5 +1,5 @@
-import { AxiosError, AxiosResponse } from 'axios';
 import { AdminError } from '../admin-error';
+import type { AxiosError, AxiosResponse } from 'axios';
 
 export const responseSuccess = (response: AxiosResponse) => {
   const { msg, code } = response.data;
