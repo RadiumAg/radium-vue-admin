@@ -34,6 +34,7 @@ import { useThrottleFn } from '@vueuse/core';
 import { ElMessage, FormInstance } from 'element-plus';
 import { useApi } from '@core/http/api-instance';
 import { defaultThrottleTime } from '@core/utils';
+import { useErrorMessage } from '@core/hooks/use-error-message';
 
 const api = useApi();
 const formRef = ref<FormInstance>();
@@ -68,7 +69,7 @@ const loginHandler = useThrottleFn(
       const res = await api.oath.login(loginForm.username, loginForm.password);
       ElMessage.success(res.msg);
     } catch (e) {
-      ElMessage.warning(e instanceof Error && e.message);
+      useErrorMessage(e);
     }
   },
   defaultThrottleTime,

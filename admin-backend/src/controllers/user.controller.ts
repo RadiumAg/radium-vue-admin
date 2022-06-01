@@ -1,8 +1,5 @@
-import { GetLoginUserInfoRes } from './../dto/user/view/GetLoginUserInfoRes';
-import { AdminResponse } from './../core/utils';
-/*
-https://docs.nestjs.com/controllers#controllers
-*/
+import { AdminResponse } from '@core/utils';
+import { GetLoginUserInfoRes } from '@dto/user/view/GetLoginUserInfoRes';
 import { InsertUserInfoData } from '@dto/user/view/InsertUserInfoData';
 import { Body, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
