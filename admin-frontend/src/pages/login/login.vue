@@ -35,8 +35,11 @@ import { ElMessage, FormInstance } from 'element-plus';
 import { useApi } from '@core/http/api-instance';
 import { defaultThrottleTime } from '@core/utils';
 import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useRoute, useRouter } from 'vue-router';
 
 const api = useApi();
+const route = useRoute();
+const router = useRouter();
 const formRef = ref<FormInstance>();
 const loginForm = reactive({
   username: '',
@@ -67,6 +70,7 @@ const loginHandler = useThrottleFn(
     }
     try {
       const res = await api.oath.login(loginForm.username, loginForm.password);
+      router.push(route.query.redirect as string);
       ElMessage.success(res.msg);
     } catch (e) {
       useErrorMessage(e);

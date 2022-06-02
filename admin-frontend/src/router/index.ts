@@ -7,6 +7,7 @@ export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
+      name: 'login',
       path: '/login',
       component: () => import('@pages/login/login.vue'),
     },
