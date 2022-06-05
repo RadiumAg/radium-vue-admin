@@ -12,7 +12,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
   const menus = ref({
     currentMenus: useLocalStorage<Menu[]>('current-menus', []),
     menuInclude: useLocalStorage('menu-include', [], { deep: true }),
-    activeMenuId: '',
+    activeMenuId: useLocalStorage('active-menu-id', ''),
   });
 
   const setInclude = (componentName: string) => {
@@ -21,6 +21,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
   };
 
   const setMenus = (menuId: string, menuPath: string, menuName: string) => {
+    menus.value.activeMenuId = menuId;
     if (menus.value.currentMenus.some(_ => _.menuId === menuId)) return;
     menus.value.currentMenus.push({
       menuId,

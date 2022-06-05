@@ -1,5 +1,8 @@
 <template>
-  <el-sub-menu v-if="menu.children.length > 0" :index="menu.menuUrl">
+  <el-sub-menu
+    v-if="menu.children.length > 0"
+    :index="menu.menuUrl || keyString"
+  >
     <template #title>
       <el-icon v-if="menu.menuIcon"
         ><component :is="menu.menuIcon"></component
@@ -10,6 +13,7 @@
       v-for="item in menu.children"
       :key="item._id"
       :menu="item"
+      :key-string="item._id"
       :index="item.menuUrl"
     ></slider-child>
   </el-sub-menu>
@@ -34,6 +38,10 @@ const { menu } = defineProps({
     required: true,
   },
   index: {
+    type: String,
+    required: true,
+  },
+  keyString: {
     type: String,
     required: true,
   },

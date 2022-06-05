@@ -1,8 +1,12 @@
 <template>
-  <div class="tag" @click="handleToPage">{{ name }}</div>
+  <div class="tag" :class="{ active: isActive }" @click="handleToPage">
+    {{ name }}
+  </div>
 </template>
 
 <script lang="ts" setup>
+import { useMenuStore } from '@core/pinia/stores/menuStore';
+import { computed, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 const props = defineProps({
   name: {
@@ -20,6 +24,10 @@ const props = defineProps({
 });
 
 const router = useRouter();
+const { activeMenuId } = toRefs(useMenuStore());
+const isActive = computed(() => {
+  return activeMenuId.value === props.id;
+});
 
 const handleToPage = () => {
   router.push(props.path);
@@ -32,5 +40,10 @@ const handleToPage = () => {
   font-size: 12px;
   border: 1px solid #42b983;
   margin-right: 4px;
+}
+
+.active {
+  background-color: #42b983;
+  border-color: transparent;
 }
 </style>

@@ -32,10 +32,13 @@ export class MenuService {
                 await this.menuModel.create(createMenuDto)
             ).save();
 
-            return (await this.menuModel.updateOne({
-                id: existMenu.id,
-                children: existMenu.children.concat(createMenu),
-            })) as any;
+            console.log(existMenu.id);
+
+            return await this.menuModel.findByIdAndUpdate(existMenu.id, {
+                $push: {
+                    children: createMenu.id,
+                },
+            });
         } else {
             return await (await this.menuModel.create(createMenuDto)).save();
         }

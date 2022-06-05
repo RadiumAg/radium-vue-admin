@@ -5,6 +5,7 @@
       :key="menuItem._id"
       :menu="menuItem"
       :index="menuItem.menuUrl"
+      :key-string="menuItem._id"
     ></slider-child>
   </el-menu>
 </template>
