@@ -34,9 +34,7 @@ export class MenuService {
 
             return (await this.menuModel.updateOne({
                 id: existMenu.id,
-                children: existMenu.children
-                    ? existMenu.children.concat(createMenu)
-                    : [createMenu],
+                children: existMenu.children.concat(createMenu),
             })) as any;
         } else {
             return await (await this.menuModel.create(createMenuDto)).save();
@@ -56,6 +54,6 @@ export class MenuService {
     }
 
     async getById(id: string) {
-        return this.menuModel.findOne({ id });
+        return this.menuModel.findById(id);
     }
 }

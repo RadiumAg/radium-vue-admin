@@ -17,7 +17,7 @@
     "forceConsistentCasingInFileNames": true,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
-    "types": ["./auto-imports", "./components"],
+    "types": ["./auto-imports", "./components", "unplugin-vue-define-options"],
     "baseUrl": ".",
     "paths": {
       "@core/*": ["./src/core/*"],

@@ -1,7 +1,9 @@
+import { menuSettingRouter } from '@pages/basic-setting/router';
+import { componentsExampleRouter } from '@pages/components-example/router';
 import { createRouter, createWebHistory } from 'vue-router';
 import { loginBeforeEnter } from './guard/loginBeforeEnter';
 
-const layout = import('@pages/layout/layout.vue');
+const layout = () => import('@pages/layout/layout.vue');
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -12,7 +14,7 @@ export const router = createRouter({
       component: () => import('@pages/login/login.vue'),
     },
     {
-      path: '',
+      path: '/',
       component: layout,
       beforeEnter: [loginBeforeEnter],
       children: [
@@ -20,6 +22,12 @@ export const router = createRouter({
           path: '',
           component: () => import('@pages/home/home.vue'),
         },
+        {
+          path: ':pathMatch(.*)*',
+          component: () => import('@pages/not-found.vue'),
+        },
+        menuSettingRouter,
+        componentsExampleRouter,
       ],
     },
   ],

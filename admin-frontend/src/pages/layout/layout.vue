@@ -5,8 +5,10 @@
         <admin-slider></admin-slider>
       </el-aside>
       <el-container>
-        <el-header><admin-header></admin-header></el-header>
-        <el-main>Main</el-main>
+        <el-header class="header"><admin-header></admin-header></el-header>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -23,5 +25,9 @@ import AdminSlider from './slider.vue';
   height: 100vh;
   width: 100vw;
   flex-direction: column;
+}
+
+.header {
+  --el-header-height: max-content;
 }
 </style>

@@ -1,38 +1,48 @@
 <template>
-  <el-sub-menu v-if="menu.children.length > 0">
+  <el-sub-menu v-if="menu.children.length > 0" :index="menu.menuUrl">
     <template #title>
-      <el-icon><component :is="menu.menuIcon"></component></el-icon>
+      <el-icon v-if="menu.menuIcon"
+        ><component :is="menu.menuIcon"></component
+      ></el-icon>
       <span>{{ menu.menuName }}</span>
     </template>
     <slider-child
-      v-for="(item, i) in menu.children"
+      v-for="item in menu.children"
       :key="item._id"
       :menu="item"
-      :index="i"
+      :index="item.menuUrl"
     ></slider-child>
   </el-sub-menu>
-  <el-menu-item v-else :index="index">
+  <el-menu-item v-else :index="menu.menuUrl" @click="handleSetTags">
     <template #title>
-      <el-icon><component :is="menu.menuIcon"></component></el-icon>
+      <el-icon v-if="menu.menuIcon"
+        ><component :is="menu.menuIcon"></component
+      ></el-icon>
       <span>{{ menu.menuName }}</span>
     </template>
   </el-menu-item>
 </template>
 
 <script lang="ts" setup>
+import { setMenus } from '@core/pinia/stores/menuStore';
 import type { PropType } from 'vue';
 import type { GetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
 
-defineProps({
+const { menu } = defineProps({
   menu: {
     type: Object as PropType<GetAllRes>,
     required: true,
   },
   index: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
+
+const handleSetTags = () => {
+  const { menuUrl, _id, menuName } = menu;
+  setMenus(_id, menuUrl, menuName);
+};
 </script>
 
 <style lang="scss" scoped></style>

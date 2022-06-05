@@ -1,3 +1,3 @@
-<template></template>
+<template>test</template>
 
 <script lang="ts" setup></script>

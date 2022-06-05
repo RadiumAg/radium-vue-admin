@@ -6,9 +6,9 @@ import { AdminApiResponse } from '@decorator/AdminApiResponse';
 import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
 import { AdminResponse } from '@core/utils';
 import { MenuService } from '@services/menu.service';
-import { GetAllMenuDto } from '@dto/menu/mogodb/GetAllMenuDto';
 import { AdminApiExtraModels } from '@decorator/AdminApiExtraModels';
 import { AdminController } from '@decorator/AdminController';
+import { GetAllMenuDto } from '@dto/menu/view/GetAllMenuDto';
 
 @ApiTags('menu')
 @ApiBearerAuth()

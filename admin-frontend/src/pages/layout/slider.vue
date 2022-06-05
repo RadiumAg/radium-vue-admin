@@ -1,10 +1,10 @@
 <template>
-  <el-menu default-active="2" class="menu">
+  <el-menu class="menu" router>
     <slider-child
-      v-for="(menuItem, index) in menus"
+      v-for="menuItem in menus"
       :key="menuItem._id"
       :menu="menuItem"
-      :index="index"
+      :index="menuItem.menuUrl"
     ></slider-child>
   </el-menu>
 </template>

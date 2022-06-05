@@ -21,10 +21,6 @@ import { ConfigModule } from '@nestjs/config';
             envFilePath: ['.env.development'],
         }),
         MongooseModule.forRoot('mongodb://127.0.0.1:27017/admin'),
-        JwtModule.register({
-            secret: jwtConstants.secret,
-            signOptions: { expiresIn: '10h' },
-        }),
     ],
     controllers: [],
     providers: [],
