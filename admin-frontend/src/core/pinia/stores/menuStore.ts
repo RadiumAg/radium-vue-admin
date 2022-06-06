@@ -20,7 +20,25 @@ export const useMenuStore = defineStore('menu-tags', () => {
     menus.value.menuInclude.push(componentName);
   };
 
-  const setMenus = (menuId: string, menuPath: string, menuName: string) => {
+  const setActiveMenuId = (menuId: string) => {
+    menus.value.activeMenuId = menuId;
+  };
+
+  const removeCurrentMenus = (menuId: string) => {
+    const removeIndex = menus.value.currentMenus.findIndex(
+      _ => _.menuId === menuId,
+    );
+    menus.value.currentMenus.splice(removeIndex, 1);
+    const nextIndex = menus.value.currentMenus.length - 1;
+    menus.value.activeMenuId =
+      menus.value.currentMenus[nextIndex]?.menuId || '';
+  };
+
+  const setCurrentMenus = (
+    menuId: string,
+    menuPath: string,
+    menuName: string,
+  ) => {
     menus.value.activeMenuId = menuId;
     if (menus.value.currentMenus.some(_ => _.menuId === menuId)) return;
     menus.value.currentMenus.push({
@@ -29,7 +47,19 @@ export const useMenuStore = defineStore('menu-tags', () => {
       menuName,
     });
   };
-  return { ...toRefs(menus.value), setInclude, setMenus };
+  return {
+    ...toRefs(menus.value),
+
+    setInclude,
+    setCurrentMenus,
+    setActiveMenuId,
+    removeCurrentMenus,
+  };
 });
 
-export const { setInclude, setMenus } = useMenuStore();
+export const {
+  setInclude,
+  setCurrentMenus,
+  setActiveMenuId,
+  removeCurrentMenus,
+} = useMenuStore();

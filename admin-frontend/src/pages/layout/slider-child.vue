@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { setMenus } from '@core/pinia/stores/menuStore';
+import { setCurrentMenus } from '@core/pinia/stores/menuStore';
 import type { PropType } from 'vue';
 import type { GetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
 
@@ -49,7 +49,7 @@ const { menu } = defineProps({
 
 const handleSetTags = () => {
   const { menuUrl, _id, menuName } = menu;
-  setMenus(_id, menuUrl, menuName);
+  setCurrentMenus(_id, menuUrl, menuName);
 };
 </script>
 

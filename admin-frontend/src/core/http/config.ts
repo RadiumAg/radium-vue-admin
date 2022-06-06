@@ -1,5 +1,5 @@
 import qs from 'qs';
-import { AxiosRequestConfig } from 'axios';
+import type { AxiosRequestConfig } from 'axios';
 
 export const defaultConfig: AxiosRequestConfig = {
   withCredentials: true,

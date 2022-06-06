@@ -1,5 +1,5 @@
 <template>
-  <el-menu class="menu" router>
+  <el-menu class="menu" router :default-active="route.fullPath">
     <slider-child
       v-for="menuItem in menus"
       :key="menuItem._id"
@@ -14,11 +14,13 @@
 import { ref } from 'vue';
 import { useApi } from '@core/http/api-instance';
 import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useRoute } from 'vue-router';
 import SliderChild from './slider-child.vue';
 import type { GetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
 
 const menus = ref<GetAllRes[]>();
 const { menu } = useApi();
+const route = useRoute();
 
 const getMenu = async () => {
   try {

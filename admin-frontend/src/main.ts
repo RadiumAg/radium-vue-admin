@@ -6,5 +6,6 @@ import 'animate.less/animate.css';
 import '@assets/css/common.scss';
 import App from './App.vue';
 import 'element-plus/theme-chalk/index.css';
+import 'element-plus/theme-chalk/dark/css-vars.css';
 
 createApp(App).use(router).use(installApi).use(createPinia()).mount('#app');

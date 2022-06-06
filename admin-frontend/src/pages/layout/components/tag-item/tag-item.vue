@@ -1,13 +1,21 @@
 <template>
   <div class="tag" :class="{ active: isActive }" @click="handleToPage">
     {{ name }}
+    <el-icon v-show="isActive" class="close-icon" @click.stop="handleClose"
+      ><close></close
+    ></el-icon>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useMenuStore } from '@core/pinia/stores/menuStore';
 import { computed, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
+import {
+  removeCurrentMenus,
+  setActiveMenuId,
+  useMenuStore,
+} from '@core/pinia/stores/menuStore';
+import { Close } from '@element-plus/icons-vue';
 const props = defineProps({
   name: {
     type: String,
@@ -31,19 +39,50 @@ const isActive = computed(() => {
 
 const handleToPage = () => {
   router.push(props.path);
+  setActiveMenuId(props.id);
+};
+
+const handleClose = () => {
+  removeCurrentMenus(props.id);
 };
 </script>
 
 <style lang="scss" scope>
 .tag {
+  display: flex;
+  cursor: pointer;
   padding: 4px 8px;
   font-size: 12px;
-  border: 1px solid #42b983;
+  user-select: none;
   margin-right: 4px;
+  align-items: center;
+  border: 1px solid #42b983;
+
+  .close-icon {
+    padding: 2px;
+    margin-left: 5px;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    &:hover {
+      color: #fff;
+      background-color: #b4bccc;
+    }
+  }
 }
 
 .active {
   background-color: #42b983;
   border-color: transparent;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
 }
 </style>
