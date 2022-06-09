@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { UserBase } from '../UserBase';
+import { UserBase } from '../user-base';
 
 export class InsertUserInfoData extends UserBase {
     @ApiProperty({

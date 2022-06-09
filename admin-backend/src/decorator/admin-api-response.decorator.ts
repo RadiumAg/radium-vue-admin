@@ -1,6 +1,6 @@
 import { Type, applyDecorators } from '@nestjs/common';
 import { ApiOkResponse, getSchemaPath } from '@nestjs/swagger';
-import { Result } from '@vo/Result';
+import { Result } from '@vo/result';
 
 export const AdminApiResponse = <TModel extends Type<any>>(model: TModel) => {
     return applyDecorators(

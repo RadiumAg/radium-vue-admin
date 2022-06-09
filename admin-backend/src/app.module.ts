@@ -1,20 +1,21 @@
+import { RoleModule } from './modules/role.module';
 import { LoginModule } from './modules/login.module';
 import { UserModule } from './modules/user.module';
 import { MenuModule } from './modules/menu.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PassportModule } from '@nestjs/passport';
-import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from './core/auth/constants';
 import { OAthModule } from '@modules/oath.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
     imports: [
+        RoleModule,
         LoginModule,
         UserModule,
         MenuModule,
         OAthModule,
+        RoleModule,
         PassportModule,
         ConfigModule.forRoot({
             isGlobal: true,

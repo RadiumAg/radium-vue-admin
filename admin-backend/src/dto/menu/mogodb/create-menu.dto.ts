@@ -1,3 +1,3 @@
-import { MenuBase } from '../MenuBase';
+import { MenuBase } from '../menu-base';
 
 export class CreateMenuDto extends MenuBase {}

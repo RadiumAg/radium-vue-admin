@@ -1,13 +1,13 @@
 import { Base } from '@dto/Base';
 import { ApiProperty } from '@nestjs/swagger';
-import { MenuBase } from '../MenuBase';
+import { MenuBase } from '../menu-base';
 
-export class GetAllMenuDto extends MenuBase implements Base {
+export class GetAllMenuRes extends MenuBase implements Base {
     @ApiProperty({
-        type: [GetAllMenuDto],
+        type: [GetAllMenuRes],
         description: '子菜单',
     })
-    children: GetAllMenuDto[];
+    children: GetAllMenuRes[];
 
     @ApiProperty({
         type: String,
@@ -16,7 +16,7 @@ export class GetAllMenuDto extends MenuBase implements Base {
     _id: string;
 
     @ApiProperty({
-        type: GetAllMenuDto,
+        type: GetAllMenuRes,
         description: '父Id',
     })
     parentId: string;

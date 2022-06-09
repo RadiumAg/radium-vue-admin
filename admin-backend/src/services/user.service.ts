@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from '@schemas/user';
-import { CreateUserInfoDto } from '@dto/user/mogodb/CreateUserInfoDto';
+import { CreateUserInfoDto } from '@dto/user/mogodb/create-userInfo.dto';
 
 @Injectable()
 export class UserService {
@@ -13,13 +13,16 @@ export class UserService {
     /**
      * 获得用户信息
      *
-     * @param {string} userName
+     * @param {string} username
      * @param {string} password
      * @return {*}
      * @memberof UserService
      */
-    async getUserInfoByAccount(userName: string, password: string) {
-        const userInfo = this.userModel.findOne({ userName, password });
+    async getUserInfoByAccount(username: string, password: string) {
+        const userInfo = this.userModel.findOne({
+            username,
+            password,
+        });
         return userInfo;
     }
 

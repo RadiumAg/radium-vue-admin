@@ -5,9 +5,9 @@ import { Body, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UserService } from '@services/user.service';
 import { JwtAuthGuard } from 'src/core/auth/guards/jwt-auth.guard';
-import { AdminController } from '@decorator/AdminController';
-import { AdminApiExtraModels } from '@decorator/AdminApiExtraModels';
-import { AdminApiResponse } from '@decorator/AdminApiResponse';
+import { AdminController } from '@decorator/admin-controller.decorator';
+import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
+import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
 import { OAthService } from '@services/oath.service';
 
 @ApiTags('user')
@@ -37,7 +37,7 @@ export class UserController {
             this.oAthService.getUserInfo(request.cookies['admin-login']).userId,
         );
         resData.userId = loginUserInfo.id;
-        resData.username = loginUserInfo.userName;
+        resData.username = loginUserInfo.username;
         return resData;
     }
 }

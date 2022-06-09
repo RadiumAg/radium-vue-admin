@@ -1,18 +1,18 @@
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Body, Get, Post, UseGuards } from '@nestjs/common';
-import { UpdateMenuData } from '@dto/menu/view/UpdateMenuData';
-import { InsertMenuData } from '@dto/menu/view/InsertMenuData';
-import { AdminApiResponse } from '@decorator/AdminApiResponse';
+import { UpdateMenuData } from '@dto/menu/view/update-menu.data';
+import { InsertMenuData } from '@dto/menu/view/insert-menu.data';
+import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
 import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
 import { AdminResponse } from '@core/utils';
 import { MenuService } from '@services/menu.service';
-import { AdminApiExtraModels } from '@decorator/AdminApiExtraModels';
-import { AdminController } from '@decorator/AdminController';
-import { GetAllMenuDto } from '@dto/menu/view/GetAllMenuDto';
+import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
+import { AdminController } from '@decorator/admin-controller.decorator';
+import { GetAllMenuRes } from '@dto/menu/view/get-all-menu.res';
 
 @ApiTags('menu')
 @ApiBearerAuth()
-@AdminApiExtraModels(GetAllMenuDto)
+@AdminApiExtraModels(GetAllMenuRes)
 @AdminController('menu')
 export class MenuController {
     constructor(private menuService: MenuService) {}
@@ -36,7 +36,7 @@ export class MenuController {
     }
 
     @ApiOperation({ summary: '获得所有权限菜单' })
-    @AdminApiResponse(GetAllMenuDto)
+    @AdminApiResponse(GetAllMenuRes)
     @UseGuards(JwtAuthGuard)
     @Get('getAllMenu')
     async getAllMenu() {

@@ -1,5 +1,5 @@
 import { Menu } from '@schemas/menu';
-import { Result } from '@vo/Result';
+import { Result } from '@vo/result';
 
 type DataType<T> = null | T;
 

@@ -1,4 +1,4 @@
-import { AdminResponse } from './../core/utils';
+import { AdminResponse } from '@core/utils';
 import {
     ExceptionFilter,
     Catch,
