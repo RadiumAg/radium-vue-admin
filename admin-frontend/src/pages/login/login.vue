@@ -84,6 +84,11 @@ const loginHandler = useThrottleFn(
 <style lang="scss" scoped>
 :deep(.el-input__wrapper) {
   background-color: #0000001a;
+
+  input {
+    color: #fff;
+    caret-color: #fff;
+  }
 }
 
 .login-button {

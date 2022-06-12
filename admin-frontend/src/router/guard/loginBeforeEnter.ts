@@ -15,6 +15,7 @@ export const loginBeforeEnter = async (to: RouteLocationNormalized) => {
     } else {
       useErrorMessage(e);
     }
+
     return {
       name: 'login',
       query: {

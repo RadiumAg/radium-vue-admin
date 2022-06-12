@@ -1,4 +1,9 @@
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+    ApiBearerAuth,
+    ApiOperation,
+    ApiTags,
+    getSchemaPath,
+} from '@nestjs/swagger';
 import { Body, Get, Post, UseGuards } from '@nestjs/common';
 import { UpdateMenuData } from '@dto/menu/view/update-menu.data';
 import { InsertMenuData } from '@dto/menu/view/insert-menu.data';
@@ -19,7 +24,7 @@ export class MenuController {
 
     @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '插入菜单' })
-    @AdminApiResponse(String)
+    @AdminApiResponse({ type: 'string' })
     @Post('insertMenu')
     async insetMenu(@Body() insertMenu: InsertMenuData) {
         const menu = await this.menuService.create(insertMenu);
@@ -28,7 +33,7 @@ export class MenuController {
 
     @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '更新菜单' })
-    @AdminApiResponse(String)
+    @AdminApiResponse({ type: 'string' })
     @Post('updateMenu')
     async updateMenu(@Body() updateMenu: UpdateMenuData) {
         await this.menuService.update(updateMenu);
@@ -36,7 +41,7 @@ export class MenuController {
     }
 
     @ApiOperation({ summary: '获得所有权限菜单' })
-    @AdminApiResponse(GetAllMenuRes)
+    @AdminApiResponse({ $ref: getSchemaPath(GetAllMenuRes) })
     @UseGuards(JwtAuthGuard)
     @Get('getAllMenu')
     async getAllMenu() {

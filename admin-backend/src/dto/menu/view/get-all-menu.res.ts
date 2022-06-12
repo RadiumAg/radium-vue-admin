@@ -1,4 +1,4 @@
-import { Base } from '@dto/Base';
+import { Base } from '@dto/base';
 import { ApiProperty } from '@nestjs/swagger';
 import { MenuBase } from '../menu-base';
 

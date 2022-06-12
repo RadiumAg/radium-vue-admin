@@ -2,7 +2,7 @@ import { AdminResponse } from '@core/utils';
 import { GetLoginUserInfoRes } from '@dto/user/view/GetLoginUserInfoRes';
 import { InsertUserInfoData } from '@dto/user/view/InsertUserInfoData';
 import { Body, Get, Post, Req, UseGuards } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags, getSchemaPath } from '@nestjs/swagger';
 import { UserService } from '@services/user.service';
 import { JwtAuthGuard } from 'src/core/auth/guards/jwt-auth.guard';
 import { AdminController } from '@decorator/admin-controller.decorator';
@@ -28,7 +28,7 @@ export class UserController {
     }
 
     @UseGuards(JwtAuthGuard)
-    @AdminApiResponse(GetLoginUserInfoRes)
+    @AdminApiResponse({ $ref: getSchemaPath(GetLoginUserInfoRes) })
     @ApiOperation({ summary: '获取当前登录用户信息' })
     @Get('getLoginUserInfo')
     async getLoginUserInfo(@Req() request) {

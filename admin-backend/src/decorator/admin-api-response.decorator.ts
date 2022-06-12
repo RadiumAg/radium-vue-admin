@@ -1,8 +1,12 @@
-import { Type, applyDecorators } from '@nestjs/common';
+import { applyDecorators } from '@nestjs/common';
 import { ApiOkResponse, getSchemaPath } from '@nestjs/swagger';
+import {
+    ReferenceObject,
+    SchemaObject,
+} from '@nestjs/swagger/dist/interfaces/open-api-spec.interface';
 import { Result } from '@vo/result';
 
-export const AdminApiResponse = <TModel extends Type<any>>(model: TModel) => {
+export const AdminApiResponse = (schema: SchemaObject | ReferenceObject) => {
     return applyDecorators(
         ApiOkResponse({
             schema: {
@@ -12,9 +16,7 @@ export const AdminApiResponse = <TModel extends Type<any>>(model: TModel) => {
                     },
                     {
                         properties: {
-                            data: {
-                                $ref: getSchemaPath(model),
-                            },
+                            data: schema,
                         },
                     },
                 ],

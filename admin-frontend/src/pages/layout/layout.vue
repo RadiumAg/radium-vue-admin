@@ -5,7 +5,7 @@
         <admin-slider></admin-slider>
       </el-aside>
       <el-container>
-        <el-header class="el-header"><admin-header></admin-header></el-header>
+        <el-header><admin-header></admin-header></el-header>
         <el-main>
           <router-view></router-view>
         </el-main>
