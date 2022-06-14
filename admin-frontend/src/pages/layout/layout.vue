@@ -31,4 +31,9 @@ import AdminSlider from './slider.vue';
   padding: 0;
   --el-header-height: max-content;
 }
+
+.el-main {
+  background-color: #f6f8f9;
+  --el-main-padding: 10px;
+}
 </style>

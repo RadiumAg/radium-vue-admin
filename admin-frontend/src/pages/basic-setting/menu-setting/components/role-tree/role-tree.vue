@@ -1,5 +1,5 @@
 <template>
-  <el-tree :data="data" highlight-current></el-tree>
+  <el-tree :data="data" highlight-current default-expand-all></el-tree>
 </template>
 
 <script lang="ts" setup>
