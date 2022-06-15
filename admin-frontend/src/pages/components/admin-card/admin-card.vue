@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { PropType, computed } from 'vue';
 
 const props = defineProps({
   autoFill: {
@@ -24,6 +24,10 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  flexDirection: {
+    type: String as PropType<'row' | 'column'>,
+    default: 'row',
+  },
   height: {
     type: String,
     default: 'auto',
@@ -32,6 +36,7 @@ const props = defineProps({
     type: String,
     default: 'max-content',
   },
+  border: { type: Boolean, default: true },
 });
 
 const flexGrow = computed(() => {
@@ -43,17 +48,27 @@ const backgroundColor = computed(() => {
   if (props.background) return '#fff';
   else return 'transparent';
 });
+
+const borderStyle = computed(() => {
+  if (props.border) {
+    return '1px solid #e4e7ed';
+  } else {
+    return 'none';
+  }
+});
 </script>
 
 <style lang="scss" scoped>
 .card-wrapper {
+  display: flex;
   padding: v-bind(padding);
   margin: v-bind(margin);
   flex-grow: v-bind(flexGrow);
   height: v-bind(height);
   flex-basis: v-bind(flexBasic);
+  border: v-bind(borderStyle);
+  flex-direction: v-bind(flexDirection);
   background: v-bind(backgroundColor);
   border-radius: 2.5px;
-  border: 1px solid #e4e7ed;
 }
 </style>

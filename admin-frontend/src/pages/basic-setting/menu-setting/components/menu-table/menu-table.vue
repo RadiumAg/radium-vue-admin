@@ -1,17 +1,38 @@
 <template>
-  <el-table :data="tableData">
-    <el-table-column label="菜单名称"></el-table-column>
+  <admin-card
+    padding="0"
+    auto-fill
+    margin="0"
+    flex-direction="column"
+    :border="false"
+  >
+    <div class="operate-area">
+      <el-button type="primary">添加</el-button>
+    </div>
 
-    <el-table-column label="菜单地址"></el-table-column>
+    <admin-card padding="0" auto-fill margin="0" :border="false">
+      <admin-table :data="tableData" row-key="_id">
+        <el-table-column type="selection"></el-table-column>
 
-    <el-table-column label="菜单图标"></el-table-column>
-  </el-table>
+        <el-table-column label="菜单名称" prop="menuName"></el-table-column>
+
+        <el-table-column label="菜单名称" prop="menuName"></el-table-column>
+
+        <el-table-column label="菜单地址" prop="menuUrl"></el-table-column>
+
+        <el-table-column label="菜单图标" prop="menuIcon"></el-table-column>
+      </admin-table>
+    </admin-card>
+  </admin-card>
 </template>
 
 <script lang="ts" setup>
+import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
 import { ref } from 'vue';
+import AdminCard from '@components/admin-card/admin-card.vue';
+
 const { menu } = useApi();
 
 const tableData = ref([]);
@@ -28,4 +49,10 @@ const getData = async () => {
 getData();
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.operate-area {
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: flex-end;
+}
+</style>

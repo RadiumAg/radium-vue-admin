@@ -1,10 +1,22 @@
-<script lang="ts" setup>
+<script lang="ts">
 import { ElTable } from 'element-plus';
-import { h } from 'vue';
+import { defineComponent, h } from 'vue';
 
-defineOptions({
-  setup() {
-    return h(ElTable, { stripe: true, border: true });
+export default defineComponent({
+  setup(props, { slots }) {
+    return () =>
+      h(
+        ElTable,
+        {
+          stripe: true,
+          border: true,
+          treeProps: { children: 'children', hasChildren: 'hasChildren' },
+          style: {
+            height: '100%',
+          },
+        },
+        slots,
+      );
   },
 });
 </script>

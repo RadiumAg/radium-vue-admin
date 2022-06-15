@@ -10,7 +10,7 @@ import { AdminController } from '@decorator/admin-controller.decorator';
 import { GetPageRoleRes } from '@dto/role/view/get-page-role.res';
 import { InsertRoleData } from '@dto/role/view/insert-role.data';
 import { UpdateRoleData } from '@dto/role/view/update-role.data';
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Get, Post, Query, UseGuards } from '@nestjs/common';
 import {
     ApiOperation,
     ApiQuery,
