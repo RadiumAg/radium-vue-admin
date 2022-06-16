@@ -45,7 +45,7 @@ const flexGrow = computed(() => {
 });
 
 const backgroundColor = computed(() => {
-  if (props.background) return '#fff';
+  if (props.background) return 'var(--el-fill-color-blank)';
   else return 'transparent';
 });
 

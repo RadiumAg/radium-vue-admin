@@ -33,7 +33,7 @@ import AdminSlider from './slider.vue';
 }
 
 .el-main {
-  background-color: #f6f8f9;
+  // background-color: #f6f8f9;
   --el-main-padding: 10px;
 }
 </style>

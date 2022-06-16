@@ -23,19 +23,24 @@
         <el-table-column label="菜单图标" prop="menuIcon"></el-table-column>
       </admin-table>
     </admin-card>
+
+    <admin-dialog v-model="addMenuDialogData.visible"></admin-dialog>
   </admin-card>
 </template>
 
 <script lang="ts" setup>
+import { reactive, ref } from 'vue';
+import AdminDialog from '@components/admin-dialog/admin-dialog.vue';
 import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
-import { ref } from 'vue';
 import AdminCard from '@components/admin-card/admin-card.vue';
 
 const { menu } = useApi();
-
 const tableData = ref([]);
+const addMenuDialogData = reactive({
+  visible: true,
+});
 
 const getData = async () => {
   try {
