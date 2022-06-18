@@ -38,12 +38,13 @@ const isActive = computed(() => {
 });
 
 const handleToPage = () => {
-  router.push(props.path);
+  router.replace(props.path);
   setActiveMenuId(props.id);
 };
 
 const handleClose = () => {
-  removeCurrentMenus(props.id);
+  const nextMenu = removeCurrentMenus(props.id);
+  router.replace(nextMenu.menuPath);
 };
 </script>
 

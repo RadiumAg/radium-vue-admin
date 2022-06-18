@@ -4,7 +4,7 @@ import {
     ApiTags,
     getSchemaPath,
 } from '@nestjs/swagger';
-import { Body, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { UpdateMenuData } from '@dto/menu/view/update-menu.data';
 import { InsertMenuData } from '@dto/menu/view/insert-menu.data';
 import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
@@ -46,6 +46,15 @@ export class MenuController {
     @Get('getAllMenu')
     async getAllMenu() {
         const allMenus = await this.menuService.getAll();
-        return AdminResponse.success('获得成功', allMenus);
+        return AdminResponse.success('获取成功', allMenus);
+    }
+
+    @ApiOperation({ summary: '根据Id获得单个菜单' })
+    @AdminApiResponse({ $ref: getSchemaPath(GetAllMenuRes) })
+    @UseGuards(JwtAuthGuard)
+    @Get('getById')
+    async getById(@Query() id: string) {
+        const menu = await this.menuService.getById(id);
+        return AdminResponse.success('获取成功', menu);
     }
 }

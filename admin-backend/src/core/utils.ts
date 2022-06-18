@@ -4,7 +4,7 @@ import { Result } from '@vo/result';
 type DataType<T> = null | T;
 
 export class AdminResponse {
-    public static success<T>(msg = '', data?: DataType<T>) {
+    public static success<T>(msg = '获取成功', data?: DataType<T>) {
         const res = new Result(0, msg, data);
         return res;
     }

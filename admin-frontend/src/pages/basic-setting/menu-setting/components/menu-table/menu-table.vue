@@ -7,11 +7,11 @@
     :border="false"
   >
     <div class="operate-area">
-      <el-button type="primary">添加</el-button>
+      <el-button type="primary" @click="handleRootAdd">添加</el-button>
     </div>
 
     <admin-card padding="0" auto-fill margin="0" :border="false">
-      <admin-table :data="tableData" row-key="_id">
+      <admin-table v-loading="isLoading" :data="tableData" row-key="_id">
         <el-table-column type="selection"></el-table-column>
 
         <el-table-column label="菜单名称" prop="menuName"></el-table-column>
@@ -20,37 +20,71 @@
 
         <el-table-column label="菜单地址" prop="menuUrl"></el-table-column>
 
-        <el-table-column label="菜单图标" prop="menuIcon"></el-table-column>
+        <el-table-column label="菜单图标" prop="menuIcon">
+          <template #default="{ row }">
+            <el-icon>
+              <component :is="icons[row.menuIcon]"></component
+            ></el-icon>
+          </template>
+        </el-table-column>
+
+        <el-table-column>
+          <template #default="{ row }">
+            <el-button text>编辑</el-button>
+            <el-button text type="primary" @click="handleAdd(row._id)"
+              >添加</el-button
+            >
+          </template>
+        </el-table-column>
       </admin-table>
     </admin-card>
 
-    <admin-dialog v-model="addMenuDialogData.visible"></admin-dialog>
+    <add-menu-dialog
+      v-if="addMenuDialogData.visible"
+      v-model="addMenuDialogData.visible"
+      :parent-id="addMenuDialogData.parentId"
+      @after-close="getData"
+    ></add-menu-dialog>
   </admin-card>
 </template>
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
-import AdminDialog from '@components/admin-dialog/admin-dialog.vue';
+import * as icons from '@element-plus/icons-vue';
 import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
 import AdminCard from '@components/admin-card/admin-card.vue';
+import AddMenuDialog from './components/add-menu-dialog/add-menu-dialog.vue';
 
 const { menu } = useApi();
 const tableData = ref([]);
+const isLoading = ref(false);
 const addMenuDialogData = reactive({
-  visible: true,
+  visible: false,
+  parentId: '',
 });
 
 const getData = async () => {
   try {
+    isLoading.value = true;
     const resData = await menu.getAllMenu();
+    isLoading.value = false;
     tableData.value = resData.data;
   } catch (e) {
     useErrorMessage(e);
   }
 };
 
+const handleAdd = (parentId: string) => {
+  addMenuDialogData.visible = true;
+  addMenuDialogData.parentId = parentId;
+};
+
+const handleRootAdd = () => {
+  addMenuDialogData.visible = true;
+  addMenuDialogData.parentId = '';
+};
 getData();
 </script>
 

@@ -7,7 +7,7 @@
       <el-container>
         <el-header><admin-header></admin-header></el-header>
         <el-main>
-          <router-view></router-view>
+          <keep-alive-router-view></keep-alive-router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+import KeepAliveRouterView from '@components/keep-alive-router-view/keep-alive-router-view.vue';
 import AdminHeader from './header.vue';
 import AdminSlider from './slider.vue';
 </script>

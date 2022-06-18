@@ -1,10 +1,10 @@
-import { UpdateMenuData } from '@dto/menu/view/update-menu.data';
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { isValidObjectId, Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Menu, MenuDocument } from 'src/schemas/menu';
 import { CreateMenuDto } from '@dto/menu/mogodb/create-menu.dto';
+import { UpdateMenuDto } from '@dto/menu/mogodb/update-menu.dto';
 
 @Injectable()
 export class MenuService {
@@ -42,8 +42,11 @@ export class MenuService {
         }
     }
 
-    async update(updateMenuDto: UpdateMenuData) {
-        await this.menuModel.updateOne(updateMenuDto);
+    async update(updateMenuDto: UpdateMenuDto) {
+        await this.menuModel.findByIdAndUpdate(
+            updateMenuDto._id,
+            updateMenuDto,
+        );
     }
 
     async getAll() {

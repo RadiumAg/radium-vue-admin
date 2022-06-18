@@ -30,8 +30,9 @@ export const useMenuStore = defineStore('menu-tags', () => {
     );
     menus.value.currentMenus.splice(removeIndex, 1);
     const nextIndex = menus.value.currentMenus.length - 1;
-    menus.value.activeMenuId =
-      menus.value.currentMenus[nextIndex]?.menuId || '';
+    const nextMenu = menus.value.currentMenus[nextIndex];
+    menus.value.activeMenuId = nextMenu?.menuId || '';
+    return nextMenu;
   };
 
   const setCurrentMenus = (

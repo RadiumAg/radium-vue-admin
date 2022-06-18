@@ -5,9 +5,9 @@
   >
     <template #title>
       <el-icon v-if="menu.menuIcon"
-        ><component :is="menu.menuIcon"></component
+        ><component :is="icons[menu.menuIcon]"></component
       ></el-icon>
-      <span>{{ menu.menuName }}</span>
+      <span>{{ menu.menuName }}{{ menu.menuIcon }}</span>
     </template>
     <slider-child
       v-for="item in menu.children"
@@ -20,7 +20,7 @@
   <el-menu-item v-else :index="menu.menuUrl" @click="handleSetTags">
     <template #title>
       <el-icon v-if="menu.menuIcon"
-        ><component :is="menu.menuIcon"></component
+        ><component :is="icons[menu.menuIcon]"></component
       ></el-icon>
       <span>{{ menu.menuName }}</span>
     </template>
@@ -28,6 +28,7 @@
 </template>
 
 <script lang="ts" setup>
+import * as icons from '@element-plus/icons-vue';
 import { setCurrentMenus } from '@core/pinia/stores/menuStore';
 import type { PropType } from 'vue';
 import type { GetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
