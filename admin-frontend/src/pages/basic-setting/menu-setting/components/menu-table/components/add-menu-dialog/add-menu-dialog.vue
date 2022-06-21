@@ -32,7 +32,7 @@ import IconSelect from '@components/icon-select/icon-select.vue';
 import AdminDialog from '@components/admin-dialog/admin-dialog.vue';
 import { useApi } from '@core/http/api-instance';
 import { computed, reactive, ref } from 'vue';
-import { UPDATE_MODEL_VALUE_EVENT } from '@core/utils';
+import { UPDATE_MODEL_VALUE_EVENT, autoMap } from '@core/utils';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { ElMessage, FormRules } from 'element-plus';
 import type { FormType } from '.';
@@ -44,6 +44,10 @@ const props = defineProps({
   },
   modelValue: {
     type: Boolean,
+    required: true,
+  },
+  id: {
+    type: String,
     required: true,
   },
 });
@@ -99,6 +103,18 @@ const insertMenu = async () => {
     return false;
   }
 };
+
+const getData = () => {
+  try {
+    if (!props.id) return;
+    const resData = menu.getById(props.id);
+    autoMap(formData, resData);
+  } catch (e) {
+    useErrorMessage(e);
+  }
+};
+
+getData();
 </script>
 
 <style lang="scss" scoped></style>

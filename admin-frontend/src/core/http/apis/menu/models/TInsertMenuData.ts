@@ -1,6 +1,3 @@
-export type TInsertMenuData = {
-  menuIcon: string;
-  menuName: string;
-  menuUrl: string;
-  parentId: string;
-};
+import type { Menu } from './Menu';
+
+export type TInsertMenuData = Menu;

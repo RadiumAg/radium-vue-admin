@@ -2,6 +2,7 @@ import { Api } from '@core/http/decorators/api';
 import type { IResponse } from '@core/http/IResponse';
 import type { AxiosInstance } from 'axios';
 import type { GetAllRes } from './models/TGetAllRes';
+import type { TGetById } from './models/TGetByIdRes';
 import type { TInsertMenuData } from './models/TInsertMenuData';
 import type { TUpdateMenu } from './models/TUpdateMenu';
 
@@ -39,5 +40,18 @@ export class Menu {
    */
   async updateMenu(data: TUpdateMenu) {
     return (await this.http.post('updateMenu', data)).data;
+  }
+
+  /**
+   * 根据Id获得菜单
+   *
+   * @param {string} id
+   * @return {*}
+   * @memberof Menu
+   */
+  async getById(id: string) {
+    return (
+      await this.http.get<IResponse<TGetById>>('getById', { params: { id } })
+    ).data;
   }
 }

@@ -30,7 +30,7 @@
 
         <el-table-column>
           <template #default="{ row }">
-            <el-button text>编辑</el-button>
+            <el-button text @click="handleEdit(row._id)">编辑</el-button>
             <el-button text type="primary" @click="handleAdd(row._id)"
               >添加</el-button
             >
@@ -41,6 +41,7 @@
 
     <add-menu-dialog
       v-if="addMenuDialogData.visible"
+      :id="addMenuDialogData.id"
       v-model="addMenuDialogData.visible"
       :parent-id="addMenuDialogData.parentId"
       @after-close="getData"
@@ -61,6 +62,7 @@ const { menu } = useApi();
 const tableData = ref([]);
 const isLoading = ref(false);
 const addMenuDialogData = reactive({
+  id: '',
   visible: false,
   parentId: '',
 });
@@ -79,12 +81,20 @@ const getData = async () => {
 const handleAdd = (parentId: string) => {
   addMenuDialogData.visible = true;
   addMenuDialogData.parentId = parentId;
+  addMenuDialogData.id = '';
 };
 
 const handleRootAdd = () => {
   addMenuDialogData.visible = true;
   addMenuDialogData.parentId = '';
 };
+
+const handleEdit = (id: string) => {
+  addMenuDialogData.id = id;
+  addMenuDialogData.parentId = '';
+  addMenuDialogData.visible = true;
+};
+
 getData();
 </script>
 

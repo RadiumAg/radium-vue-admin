@@ -1,9 +1,4 @@
 import type { Base } from '../../common/models/Base';
+import type { Menu } from './Menu';
 
-export type GetAllRes = {
-  menuIcon: string;
-  menuName: string;
-  menuUrl: string;
-  parentId: string;
-  children: GetAllRes[];
-} & Base;
+export type GetAllRes = Menu & Base;
