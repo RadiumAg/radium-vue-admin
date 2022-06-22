@@ -12,13 +12,18 @@
 <script lang="ts" setup>
 import AdminCard from '@components/admin-card/admin-card.vue';
 import { setInclude } from '@core/pinia/stores/menuStore';
+import { provide, ref } from 'vue';
 import MenuTable from './components/menu-table/menu-table.vue';
 import RoleTree from './components/role-tree/role-tree.vue';
+import { MENU_SETTING_PROVIDE, MenuSettingProvide } from '.';
 
 defineOptions({
   name: 'MenuSettingPage',
 });
 
+provide<MenuSettingProvide>(MENU_SETTING_PROVIDE, {
+  roleId: ref(),
+});
 setInclude('MenuSettingPage');
 </script>
 

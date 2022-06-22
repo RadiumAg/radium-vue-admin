@@ -1,14 +1,24 @@
 <template>
-  <el-tree :data="data" highlight-current default-expand-all></el-tree>
+  <el-tree
+    :data="data"
+    highlight-current
+    default-expand-all
+    @node-click="handleNodeClick"
+  ></el-tree>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
 import { useApi } from '@core/http/api-instance';
 import { useErrorMessage } from '@core/hooks/use-error-message';
+import { MENU_SETTING_PROVIDE } from '../..';
 import type { Tree } from '.';
+import type { MenuSettingProvide } from '../..';
 
 const { role } = useApi();
+const { roleId } = inject<MenuSettingProvide>(MENU_SETTING_PROVIDE, {
+  roleId: ref(),
+});
 
 const data = ref<Tree[]>([{ id: '1', label: '全部角色', children: [] }]);
 
@@ -22,6 +32,10 @@ const getRole = async () => {
   } catch (e) {
     useErrorMessage(e);
   }
+};
+
+const handleNodeClick = (data: Tree) => {
+  roleId.value = data.id;
 };
 
 getRole();

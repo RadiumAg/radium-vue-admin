@@ -21,6 +21,7 @@
         type="primary"
         class="login-button"
         size="large"
+        :loading="isLoading"
         @click="loginHandler"
         >登录</el-button
       >
@@ -40,6 +41,7 @@ import { useRoute, useRouter } from 'vue-router';
 const api = useApi();
 const route = useRoute();
 const router = useRouter();
+const isLoading = ref(false);
 const formRef = ref<FormInstance>();
 const loginForm = reactive({
   username: '',
@@ -69,7 +71,9 @@ const loginHandler = useThrottleFn(
       return;
     }
     try {
+      isLoading.value = true;
       const res = await api.oath.login(loginForm.username, loginForm.password);
+      isLoading.value = false;
       router.push(route.query.redirect as string);
       ElMessage.success(res.msg);
     } catch (e) {

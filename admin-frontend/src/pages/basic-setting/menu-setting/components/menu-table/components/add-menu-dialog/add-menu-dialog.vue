@@ -66,7 +66,7 @@ const visible = computed({
   async set(val) {
     if (isSureButtonClick.value) {
       isSureButtonClick.value = false;
-      if (!(await insertMenu())) {
+      if (!(await save())) {
         return;
       }
       emits('afterClose');
@@ -85,18 +85,26 @@ const rules: FormRules = {
 };
 
 const formData = reactive<FormType>({
+  _id: props.id,
   menuIcon: '',
   menuName: '',
   menuUrl: '',
   parentId: props.parentId,
 });
 
-const insertMenu = async () => {
+const save = async () => {
   try {
-    isLoading.value = true;
-    await menu.insertMenu(formData);
-    isLoading.value = false;
-    ElMessage.success('插入成功');
+    if (props.id) {
+      isLoading.value = true;
+      await menu.updateMenu(formData);
+      isLoading.value = false;
+      ElMessage.success('更新成功');
+    } else {
+      isLoading.value = true;
+      await menu.insertMenu(formData);
+      isLoading.value = false;
+      ElMessage.success('保存成功');
+    }
     return true;
   } catch (e) {
     useErrorMessage(e);
@@ -104,11 +112,11 @@ const insertMenu = async () => {
   }
 };
 
-const getData = () => {
+const getData = async () => {
   try {
     if (!props.id) return;
-    const resData = menu.getById(props.id);
-    autoMap(formData, resData);
+    const resData = await menu.getById(props.id);
+    autoMap(formData, resData.data);
   } catch (e) {
     useErrorMessage(e);
   }

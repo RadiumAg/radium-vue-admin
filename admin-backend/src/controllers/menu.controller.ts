@@ -53,7 +53,7 @@ export class MenuController {
     @AdminApiResponse({ $ref: getSchemaPath(GetAllMenuRes) })
     @UseGuards(JwtAuthGuard)
     @Get('getById')
-    async getById(@Query() id: string) {
+    async getById(@Query('id') id: string) {
         const menu = await this.menuService.getById(id);
         return AdminResponse.success('获取成功', menu);
     }

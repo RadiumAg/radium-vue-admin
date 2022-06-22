@@ -10,7 +10,10 @@ export default defineComponent({
         {
           stripe: true,
           border: true,
-          treeProps: { children: 'children', hasChildren: 'hasChildren' },
+          treeProps: {
+            children: 'children',
+            hasChildren: 'hasChildren',
+          },
           style: {
             height: '100%',
           },

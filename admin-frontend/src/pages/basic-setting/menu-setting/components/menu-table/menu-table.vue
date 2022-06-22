@@ -8,6 +8,7 @@
   >
     <div class="operate-area">
       <el-button type="primary" @click="handleRootAdd">添加</el-button>
+      <el-button type="success">保存</el-button>
     </div>
 
     <admin-card padding="0" auto-fill margin="0" :border="false">
@@ -50,15 +51,19 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
+import { inject, reactive, ref } from 'vue';
 import * as icons from '@element-plus/icons-vue';
 import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
 import AdminCard from '@components/admin-card/admin-card.vue';
+import { MENU_SETTING_PROVIDE, type MenuSettingProvide } from '../..';
 import AddMenuDialog from './components/add-menu-dialog/add-menu-dialog.vue';
 
-const { menu } = useApi();
+const { menu, role } = useApi();
+const { roleId } = inject<MenuSettingProvide>(MENU_SETTING_PROVIDE, {
+  roleId: ref(),
+});
 const tableData = ref([]);
 const isLoading = ref(false);
 const addMenuDialogData = reactive({
@@ -94,6 +99,8 @@ const handleEdit = (id: string) => {
   addMenuDialogData.parentId = '';
   addMenuDialogData.visible = true;
 };
+
+const handleUpdateRole = () => {};
 
 getData();
 </script>

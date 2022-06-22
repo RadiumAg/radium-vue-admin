@@ -63,4 +63,10 @@ export class RoleController {
         await this.roleService.updateById(updateData);
         return AdminResponse.success('更新成功');
     }
+
+    @UseGuards(JwtAuthGuard)
+    @ApiOperation({ summary: '获得权限菜单' })
+    @AdminApiResponse({ $ref: getSchemaPath(GetPageRoleRes) })
+    @Get('getRoleMenu')
+    async getRoleMenu() {}
 }
