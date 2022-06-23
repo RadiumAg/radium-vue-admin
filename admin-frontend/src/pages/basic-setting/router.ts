@@ -16,5 +16,10 @@ export const menuSettingRouter: RouteRecordRaw = {
       path: 'menu_setting',
       component: () => import('./menu-setting/menu-setting.vue'),
     },
+    {
+      name: '角色设置',
+      path: 'role_setting',
+      component: () => import('./role-manager/role-manager.vue'),
+    },
   ],
 };

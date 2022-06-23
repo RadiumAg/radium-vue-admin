@@ -7,7 +7,7 @@
       <el-icon v-if="menu.menuIcon"
         ><component :is="icons[menu.menuIcon]"></component
       ></el-icon>
-      <span>{{ menu.menuName }}{{ menu.menuIcon }}</span>
+      <span>{{ menu.menuName }}</span>
     </template>
     <slider-child
       v-for="item in menu.children"

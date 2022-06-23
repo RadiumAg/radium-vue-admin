@@ -1,4 +1,3 @@
-export type TInserTRoleData = {
-  roleName: string;
-  menus: string[];
-};
+import type { Role } from './Role';
+
+export type TInserTRoleData = Role;

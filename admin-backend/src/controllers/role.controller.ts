@@ -68,5 +68,8 @@ export class RoleController {
     @ApiOperation({ summary: '获得权限菜单' })
     @AdminApiResponse({ $ref: getSchemaPath(GetPageRoleRes) })
     @Get('getRoleMenu')
-    async getRoleMenu() {}
+    async getRoleMenu(@Query('id') id: string) {
+        const menus = (await this.roleService.getRoleById(id)).menus;
+        return AdminResponse.success('获取成功', menus);
+    }
 }

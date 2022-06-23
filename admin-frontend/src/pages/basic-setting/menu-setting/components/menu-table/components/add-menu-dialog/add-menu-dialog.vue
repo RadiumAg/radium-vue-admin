@@ -101,13 +101,19 @@ const save = async () => {
       ElMessage.success('更新成功');
     } else {
       isLoading.value = true;
-      await menu.insertMenu(formData);
+      await menu.insertMenu({
+        menuIcon: formData.menuIcon,
+        menuName: formData.menuName,
+        menuUrl: formData.menuUrl,
+        parentId: formData.parentId,
+      });
       isLoading.value = false;
       ElMessage.success('保存成功');
     }
     return true;
   } catch (e) {
     useErrorMessage(e);
+    isLoading.value = false;
     return false;
   }
 };

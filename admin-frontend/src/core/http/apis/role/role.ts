@@ -2,6 +2,7 @@ import { Api } from '@core/http/decorators/api';
 import type { IResponse } from '@core/http/IResponse';
 import type { AxiosInstance } from 'axios';
 import type { TGetPageRoleRes } from './models/TGetPageRoleRes';
+import type { TGetRoleMenuRes } from './models/TGetRoleMenuRes';
 import type { TInserTRoleData } from './models/TInsertRoleData';
 import type { TUpdateRoleData } from './models/TUpdateRoleData';
 
@@ -58,5 +59,20 @@ export class Role {
    */
   async updateRole(data: TUpdateRoleData) {
     return (await this.http.post('getPageRole', data)).data;
+  }
+
+  /**
+   *获得权限菜单
+   *
+   * @param {string} id
+   * @return {*}
+   * @memberof Role
+   */
+  async getRoleMenu(id: string) {
+    return (
+      await this.http.get<IResponse<TGetRoleMenuRes>>('getRoleMenu', {
+        params: { id },
+      })
+    ).data;
   }
 }

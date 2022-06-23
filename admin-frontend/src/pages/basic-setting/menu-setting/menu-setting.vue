@@ -1,6 +1,6 @@
 <template>
   <div class="menu-setting">
-    <admin-card flex-basic="120px" margin="0">
+    <admin-card flex-basic="120px" flex-direction="column" margin="0">
       <role-tree></role-tree>
     </admin-card>
     <admin-card auto-fill margin="0 0 0 10px">

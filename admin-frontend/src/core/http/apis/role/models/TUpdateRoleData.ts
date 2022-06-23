@@ -1,7 +1,4 @@
 import type { Base } from '../../common/models/Base';
+import type { Role } from './Role';
 
-export type TUpdateRoleData = {
-  roleName: string;
-  _id: string;
-  menus: string;
-} & Base;
+export type TUpdateRoleData = Role & Base;

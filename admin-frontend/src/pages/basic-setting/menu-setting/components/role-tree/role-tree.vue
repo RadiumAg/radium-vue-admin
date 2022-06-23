@@ -1,4 +1,8 @@
 <template>
+  <div>
+    <el-button type="primary">添加</el-button>
+  </div>
+
   <el-tree
     :data="data"
     highlight-current
@@ -33,6 +37,8 @@ const getRole = async () => {
     useErrorMessage(e);
   }
 };
+
+const handleAdd = () => {};
 
 const handleNodeClick = (data: Tree) => {
   roleId.value = data.id;

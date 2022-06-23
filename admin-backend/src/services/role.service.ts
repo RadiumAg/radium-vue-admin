@@ -38,6 +38,6 @@ export class RoleService {
     }
 
     async getRoleById(id: string) {
-        return await this.roleModel.findById(id);
+        return await this.roleModel.findById(id).exec();
     }
 }
