@@ -1,8 +1,4 @@
 <template>
-  <div>
-    <el-button type="primary">添加</el-button>
-  </div>
-
   <el-tree
     :data="data"
     highlight-current
