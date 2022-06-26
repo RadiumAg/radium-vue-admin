@@ -1,6 +1,6 @@
 <template>
-  <admin-table>
-    <el-table-column></el-table-column>
+  <admin-table :data="roleData">
+    <el-table-column label="角色名称"></el-table-column>
   </admin-table>
 </template>
 
@@ -8,8 +8,11 @@
 import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
+import { ref } from 'vue';
+import type { TGetPageRoleRes } from '@core/http/apis/role/models/TGetPageRoleRes';
 
 const { role } = useApi();
+const roleData = ref<TGetPageRoleRes[]>([]);
 
 const getData = async () => {
   try {
