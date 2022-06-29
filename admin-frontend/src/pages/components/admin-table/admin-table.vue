@@ -10,6 +10,7 @@ export default defineComponent({
         {
           stripe: true,
           border: true,
+          highlightCurrentRow: true,
           treeProps: {
             children: 'children',
             hasChildren: 'hasChildren',

@@ -2,13 +2,15 @@
   <admin-dialog v-model="visible" width="300px">
     <el-form ref="formRef" :model="formData" :rules="rules">
       <el-form-item label="名称" prop="roleName">
-        <el-input></el-input>
+        <el-input v-model="formData.roleName"></el-input>
       </el-form-item>
     </el-form>
 
     <template #footer>
       <el-button @click="visible = false">取消</el-button>
-      <el-button type="primary" @click="handleSure">确认</el-button>
+      <el-button type="primary" :loading="isLoading" @click="handleSure"
+        >确认</el-button
+      >
     </template>
   </admin-dialog>
 </template>
@@ -19,17 +21,23 @@ import AdminDialog from '@components/admin-dialog/admin-dialog.vue';
 import { UPDATE_MODEL_VALUE_EVENT } from '@core/utils';
 import { useApi } from '@core/http/api-instance';
 import { useErrorMessage } from '@core/hooks/use-error-message';
-import type { FormInstance } from 'element-plus';
+import { ElMessage, FormInstance } from 'element-plus';
+import type { Role } from '@core/http/apis/role/models/Role';
 
 const { role } = useApi();
-const formData = reactive({});
+const isLoading = ref(false);
+const formData = reactive<Role>({
+  roleName: '',
+  menus: [],
+});
 const formRef = ref<FormInstance>();
 const rules = {
   roleName: [{ required: true, message: '请填写名称' }],
 };
 
 const emits = defineEmits<{
-  (event: UPDATE_MODEL_VALUE_EVENT, visible: boolean);
+  (event: 'update:modelValue', visible: boolean);
+  (event: 'afterClose');
 }>();
 
 const props = defineProps({
@@ -48,8 +56,14 @@ const visible = computed({
   },
 });
 
-const handleSure = () => {
+const handleSure = async () => {
   try {
+    isLoading.value = true;
+    await role.insertRole(formData);
+    isLoading.value = false;
+    ElMessage.success('插入成功');
+    visible.value = false;
+    emits('afterClose');
   } catch (e) {
     useErrorMessage(e);
   }

@@ -40,4 +40,12 @@ export class RoleService {
     async getRoleById(id: string) {
         return await this.roleModel.findById(id).exec();
     }
+
+    async deleteRoleById(id: string) {
+        return await this.roleModel.findByIdAndDelete(id);
+    }
+
+    async deleteRoleMany(id: string[]) {
+        return await this.roleModel.deleteMany();
+    }
 }

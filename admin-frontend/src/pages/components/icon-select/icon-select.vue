@@ -1,9 +1,17 @@
 <template>
   <el-select-v2 v-model="selectValue" :options="options" filterable>
+    <template #prefix>
+      <el-icon class="prefix"
+        ><component :is="icons[selectValue]"></component
+      ></el-icon>
+    </template>
+
     <template #default="{ item }">
       <div class="selection-option">
         <span style="margin-right: 8px">{{ item.label }}</span>
-        <el-icon><component :is="icons[item.label]"></component></el-icon>
+        <el-icon style="margin-right: 8px"
+          ><component :is="icons[item.label]"></component
+        ></el-icon>
       </div>
     </template>
   </el-select-v2>
@@ -40,6 +48,20 @@ const options = Object.entries(icons).map(_ => ({
 <style lang="scss" scoped>
 .selection-option {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+
+.prefix {
+  height: 100%;
+}
+
+:deep(.el-select-v2__wrapper, .el-select-v2__wrapper
+    .el-select-v2__input-wrapper) {
+  line-height: 20px;
+}
+
+:deep(.el-select-v2__placeholder) {
+  margin-inline-start: 20px;
 }
 </style>
