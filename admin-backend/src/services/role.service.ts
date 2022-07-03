@@ -46,6 +46,6 @@ export class RoleService {
     }
 
     async deleteRoleMany(id: string[]) {
-        return await this.roleModel.deleteMany();
+        return await this.roleModel.findByIdAndDelete(id);
     }
 }

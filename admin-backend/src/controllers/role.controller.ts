@@ -7,6 +7,7 @@ import { AdminResponse } from '@core/utils';
 import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
 import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
 import { AdminController } from '@decorator/admin-controller.decorator';
+import { DeleteRoleManyData } from '@dto/role/view/delete-role-many-';
 import { GetPageRoleRes } from '@dto/role/view/get-page-role.res';
 import { InsertRoleData } from '@dto/role/view/insert-role.data';
 import { UpdateRoleData } from '@dto/role/view/update-role.data';
@@ -71,5 +72,14 @@ export class RoleController {
     async getRoleMenu(@Query('id') id: string) {
         const menus = (await this.roleService.getRoleById(id)).menus;
         return AdminResponse.success('获取成功', menus);
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @ApiOperation({ summary: '删除角色' })
+    @AdminApiResponse({ type: 'string' })
+    @Post('deleteRole')
+    async deleteRoleMany(@Body() deleteRoleManyData: DeleteRoleManyData) {
+        await this.roleService.deleteRoleMany(deleteRoleManyData.id);
+        return AdminResponse.success('删除成功');
     }
 }
