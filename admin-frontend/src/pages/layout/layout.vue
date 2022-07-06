@@ -1,8 +1,8 @@
 <template>
   <div class="layout-wrapper">
     <el-container>
-      <el-aside width="200px">
-        <admin-slider></admin-slider>
+      <el-aside width="max-content">
+        <admin-slider :collapse="isCollapse"></admin-slider>
       </el-aside>
       <el-container>
         <el-header><admin-header></admin-header></el-header>
@@ -18,6 +18,12 @@
 import KeepAliveRouterView from '@components/keep-alive-router-view/keep-alive-router-view.vue';
 import AdminHeader from './header.vue';
 import AdminSlider from './slider.vue';
+import { LAYOUT_PROVIDE_KEY, LayoutProvide } from '.';
+
+const isCollapse = ref(false);
+provide<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
+  isCollapse,
+});
 </script>
 
 <style lang="scss" scoped>

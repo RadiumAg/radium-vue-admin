@@ -12,6 +12,8 @@ export default defineConfig({
     vue(),
     DefineOptions(),
     AutoImport({
+      imports: ['vue', '@vueuse/core'],
+      dts: path.resolve(__dirname, 'src/auto-imports.d.ts'),
       resolvers: [ElementPlusResolver()],
     }),
     Components({

@@ -2,7 +2,9 @@
   <div class="header">
     <div class="nav">
       <div class="left">
-        <el-icon class="fold"><fold></fold></el-icon>
+        <el-icon class="fold" @click="isCollapse = !isCollapse"
+          ><fold></fold
+        ></el-icon>
         <el-breadcrumb separator="/">
           <el-breadcrumb-item
             v-for="(m, index) in route.matched"
@@ -51,7 +53,11 @@ import { Fold, Moon, Sunny } from '@element-plus/icons-vue';
 import { useRoute } from 'vue-router';
 import { useDark } from '@vueuse/core';
 import TagItem from './components/tag-item/tag-item.vue';
+import { LAYOUT_PROVIDE_KEY, type LayoutProvide } from '.';
 
+const { isCollapse } = inject<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
+  isCollapse: ref(false),
+});
 const route = useRoute();
 
 const { currentMenus } = useMenuStore();
@@ -77,6 +83,7 @@ const isDark = useDark();
   }
 
   .fold {
+    cursor: pointer;
     font-size: 20px;
     margin-right: 10px;
   }
