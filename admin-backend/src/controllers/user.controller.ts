@@ -1,8 +1,14 @@
+import { GetAllMenuRes } from './../dto/menu/view/get-all-menu.res';
 import { AdminResponse } from '@core/utils';
 import { GetLoginUserInfoRes } from '@dto/user/view/GetLoginUserInfoRes';
 import { InsertUserInfoData } from '@dto/user/view/InsertUserInfoData';
 import { Body, Get, Post, Req, UseGuards } from '@nestjs/common';
-import { ApiOperation, ApiTags, getSchemaPath } from '@nestjs/swagger';
+import {
+    ApiBearerAuth,
+    ApiOperation,
+    ApiTags,
+    getSchemaPath,
+} from '@nestjs/swagger';
 import { UserService } from '@services/user.service';
 import { JwtAuthGuard } from 'src/core/auth/guards/jwt-auth.guard';
 import { AdminController } from '@decorator/admin-controller.decorator';
@@ -13,6 +19,7 @@ import { OAthService } from '@services/oath.service';
 @ApiTags('user')
 @AdminApiExtraModels(GetLoginUserInfoRes)
 @AdminController('user')
+@ApiBearerAuth()
 export class UserController {
     constructor(
         private readonly userService: UserService,
@@ -39,5 +46,13 @@ export class UserController {
         resData.userId = loginUserInfo.id;
         resData.username = loginUserInfo.username;
         return resData;
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @ApiOperation({ summary: '获得所有用户' })
+    @Post('getAllUser')
+    async getAllUser() {
+        this.userService.getAllUser();
+        return AdminResponse.success('插入成功');
     }
 }

@@ -12,6 +12,7 @@ import { InsertRoleData } from '@dto/role/view/insert-role.data';
 import { UpdateRoleData } from '@dto/role/view/update-role.data';
 import { Body, Get, Post, Query, UseGuards } from '@nestjs/common';
 import {
+    ApiBearerAuth,
     ApiOperation,
     ApiQuery,
     ApiTags,
@@ -20,6 +21,7 @@ import {
 import { RoleService } from '@services/role.service';
 
 @ApiTags('role')
+@ApiBearerAuth()
 @AdminApiExtraModels(GetPageRoleRes, UpdateRoleData)
 @AdminController('role')
 export class RoleController {
