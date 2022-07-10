@@ -35,6 +35,7 @@
           padding: '5px 10px',
         }"
       >
+        <tag-item id="home" path="/" name="首页" :close-icon="false"></tag-item>
         <tag-item
           v-for="tag in currentMenus"
           :id="tag.menuId"
@@ -60,9 +61,15 @@ const { isCollapse } = inject<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
 });
 const route = useRoute();
 
-const { currentMenus } = useMenuStore();
+const { currentMenus, activeMenuId } = toRefs(useMenuStore());
 
 const isDark = useDark();
+
+onMounted(() => {
+  if (activeMenuId.value === '') {
+    activeMenuId.value = 'home';
+  }
+});
 </script>
 
 <style lang="scss" scoped>

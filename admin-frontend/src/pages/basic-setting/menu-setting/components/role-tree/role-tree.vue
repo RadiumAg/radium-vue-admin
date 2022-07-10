@@ -34,8 +34,6 @@ const getRole = async () => {
   }
 };
 
-const handleAdd = () => {};
-
 const handleNodeClick = (data: Tree) => {
   roleId.value = data.id;
 };

@@ -1,10 +1,8 @@
 <template>
-  <router-view v-slot="{ Component }" :include="menuInclude">
-    <transition>
-      <keep-alive>
-        <component :is="Component"></component>
-      </keep-alive>
-    </transition>
+  <router-view v-slot="{ Component }">
+    <keep-alive :include="menuInclude">
+      <component :is="Component"></component>
+    </keep-alive>
   </router-view>
 </template>
 

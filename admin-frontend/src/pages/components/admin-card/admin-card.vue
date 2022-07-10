@@ -61,14 +61,15 @@ const borderStyle = computed(() => {
 <style lang="scss" scoped>
 .card-wrapper {
   display: flex;
-  padding: v-bind(padding);
+  overflow: hidden;
+  border-radius: 2.5px;
   margin: v-bind(margin);
-  flex-grow: v-bind(flexGrow);
   height: v-bind(height);
-  flex-basis: v-bind(flexBasic);
+  padding: v-bind(padding);
   border: v-bind(borderStyle);
+  flex-grow: v-bind(flexGrow);
+  flex-basis: v-bind(flexBasic);
   flex-direction: v-bind(flexDirection);
   background: v-bind(backgroundColor);
-  border-radius: 2.5px;
 }
 </style>

@@ -30,7 +30,13 @@ export const useMenuStore = defineStore('menu-tags', () => {
     );
     menus.value.currentMenus.splice(removeIndex, 1);
     const nextIndex = menus.value.currentMenus.length - 1;
-    const nextMenu = menus.value.currentMenus[nextIndex];
+    const nextMenu = menus.value.currentMenus[nextIndex]
+      ? menus.value.currentMenus[nextIndex]
+      : {
+          menuId: 'home',
+          menuName: '首页',
+          menuPath: '/',
+        };
     menus.value.activeMenuId = nextMenu?.menuId || '';
     return nextMenu;
   };

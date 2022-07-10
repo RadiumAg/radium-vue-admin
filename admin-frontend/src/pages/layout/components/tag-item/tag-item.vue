@@ -1,7 +1,11 @@
 <template>
   <div class="tag" :class="{ active: isActive }" @click="handleToPage">
     {{ name }}
-    <el-icon v-show="isActive" class="close-icon" @click.stop="handleClose"
+    <el-icon
+      v-show="isActive"
+      v-if="closeIcon"
+      class="close-icon"
+      @click.stop="handleClose"
       ><close></close
     ></el-icon>
   </div>
@@ -17,6 +21,10 @@ import {
 } from '@core/pinia/stores/menuStore';
 import { Close } from '@element-plus/icons-vue';
 const props = defineProps({
+  closeIcon: {
+    type: Boolean,
+    default: true,
+  },
   name: {
     type: String,
     required: true,

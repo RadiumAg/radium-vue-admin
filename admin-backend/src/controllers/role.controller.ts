@@ -7,7 +7,6 @@ import { AdminResponse } from '@core/utils';
 import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
 import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
 import { AdminController } from '@decorator/admin-controller.decorator';
-import { DeleteRoleManyData } from '@dto/role/view/delete-role-many-';
 import { GetPageRoleRes } from '@dto/role/view/get-page-role.res';
 import { InsertRoleData } from '@dto/role/view/insert-role.data';
 import { UpdateRoleData } from '@dto/role/view/update-role.data';
@@ -59,7 +58,7 @@ export class RoleController {
     @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '更新角色' })
     @AdminApiResponse({ $ref: getSchemaPath(GetPageRoleRes) })
-    @Get('updateRole')
+    @Post('updateRole')
     async updateRole(@Body() updateData: UpdateRoleData) {
         await this.roleService.updateById(updateData);
         return AdminResponse.success('更新成功');
@@ -77,9 +76,9 @@ export class RoleController {
     @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '删除角色' })
     @AdminApiResponse({ type: 'string' })
-    @Post('deleteRole')
-    async deleteRoleMany(@Body() deleteRoleManyData: DeleteRoleManyData) {
-        await this.roleService.deleteRoleMany(deleteRoleManyData.id);
+    @Post('deleteRoleMany')
+    async deleteRoleMany(@Body() deleteRoleManyData: string[]) {
+        await this.roleService.deleteRoleMany(deleteRoleManyData);
         return AdminResponse.success('删除成功');
     }
 }

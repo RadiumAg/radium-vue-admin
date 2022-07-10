@@ -1,7 +1,7 @@
 import { Api } from '@core/http/decorators/api';
 import type { IResponse } from '@core/http/IResponse';
 import type { AxiosInstance } from 'axios';
-import type { GetAllRes } from './models/TGetAllRes';
+import type { TGetAllRes } from './models/TGetAllRes';
 import type { TGetById } from './models/TGetByIdRes';
 import type { TInsertMenuData } from './models/TInsertMenuData';
 import type { TUpdateMenu } from './models/TUpdateMenu';
@@ -17,7 +17,7 @@ export class Menu {
    * @memberof Menu
    */
   async getAllMenu() {
-    return (await this.http.get<IResponse<GetAllRes[]>>('getAllMenu')).data;
+    return (await this.http.get<IResponse<TGetAllRes[]>>('getAllMenu')).data;
   }
 
   /**

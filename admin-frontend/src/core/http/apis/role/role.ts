@@ -11,6 +11,17 @@ export class Role {
   private http: AxiosInstance;
 
   /**
+   * 删除角色
+   *
+   * @param {string[]} menus
+   * @return {*}
+   * @memberof Role
+   */
+  async deleteRoleMany(menus: string[]) {
+    return (await this.http.post<IResponse>('deleteRoleMany', menus)).data;
+  }
+
+  /**
    * 获取全部Role
    *
    * @param {number} pageIndex
@@ -58,7 +69,7 @@ export class Role {
    * @memberof Role
    */
   async updateRole(data: TUpdateRoleData) {
-    return (await this.http.post('getPageRole', data)).data;
+    return (await this.http.post<IResponse>('updateRole', data)).data;
   }
 
   /**
@@ -70,7 +81,7 @@ export class Role {
    */
   async getRoleMenu(id: string) {
     return (
-      await this.http.get<IResponse<TGetRoleMenuRes>>('getRoleMenu', {
+      await this.http.get<IResponse<string[]>>('getRoleMenu', {
         params: { id },
       })
     ).data;
