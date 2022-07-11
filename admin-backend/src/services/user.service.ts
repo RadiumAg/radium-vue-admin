@@ -43,7 +43,7 @@ export class UserService {
         return userInfo;
     }
 
-    async getAllUser() {
-        return await this.userModel.find().exec();
+    async getAllUser(select = ['-__v']) {
+        return await this.userModel.find().select(select).exec();
     }
 }

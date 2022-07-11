@@ -6,6 +6,7 @@
     "dictionaries": [],
     "words": [
         "fastify",
+        "mogodb",
         "nestjs",
         "prebuild"
     ],

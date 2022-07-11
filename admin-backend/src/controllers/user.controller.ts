@@ -1,4 +1,3 @@
-import { GetAllMenuRes } from './../dto/menu/view/get-all-menu.res';
 import { AdminResponse } from '@core/utils';
 import { GetLoginUserInfoRes } from '@dto/user/view/GetLoginUserInfoRes';
 import { InsertUserInfoData } from '@dto/user/view/InsertUserInfoData';
@@ -50,9 +49,17 @@ export class UserController {
 
     @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '获得所有用户' })
-    @Post('getAllUser')
+    @Get('getAllUser')
     async getAllUser() {
-        this.userService.getAllUser();
-        return AdminResponse.success('获取成功');
+        const resData = await this.userService.getAllUser([
+            '-password',
+            '-__v',
+        ]);
+        return AdminResponse.success('获取成功', resData);
     }
+
+    @UseGuards(JwtAuthGuard)
+    @ApiOperation({ summary: '更新用户的权限' })
+    @Get('updateUserRole')
+    async updateUserRole(@Body() roleIds: Array<string>) {}
 }
