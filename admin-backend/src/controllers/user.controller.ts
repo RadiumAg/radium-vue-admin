@@ -53,6 +53,6 @@ export class UserController {
     @Post('getAllUser')
     async getAllUser() {
         this.userService.getAllUser();
-        return AdminResponse.success('插入成功');
+        return AdminResponse.success('获取成功');
     }
 }
