@@ -1,7 +1,7 @@
 import { AdminResponse } from '@core/utils';
-import { GetLoginUserInfoRes } from '@dto/user/view/GetLoginUserInfoRes';
-import { InsertUserInfoData } from '@dto/user/view/InsertUserInfoData';
-import { Body, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { GetLoginUserInfoRes } from '@dto/user/view/get-login-userInfo.res';
+import { InsertUserInfoData } from '@dto/user/view/Insert-userInfo.data';
+import { Body, Get, Post, Query, Req, UseGuards } from '@nestjs/common';
 import {
     ApiBearerAuth,
     ApiOperation,
@@ -14,9 +14,11 @@ import { AdminController } from '@decorator/admin-controller.decorator';
 import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
 import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
 import { OAthService } from '@services/oath.service';
+import { UpdateUserRoleData } from '@dto/user/view/update-user-role.data';
+import { GetAllUserInfoRes } from '@dto/user/view/get-all-userinfo.res';
 
 @ApiTags('user')
-@AdminApiExtraModels(GetLoginUserInfoRes)
+@AdminApiExtraModels(GetLoginUserInfoRes, GetAllUserInfoRes)
 @AdminController('user')
 @ApiBearerAuth()
 export class UserController {
@@ -49,17 +51,39 @@ export class UserController {
 
     @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '获得所有用户' })
+    @AdminApiResponse({
+        type: 'array',
+        items: { $ref: getSchemaPath(GetAllUserInfoRes) },
+    })
     @Get('getAllUser')
     async getAllUser() {
         const resData = await this.userService.getAllUser([
             '-password',
             '-__v',
+            '-roles',
         ]);
         return AdminResponse.success('获取成功', resData);
     }
 
     @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '更新用户的权限' })
-    @Get('updateUserRole')
-    async updateUserRole(@Body() roleIds: Array<string>) {}
+    @Post('updateUserRole')
+    async updateUserRole(@Body() updateUserData: UpdateUserRoleData) {
+        await this.userService.updateRoles(
+            updateUserData._id,
+            updateUserData.roles,
+        );
+        return AdminResponse.success('更新成功');
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @AdminApiResponse({ type: 'array', items: { type: 'string' } })
+    @ApiOperation({ summary: '获得用户角色' })
+    @Get('getUserRolesById')
+    async getUserRolesById(@Query('id') id: string) {
+        const roles = (
+            await this.userService.getUserInfoById(id, ['roles', '-_id'])
+        ).roles;
+        return AdminResponse.success('获取成功', roles);
+    }
 }

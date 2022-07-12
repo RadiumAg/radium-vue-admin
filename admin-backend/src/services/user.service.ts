@@ -10,14 +10,6 @@ export class UserService {
         @InjectModel(User.name) private userModel: Model<UserDocument>,
     ) {}
 
-    /**
-     * 获得用户信息
-     *
-     * @param {string} username
-     * @param {string} password
-     * @return {*}
-     * @memberof UserService
-     */
     async getUserInfoByAccount(username: string, password: string) {
         const userInfo = this.userModel.findOne({
             username,
@@ -38,12 +30,19 @@ export class UserService {
         return (await insertUserInfo).save();
     }
 
-    async getUserInfoById(id: string) {
-        const userInfo = this.userModel.findById(id);
+    async getUserInfoById(id: string, select = ['-__v']) {
+        const userInfo = await this.userModel
+            .findById(id)
+            .select(select)
+            .exec();
         return userInfo;
     }
 
     async getAllUser(select = ['-__v']) {
         return await this.userModel.find().select(select).exec();
+    }
+
+    async updateRoles(id: string, roles: []) {
+        return await this.userModel.findByIdAndUpdate(id, { roles }).exec();
     }
 }

@@ -1,9 +1,7 @@
 <template>
   <div class="layout-wrapper">
     <el-container>
-      <el-aside width="max-content">
-        <admin-slider :collapse="isCollapse"></admin-slider>
-      </el-aside>
+      <admin-slider class="slider" :collapse="isCollapse"></admin-slider>
       <el-container>
         <el-header><admin-header></admin-header></el-header>
         <el-main>
@@ -42,5 +40,9 @@ provide<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
 .el-main {
   // background-color: #f6f8f9;
   --el-main-padding: 10px;
+}
+
+.slider:not(.el-menu--collapse) {
+  width: 200px;
 }
 </style>

@@ -20,6 +20,7 @@ export const Api = ({ host, prefix }: ApiParams) => {
     axiosInstance.interceptors.response.use(responseSuccess, responseError);
     axiosInstance.interceptors.request.use(requestInterceptors);
 
+    // 类表达式，反向继承
     return class extends constructor {
       http = axiosInstance;
     };

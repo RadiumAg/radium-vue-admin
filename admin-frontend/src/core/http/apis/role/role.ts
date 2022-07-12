@@ -2,7 +2,6 @@ import { Api } from '@core/http/decorators/api';
 import type { IResponse } from '@core/http/IResponse';
 import type { AxiosInstance } from 'axios';
 import type { TGetPageRoleRes } from './models/TGetPageRoleRes';
-import type { TGetRoleMenuRes } from './models/TGetRoleMenuRes';
 import type { TInserTRoleData } from './models/TInsertRoleData';
 import type { TUpdateRoleData } from './models/TUpdateRoleData';
 
