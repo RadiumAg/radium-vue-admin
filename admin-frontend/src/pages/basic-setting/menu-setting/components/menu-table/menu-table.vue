@@ -45,6 +45,9 @@
             <el-button text type="primary" @click="handleAdd(row._id)"
               >添加</el-button
             >
+            <el-button text type="warning" @click="handleDelete(row._id)"
+              >删除</el-button
+            >
           </template>
         </el-table-column>
       </admin-table>
@@ -103,6 +106,17 @@ const handleAdd = (parentId: string) => {
   addMenuDialogData.visible = true;
   addMenuDialogData.parentId = parentId;
   addMenuDialogData.id = '';
+};
+
+const handleDelete = async (id: string) => {
+  try {
+    await ElMessageBox.confirm('确认删除吗');
+    const res = await menu.deleteById(id);
+    ElMessage.success(res.msg);
+    getData();
+  } catch (e) {
+    useErrorMessage(e);
+  }
 };
 
 const handleRootAdd = () => {

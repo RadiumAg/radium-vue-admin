@@ -14,6 +14,7 @@ import { MenuService } from '@services/menu.service';
 import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
 import { AdminController } from '@decorator/admin-controller.decorator';
 import { GetAllMenuRes } from '@dto/menu/view/get-all-menu.res';
+import { DeleteByIdData } from '@dto/menu/view/delete-by-id.data';
 
 @ApiTags('menu')
 @ApiBearerAuth()
@@ -56,5 +57,14 @@ export class MenuController {
     async getById(@Query('id') id: string) {
         const menu = await this.menuService.getById(id);
         return AdminResponse.success('获取成功', menu);
+    }
+
+    @ApiOperation({ summary: '根据Id删除菜单' })
+    @AdminApiResponse({ type: 'string' })
+    @UseGuards(JwtAuthGuard)
+    @Post('deleteById')
+    async deleteById(@Body() deleteIdByData: DeleteByIdData) {
+        const menu = await this.menuService.deleteById(deleteIdByData._id);
+        return AdminResponse.success('删除成功', menu);
     }
 }

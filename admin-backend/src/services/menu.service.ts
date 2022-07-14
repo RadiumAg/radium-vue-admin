@@ -60,4 +60,8 @@ export class MenuService {
     async getById(id: string) {
         return this.menuModel.findById(id);
     }
+
+    async deleteById(id: string) {
+        return this.menuModel.findByIdAndDelete(id).exec();
+    }
 }
