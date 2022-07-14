@@ -1,11 +1,22 @@
 import { Api } from '@core/http/decorators/api';
 import type { IResponse } from '@core/http/IResponse';
 import type { AxiosInstance } from 'axios';
+import type { TGetAllUserRes } from './models/TGetAllUserRes';
 import type { TGetLoginUserInfo } from './models/TGetLoginUserInfo';
 
 @Api({ prefix: 'user' })
 export class User {
   private http: AxiosInstance;
+
+  /**
+   * 获得所有用户
+   *
+   * @return {*}
+   * @memberof User
+   */
+  async getAllUser() {
+    return (await this.http.get<IResponse<TGetAllUserRes>>('getAllUser')).data;
+  }
 
   /**
    * 更新用户权限

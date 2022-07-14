@@ -51,7 +51,7 @@ const backgroundColor = computed(() => {
 
 const borderStyle = computed(() => {
   if (props.border) {
-    return '1px solid #e4e7ed';
+    return '1px solid var(--el-border-color)';
   } else {
     return 'none';
   }

@@ -4,7 +4,11 @@ import { PropType, defineComponent, h } from 'vue';
 
 export default defineComponent({
   props: {
-    toRef: Function as PropType<(ref: InstanceType<typeof ElTable>) => void>,
+    toRef: {
+      type: Function as PropType<(ref: InstanceType<typeof ElTable>) => void>,
+      require: false,
+      default: () => null,
+    },
   },
   setup(props, { slots }) {
     return () =>
