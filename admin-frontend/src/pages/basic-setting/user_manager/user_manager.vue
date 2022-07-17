@@ -1,6 +1,10 @@
 <template>
   <div class="user-manager-wrapper">
-    <admin-card flex-basic="400px" margin="0 10px 0 0">
+    <admin-card
+      flex-basic="400px"
+      margin="0 10px 0 0"
+      style="resize: horizontal"
+    >
       <user-table></user-table>
     </admin-card>
     <admin-card flex-basic="100px" auto-fill margin="0"></admin-card>

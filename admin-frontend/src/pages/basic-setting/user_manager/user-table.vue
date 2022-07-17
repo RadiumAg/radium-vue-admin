@@ -1,10 +1,13 @@
 <template>
-  <admin-table>
-    <el-table-column label="用户名称"></el-table-column>
+  <admin-table :data="tableData.data">
+    <el-table-column label="用户名称" prop="username"></el-table-column>
 
-    <el-table-column label="用户密码"></el-table-column>
+    <el-table-column label="用户密码" prop="password"></el-table-column>
 
-    <el-table-column label="操作"></el-table-column>
+    <el-table-column label="操作">
+      <el-button type="primary" text>添加</el-button>
+      <el-button type="warning" text>删除</el-button>
+    </el-table-column>
   </admin-table>
 </template>
 
@@ -27,6 +30,8 @@ const getData = async () => {
     useErrorMessage(e);
   }
 };
+
+getData();
 </script>
 
 <style lang="scss" scoped></style>
