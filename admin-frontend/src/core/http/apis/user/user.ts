@@ -32,14 +32,14 @@ export class User {
   /**
    * 更新用户权限
    *
-   * @param {string} id
+   * @param {string} _id
    * @param {string[]} roles
    * @return {*}
    * @memberof Role
    */
-  async updateUserRole(id: string, roles: string[]) {
+  async updateUserRole(_id: string, roles: string[]) {
     return (
-      await this.http.post<IResponse<string>>('updateUserRole', { id, roles })
+      await this.http.post<IResponse<string>>('updateUserRole', { _id, roles })
     ).data;
   }
 
@@ -64,7 +64,7 @@ export class User {
    */
   async getUserRolesById(id: string) {
     return (
-      await this.http.get<IResponse<string[]>>('getLoginUserInfo', {
+      await this.http.get<IResponse<string[]>>('getUserRolesById', {
         params: {
           id,
         },

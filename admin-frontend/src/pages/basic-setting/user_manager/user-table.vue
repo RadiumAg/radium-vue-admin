@@ -1,5 +1,5 @@
 <template>
-  <admin-table :data="tableData.data">
+  <admin-table :data="tableData.data" @current-change="userId = $event._id">
     <el-table-column label="用户名称" prop="username"></el-table-column>
 
     <el-table-column label="用户密码" prop="password"></el-table-column>
@@ -19,7 +19,9 @@ import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
 import { ElMessageBox } from 'element-plus';
+import { USER_MANAGER_PROVIDE_KEY, userManagerProvide } from '.';
 
+const { userId } = inject<userManagerProvide>(USER_MANAGER_PROVIDE_KEY);
 const { user } = useApi();
 const tableData = reactive({
   data: [],

@@ -7,7 +7,7 @@
     >
       <user-table></user-table>
     </admin-card>
-    <admin-card auto-fill margin="0">
+    <admin-card auto-fill margin="0" flex-direction="column">
       <role-table></role-table>
     </admin-card>
   </div>
@@ -17,6 +17,11 @@
 import AdminCard from '@components/admin-card/admin-card.vue';
 import RoleTable from './role-table.vue';
 import UserTable from './user-table.vue';
+import { USER_MANAGER_PROVIDE_KEY, userManagerProvide } from '.';
+
+provide<userManagerProvide>(USER_MANAGER_PROVIDE_KEY, {
+  userId: ref(),
+});
 </script>
 
 <style lang="scss" scoped>

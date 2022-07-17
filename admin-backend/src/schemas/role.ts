@@ -10,7 +10,7 @@ export class Role {
     roleName: string;
 
     @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Menu' }] })
-    menus: Menu;
+    menus: Menu[];
 }
 
 export const RoleSchema = SchemaFactory.createForClass(Role);

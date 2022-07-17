@@ -49,4 +49,11 @@ export class UserService {
     async deleteById(id: string[]) {
         return await this.userModel.findByIdAndDelete(id);
     }
+
+    async getUserMenus(userId: string) {
+        return await this.userModel
+            .findById(userId)
+            .populate(['roles', 'roles.$*.menus'])
+            .exec();
+    }
 }

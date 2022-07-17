@@ -41,7 +41,7 @@ export class MenuController {
         return AdminResponse.success('更新成功');
     }
 
-    @ApiOperation({ summary: '获得所有权限菜单' })
+    @ApiOperation({ summary: '获得所有菜单' })
     @AdminApiResponse({ $ref: getSchemaPath(GetAllMenuRes) })
     @UseGuards(JwtAuthGuard)
     @Get('getAllMenu')

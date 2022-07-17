@@ -16,6 +16,7 @@ import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
 import { OAthService } from '@services/oath.service';
 import { UpdateUserRoleData } from '@dto/user/view/update-user-role.data';
 import { GetAllUserInfoRes } from '@dto/user/view/get-all-userinfo.res';
+import { GetAllMenuRes } from '@dto/menu/view/get-all-menu.res';
 
 @ApiTags('user')
 @AdminApiExtraModels(GetLoginUserInfoRes, GetAllUserInfoRes)
@@ -55,6 +56,18 @@ export class UserController {
         resData.userId = loginUserInfo.id;
         resData.username = loginUserInfo.username;
         return resData;
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @AdminApiResponse({ items: { $ref: getSchemaPath(GetAllMenuRes) } })
+    @ApiOperation({ summary: '获取当前用户菜单' })
+    @Get('getUserMenus')
+    async getUserMenus(@Req() request) {
+        const userId = this.oAthService.getUserInfo(
+            request.cookies['admin-login'],
+        ).userId;
+        const menus = await this.userService.getUserMenus(userId);
+        return AdminResponse.success('获得成功', menus);
     }
 
     @UseGuards(JwtAuthGuard)
