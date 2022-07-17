@@ -28,6 +28,14 @@ export class UserController {
     ) {}
 
     @UseGuards(JwtAuthGuard)
+    @ApiOperation({ summary: '删除用户信息' })
+    @Post('deleteUserMany')
+    async deleteUserMany(@Body() ids: Array<string>) {
+        this.userService.deleteById(ids);
+        return AdminResponse.success('删除成功');
+    }
+
+    @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '插入用户信息' })
     @Post('insertUserInfo')
     async insertUserInfo(@Body() insertMenu: InsertUserInfoData) {
@@ -57,11 +65,7 @@ export class UserController {
     })
     @Get('getAllUser')
     async getAllUser() {
-        const resData = await this.userService.getAllUser([
-            '-password',
-            '-__v',
-            '-roles',
-        ]);
+        const resData = await this.userService.getAllUser(['-__v', '-roles']);
         return AdminResponse.success('获取成功', resData);
     }
 

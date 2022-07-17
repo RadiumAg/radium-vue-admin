@@ -31,11 +31,11 @@
 import * as icons from '@element-plus/icons-vue';
 import { setCurrentMenus } from '@core/pinia/stores/menuStore';
 import type { PropType } from 'vue';
-import type { GetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
+import type { TGetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
 
 const { menu } = defineProps({
   menu: {
-    type: Object as PropType<GetAllRes>,
+    type: Object as PropType<TGetAllRes>,
     required: true,
   },
   index: {

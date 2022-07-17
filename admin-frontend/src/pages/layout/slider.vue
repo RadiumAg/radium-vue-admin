@@ -16,9 +16,9 @@ import { useApi } from '@core/http/api-instance';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useRoute } from 'vue-router';
 import SliderChild from './slider-child.vue';
-import type { GetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
+import type { TGetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
 
-const menus = ref<GetAllRes[]>();
+const menus = ref<TGetAllRes[]>();
 const { menu } = useApi();
 const route = useRoute();
 

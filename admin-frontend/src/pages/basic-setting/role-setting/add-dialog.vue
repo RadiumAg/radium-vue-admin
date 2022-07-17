@@ -47,7 +47,7 @@ const props = defineProps({
   },
 });
 
-const visible = computed({
+const visible = computed<boolean>({
   get() {
     return props.modelValue;
   },

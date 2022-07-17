@@ -45,4 +45,8 @@ export class UserService {
     async updateRoles(id: string, roles: []) {
         return await this.userModel.findByIdAndUpdate(id, { roles }).exec();
     }
+
+    async deleteById(id: string[]) {
+        return await this.userModel.findByIdAndDelete(id);
+    }
 }

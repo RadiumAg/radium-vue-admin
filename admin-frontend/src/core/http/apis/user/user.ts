@@ -9,6 +9,17 @@ export class User {
   private http: AxiosInstance;
 
   /**
+   * 删除用户信息
+   *
+   * @param {string[]} ids
+   * @return {*}
+   * @memberof User
+   */
+  async deleteUserMany(ids: string[]) {
+    return (await this.http.post<IResponse>('deleteUserMany', ids)).data;
+  }
+
+  /**
    * 获得所有用户
    *
    * @return {*}

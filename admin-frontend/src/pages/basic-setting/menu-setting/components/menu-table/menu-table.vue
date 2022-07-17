@@ -71,7 +71,7 @@ import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
 import AdminCard from '@components/admin-card/admin-card.vue';
 import { defaultThrottleTime } from '@core/utils';
-import { ElMessage, ElTable } from 'element-plus';
+import { ElMessage, ElMessageBox, ElTable } from 'element-plus';
 import { MENU_SETTING_PROVIDE, type MenuSettingProvide } from '../..';
 import AddMenuDialog from './components/add-menu-dialog/add-menu-dialog.vue';
 import { searchTableData } from './components/add-menu-dialog';

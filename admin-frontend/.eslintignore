@@ -13,4 +13,5 @@ es
 tsconfig.json
 /LICENSE
 auto-imports.d.ts
+components.d.ts
 # webpack-loader
