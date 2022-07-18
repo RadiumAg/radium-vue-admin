@@ -2,7 +2,7 @@ import { Menu } from './apis/menu/menu';
 import { OAth } from './apis/oath/login';
 import { Role } from './apis/role/role';
 import { User } from './apis/user/user';
-import type { InjectionKey } from 'vue';
+import type { App, InjectionKey } from 'vue';
 
 export class ApiInstance {
   readonly menu = new Menu();

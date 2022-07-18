@@ -24,7 +24,7 @@ export const menuSettingRouter: RouteRecordRaw = {
     {
       name: '用户设置',
       path: 'user_manager',
-      component: () => import('./user_manager/user_manager.vue'),
+      component: () => import('./user_manager/user-manager.vue'),
     },
   ],
 };

@@ -1,4 +1,4 @@
-export class Array<T> {
+export class List<T extends Array<T>> {
     count: number;
-    array;
+    array: T;
 }

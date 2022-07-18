@@ -11,6 +11,19 @@ export class Menu {
   private http: AxiosInstance;
 
   /**
+   * 通过Id删除菜单
+   *
+   * @param {string} _id
+   * @return {*}
+   * @memberof Menu
+   */
+  async deleteById(_id: string) {
+    return (
+      await this.http.post<IResponse<TGetAllRes[]>>('deleteById', { _id })
+    ).data;
+  }
+
+  /**
    * 获得所有菜单
    *
    * @return {*}

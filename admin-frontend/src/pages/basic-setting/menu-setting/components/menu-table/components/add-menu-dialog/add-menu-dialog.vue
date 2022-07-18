@@ -53,7 +53,7 @@ const props = defineProps({
 });
 const emits = defineEmits<{
   (event: 'afterClose');
-  (event: UPDATE_MODEL_VALUE_EVENT, visible: boolean);
+  (event: 'update:modelValue', visible: boolean);
 }>();
 const isLoading = ref(false);
 const isSureButtonClick = ref(false);

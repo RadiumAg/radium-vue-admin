@@ -45,6 +45,9 @@
             <el-button text type="primary" @click="handleAdd(row._id)"
               >添加</el-button
             >
+            <el-button text type="warning" @click="handleDelete(row._id)"
+              >删除</el-button
+            >
           </template>
         </el-table-column>
       </admin-table>
@@ -68,7 +71,7 @@ import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
 import AdminCard from '@components/admin-card/admin-card.vue';
 import { defaultThrottleTime } from '@core/utils';
-import { ElMessage, ElTable } from 'element-plus';
+import { ElMessage, ElMessageBox, ElTable } from 'element-plus';
 import { MENU_SETTING_PROVIDE, type MenuSettingProvide } from '../..';
 import AddMenuDialog from './components/add-menu-dialog/add-menu-dialog.vue';
 import { searchTableData } from './components/add-menu-dialog';
@@ -103,6 +106,17 @@ const handleAdd = (parentId: string) => {
   addMenuDialogData.visible = true;
   addMenuDialogData.parentId = parentId;
   addMenuDialogData.id = '';
+};
+
+const handleDelete = async (id: string) => {
+  try {
+    await ElMessageBox.confirm('确认删除吗');
+    const res = await menu.deleteById(id);
+    ElMessage.success(res.msg);
+    getData();
+  } catch (e) {
+    useErrorMessage(e);
+  }
 };
 
 const handleRootAdd = () => {

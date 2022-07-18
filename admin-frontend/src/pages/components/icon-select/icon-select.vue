@@ -23,14 +23,14 @@ import { UPDATE_MODEL_VALUE_EVENT } from '@core/utils';
 import { computed } from 'vue';
 
 const emits = defineEmits<{
-  (event: UPDATE_MODEL_VALUE_EVENT, value: string);
+  (event: 'update:modelValue', value: string);
 }>();
 
 const props = defineProps({
   modelValue: { type: String, required: true },
 });
 
-const selectValue = computed({
+const selectValue = computed<string>({
   get() {
     return props.modelValue;
   },

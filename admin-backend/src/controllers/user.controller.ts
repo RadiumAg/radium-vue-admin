@@ -16,6 +16,7 @@ import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
 import { OAthService } from '@services/oath.service';
 import { UpdateUserRoleData } from '@dto/user/view/update-user-role.data';
 import { GetAllUserInfoRes } from '@dto/user/view/get-all-userinfo.res';
+import { GetAllMenuRes } from '@dto/menu/view/get-all-menu.res';
 
 @ApiTags('user')
 @AdminApiExtraModels(GetLoginUserInfoRes, GetAllUserInfoRes)
@@ -26,6 +27,14 @@ export class UserController {
         private readonly userService: UserService,
         private readonly oAthService: OAthService,
     ) {}
+
+    @UseGuards(JwtAuthGuard)
+    @ApiOperation({ summary: '删除用户信息' })
+    @Post('deleteUserMany')
+    async deleteUserMany(@Body() ids: Array<string>) {
+        this.userService.deleteById(ids);
+        return AdminResponse.success('删除成功');
+    }
 
     @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '插入用户信息' })
@@ -50,6 +59,18 @@ export class UserController {
     }
 
     @UseGuards(JwtAuthGuard)
+    @AdminApiResponse({ items: { $ref: getSchemaPath(GetAllMenuRes) } })
+    @ApiOperation({ summary: '获取当前用户菜单' })
+    @Get('getUserMenus')
+    async getUserMenus(@Req() request) {
+        const userId = this.oAthService.getUserInfo(
+            request.cookies['admin-login'],
+        ).userId;
+        const menus = await this.userService.getUserMenus(userId);
+        return AdminResponse.success('获得成功', menus);
+    }
+
+    @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '获得所有用户' })
     @AdminApiResponse({
         type: 'array',
@@ -57,11 +78,7 @@ export class UserController {
     })
     @Get('getAllUser')
     async getAllUser() {
-        const resData = await this.userService.getAllUser([
-            '-password',
-            '-__v',
-            '-roles',
-        ]);
+        const resData = await this.userService.getAllUser(['-__v', '-roles']);
         return AdminResponse.success('获取成功', resData);
     }
 
