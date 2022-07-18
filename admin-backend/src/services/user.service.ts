@@ -53,7 +53,10 @@ export class UserService {
     async getUserMenus(userId: string) {
         return await this.userModel
             .findById(userId)
-            .populate(['roles', 'roles.$*.menus'])
+            .populate({
+                path: 'roles',
+                populate: { path: 'menus', populate: { path: 'children' } },
+            })
             .exec();
     }
 }
