@@ -3,10 +3,9 @@ import { User } from '@core/http/apis/user/user';
 import { AxiosError } from 'axios';
 import { ElMessage } from 'element-plus';
 import type { RouteLocationNormalized } from 'vue-router';
+const userApi = new User();
 
 export const loginBeforeEnter = async (to: RouteLocationNormalized) => {
-  const userApi = new User();
-
   try {
     await userApi.getLoginUserInfo();
   } catch (e) {
@@ -23,4 +22,10 @@ export const loginBeforeEnter = async (to: RouteLocationNormalized) => {
       },
     };
   }
+};
+
+const loadAppData = async () => {
+  try {
+    const userInfo = await userApi.getUserMenusInfo();
+  } catch {}
 };

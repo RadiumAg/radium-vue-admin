@@ -1,6 +1,7 @@
 import { useLocalStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import { ref, toRefs } from 'vue';
+import type { TGetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
 
 type Menu = {
   menuId: string;
@@ -9,35 +10,36 @@ type Menu = {
 };
 
 export const useMenuStore = defineStore('menu-tags', () => {
-  const menus = ref({
+  const menusInfo = ref({
+    allMenus: [] as TGetAllRes[],
     currentMenus: useLocalStorage<Menu[]>('current-menus', []),
-    menuInclude: useLocalStorage('menu-include', [], { deep: true }),
+    menuInclude: useLocalStorage('menu-include', []),
     activeMenuId: useLocalStorage('active-menu-id', ''),
   });
 
   const setInclude = (componentName: string) => {
-    if (menus.value.menuInclude.includes(componentName)) return;
-    menus.value.menuInclude.push(componentName);
+    if (menusInfo.value.menuInclude.includes(componentName)) return;
+    menusInfo.value.menuInclude.push(componentName);
   };
 
   const setActiveMenuId = (menuId: string) => {
-    menus.value.activeMenuId = menuId;
+    menusInfo.value.activeMenuId = menuId;
   };
 
   const removeCurrentMenus = (menuId: string) => {
-    const removeIndex = menus.value.currentMenus.findIndex(
+    const removeIndex = menusInfo.value.currentMenus.findIndex(
       _ => _.menuId === menuId,
     );
-    menus.value.currentMenus.splice(removeIndex, 1);
-    const nextIndex = menus.value.currentMenus.length - 1;
-    const nextMenu = menus.value.currentMenus[nextIndex]
-      ? menus.value.currentMenus[nextIndex]
+    menusInfo.value.currentMenus.splice(removeIndex, 1);
+    const nextIndex = menusInfo.value.currentMenus.length - 1;
+    const nextMenu = menusInfo.value.currentMenus[nextIndex]
+      ? menusInfo.value.currentMenus[nextIndex]
       : {
           menuId: 'home',
           menuName: '首页',
           menuPath: '/',
         };
-    menus.value.activeMenuId = nextMenu?.menuId || '';
+    menusInfo.value.activeMenuId = nextMenu?.menuId || '';
     return nextMenu;
   };
 
@@ -46,16 +48,16 @@ export const useMenuStore = defineStore('menu-tags', () => {
     menuPath: string,
     menuName: string,
   ) => {
-    menus.value.activeMenuId = menuId;
-    if (menus.value.currentMenus.some(_ => _.menuId === menuId)) return;
-    menus.value.currentMenus.push({
+    menusInfo.value.activeMenuId = menuId;
+    if (menusInfo.value.currentMenus.some(_ => _.menuId === menuId)) return;
+    menusInfo.value.currentMenus.push({
       menuId,
       menuPath,
       menuName,
     });
   };
   return {
-    ...toRefs(menus.value),
+    ...toRefs(menusInfo.value),
     setInclude,
     setCurrentMenus,
     setActiveMenuId,
