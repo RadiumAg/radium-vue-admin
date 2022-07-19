@@ -3,10 +3,21 @@ import type { IResponse } from '@core/http/IResponse';
 import type { AxiosInstance } from 'axios';
 import type { TGetAllUserRes } from './models/TGetAllUserRes';
 import type { TGetLoginUserInfo } from './models/TGetLoginUserInfo';
+import type { TGetUserMenusInfo } from './models/TGetUserMenuInfoRes';
 
 @Api({ prefix: 'user' })
 export class User {
   private http: AxiosInstance;
+
+  /**
+   * 获取当前用户菜单信息
+   *
+   * @return {*}
+   * @memberof User
+   */
+  async getUserMenusInfo() {
+    return (await this.http.get<TGetUserMenusInfo>('getUserMenusInfo')).data;
+  }
 
   /**
    * 删除用户信息

@@ -16,10 +16,14 @@ import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
 import { OAthService } from '@services/oath.service';
 import { UpdateUserRoleData } from '@dto/user/view/update-user-role.data';
 import { GetAllUserInfoRes } from '@dto/user/view/get-all-userinfo.res';
-import { GetAllMenuRes } from '@dto/menu/view/get-all-menu.res';
+import { GetUserMenusInfoRes } from '@dto/menu/view/get-user-menus-info.res';
 
 @ApiTags('user')
-@AdminApiExtraModels(GetLoginUserInfoRes, GetAllUserInfoRes)
+@AdminApiExtraModels(
+    GetLoginUserInfoRes,
+    GetAllUserInfoRes,
+    GetUserMenusInfoRes,
+)
 @AdminController('user')
 @ApiBearerAuth()
 export class UserController {
@@ -27,6 +31,18 @@ export class UserController {
         private readonly userService: UserService,
         private readonly oAthService: OAthService,
     ) {}
+
+    @UseGuards(JwtAuthGuard)
+    @AdminApiResponse({ $ref: getSchemaPath(GetUserMenusInfoRes) })
+    @ApiOperation({ summary: '获取当前用户菜单信息' })
+    @Get('getUserMenusInfo')
+    async getUserMenusInfo(@Req() request) {
+        const userId = this.oAthService.getUserInfo(
+            request.cookies['admin-login'],
+        ).userId;
+        const userData = await this.userService.getUserMenus(userId);
+        return AdminResponse.success('获得成功', userData);
+    }
 
     @UseGuards(JwtAuthGuard)
     @ApiOperation({ summary: '删除用户信息' })
@@ -56,18 +72,6 @@ export class UserController {
         resData.userId = loginUserInfo.id;
         resData.username = loginUserInfo.username;
         return resData;
-    }
-
-    @UseGuards(JwtAuthGuard)
-    @AdminApiResponse({ items: { $ref: getSchemaPath(GetAllMenuRes) } })
-    @ApiOperation({ summary: '获取当前用户菜单' })
-    @Get('getUserMenus')
-    async getUserMenus(@Req() request) {
-        const userId = this.oAthService.getUserInfo(
-            request.cookies['admin-login'],
-        ).userId;
-        const menus = await this.userService.getUserMenus(userId);
-        return AdminResponse.success('获得成功', menus);
     }
 
     @UseGuards(JwtAuthGuard)

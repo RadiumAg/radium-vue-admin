@@ -7,16 +7,8 @@
 </template>
 
 <script lang="ts" setup>
+import { toRefs } from 'vue';
 import { useMenuStore } from '@core/pinia/stores/menuStore';
-import { toRefs, watch } from 'vue';
 
 const { menuInclude } = toRefs(useMenuStore());
-
-watch(
-  menuInclude,
-  val => {
-    console.log(val);
-  },
-  { deep: true },
-);
 </script>
