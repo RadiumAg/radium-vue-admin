@@ -26,6 +26,10 @@ export const useMenuStore = defineStore('menu-tags', () => {
     menusInfo.value.activeMenuId = menuId;
   };
 
+  const setAllMenus = (menus: TGetAllRes[]) => {
+    menusInfo.value.allMenus = menus;
+  };
+
   const removeCurrentMenus = (menuId: string) => {
     const removeIndex = menusInfo.value.currentMenus.findIndex(
       _ => _.menuId === menuId,
@@ -59,6 +63,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
   return {
     ...toRefs(menusInfo.value),
     setInclude,
+    setAllMenus,
     setCurrentMenus,
     setActiveMenuId,
     removeCurrentMenus,
@@ -66,6 +71,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
 });
 
 export const {
+  setAllMenus,
   setInclude,
   setCurrentMenus,
   setActiveMenuId,

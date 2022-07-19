@@ -1,7 +1,7 @@
 <template>
   <el-menu class="menu" router :default-active="route.fullPath">
     <slider-child
-      v-for="menuItem in menus"
+      v-for="menuItem in allMenus"
       :key="menuItem._id"
       :menu="menuItem"
       :index="menuItem.menuUrl"
@@ -11,27 +11,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useApi } from '@core/http/api-instance';
-import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useRoute } from 'vue-router';
+import { useMenuStore } from '@core/pinia/stores/menuStore';
 import SliderChild from './slider-child.vue';
-import type { TGetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
 
-const menus = ref<TGetAllRes[]>();
-const { menu } = useApi();
+const { allMenus } = useMenuStore();
 const route = useRoute();
-
-const getMenu = async () => {
-  try {
-    const resData = await menu.getAllMenu();
-    menus.value = resData.data;
-  } catch (error) {
-    useErrorMessage(error);
-  }
-};
-
-getMenu();
 </script>
 
 <style lang="scss" scoped>
