@@ -15,7 +15,7 @@ import { useRoute } from 'vue-router';
 import { useMenuStore } from '@core/pinia/stores/menu-store';
 import SliderChild from './slider-child.vue';
 
-const { allMenus } = useMenuStore();
+const { allMenus } = toRefs(useMenuStore());
 const route = useRoute();
 </script>
 

@@ -18,7 +18,6 @@ export const useRoleStore = defineStore('role', () => {
 
   return {
     roleInfo,
-
     setRoles,
   };
 });

@@ -70,6 +70,7 @@ const getUserRoles = useThrottleFn(async () => {
 }, defaultThrottleTime);
 
 const handleSelectionChange = (selection: TGetPageRoleRes[]) => {
+  selection = selection.filter(_ => _);
   selectionRoles.value = selection.map(_ => _._id);
 };
 

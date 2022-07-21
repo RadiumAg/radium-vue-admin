@@ -16,11 +16,6 @@
       </div>
 
       <div class="right">
-        <el-avatar
-          class="avatar"
-          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-        ></el-avatar>
-
         <el-switch
           v-model="isDark"
           size="default"
@@ -30,6 +25,14 @@
           :active-value="true"
           :inactive-value="false"
         ></el-switch>
+
+        <el-avatar
+          class="avatar"
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        ></el-avatar>
+
+        <div class="username">{{ userInfo.username }}</div>
+        <role-dropdown></role-dropdown>
       </div>
     </div>
 
@@ -58,16 +61,17 @@ import { useMenuStore } from '@core/pinia/stores/menu-store';
 import { Fold, Moon, Sunny } from '@element-plus/icons-vue';
 import { useRoute } from 'vue-router';
 import { useDark } from '@vueuse/core';
+import { useUserStore } from '@core/pinia/stores/user-store';
+import RoleDropdown from './components/role-dropdown/role-dropdown.vue';
 import TagItem from './components/tag-item/tag-item.vue';
 import { LAYOUT_PROVIDE_KEY, type LayoutProvide } from '.';
 
 const { isCollapse } = inject<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
   isCollapse: ref(false),
 });
+const { userInfo } = useUserStore();
 const route = useRoute();
-
 const { currentMenus, activeMenuId } = toRefs(useMenuStore());
-
 const isDark = useDark();
 
 onMounted(() => {
@@ -99,7 +103,17 @@ onMounted(() => {
     align-items: center;
 
     .avatar {
+      margin-left: 10px;
       margin-right: 10px;
+    }
+
+    .username {
+      font-size: 14px;
+      margin-right: 10px;
+    }
+
+    .role-arrow {
+      font-size: 14px;
     }
   }
 

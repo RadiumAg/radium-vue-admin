@@ -28,7 +28,10 @@ export const loginBeforeEnter = async (to: RouteLocationNormalized) => {
 const loadAppData = async () => {
   const { setAllMenus } = await import('@core/pinia/stores/menu-store');
   const { setRoles } = await import('@core/pinia/stores/role-store');
-  const userInfo = await userApi.getUserMenusInfo();
-  setAllMenus(userInfo.data.roles[0].menus);
-  setRoles(userInfo.data.roles);
+  const { setUserInfo } = await import('@core/pinia/stores/user-store');
+
+  const { data } = await userApi.getUserMenusInfo();
+  setAllMenus(data.roles[0].menus);
+  setRoles(data.roles);
+  setUserInfo({ userId: data._id, username: data.username });
 };
