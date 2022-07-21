@@ -51,12 +51,18 @@ export class UserService {
     }
 
     async getUserMenus(userId: string) {
-        return await this.userModel
+        const userData = await this.userModel
             .findById(userId)
             .populate({
                 path: 'roles',
                 populate: { path: 'menus', populate: { path: 'children' } },
             })
             .exec();
+
+        userData.roles.forEach((role: any) => {
+            role.menus = role.menus.filter(menu => menu.parentId === '');
+        });
+
+        return userData;
     }
 }
