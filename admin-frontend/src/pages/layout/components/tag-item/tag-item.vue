@@ -18,7 +18,7 @@ import {
   removeCurrentMenus,
   setActiveMenuId,
   useMenuStore,
-} from '@core/pinia/stores/menuStore';
+} from '@core/pinia/stores/menu-store';
 import { Close } from '@element-plus/icons-vue';
 const props = defineProps({
   closeIcon: {

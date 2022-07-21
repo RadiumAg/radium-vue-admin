@@ -1,10 +1,9 @@
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { User } from '@core/http/apis/user/user';
-import { setAllMenus } from '@core/pinia/stores/menuStore';
-import { setRoles } from '@core/pinia/stores/roleStore';
 import { AxiosError } from 'axios';
 import { ElMessage } from 'element-plus';
 import type { RouteLocationNormalized } from 'vue-router';
+
 const userApi = new User();
 
 export const loginBeforeEnter = async (to: RouteLocationNormalized) => {
@@ -27,7 +26,9 @@ export const loginBeforeEnter = async (to: RouteLocationNormalized) => {
 };
 
 const loadAppData = async () => {
+  const { setAllMenus } = await import('@core/pinia/stores/menu-store');
+  const { setRoles } = await import('@core/pinia/stores/role-store');
   const userInfo = await userApi.getUserMenusInfo();
-  setAllMenus(userInfo.roles[0].menus);
-  setRoles(userInfo.roles);
+  setAllMenus(userInfo.data.roles[0].menus);
+  setRoles(userInfo.data.roles);
 };

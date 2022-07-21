@@ -1,6 +1,6 @@
 import { Api } from '@core/http/decorators/api';
-import type { IResponse } from '@core/http/IResponse';
 import type { AxiosInstance } from 'axios';
+import type { IResponse } from '@core/http/IResponse';
 import type { TGetAllUserRes } from './models/TGetAllUserRes';
 import type { TGetLoginUserInfo } from './models/TGetLoginUserInfo';
 import type { TGetUserMenusInfo } from './models/TGetUserMenuInfoRes';
@@ -16,7 +16,9 @@ export class User {
    * @memberof User
    */
   async getUserMenusInfo() {
-    return (await this.http.get<TGetUserMenusInfo>('getUserMenusInfo')).data;
+    return (
+      await this.http.get<IResponse<TGetUserMenusInfo>>('getUserMenusInfo')
+    ).data;
   }
 
   /**

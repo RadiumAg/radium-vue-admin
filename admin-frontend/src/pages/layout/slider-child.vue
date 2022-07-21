@@ -29,7 +29,7 @@
 
 <script lang="ts" setup>
 import * as icons from '@element-plus/icons-vue';
-import { setCurrentMenus } from '@core/pinia/stores/menuStore';
+import { setCurrentMenus } from '@core/pinia/stores/menu-store';
 import type { PropType } from 'vue';
 import type { TGetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
 

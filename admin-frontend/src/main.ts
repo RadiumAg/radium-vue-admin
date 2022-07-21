@@ -8,4 +8,4 @@ import App from './App.vue';
 import 'element-plus/theme-chalk/index.css';
 import 'element-plus/theme-chalk/dark/css-vars.css';
 
-createApp(App).use(router).use(installApi).use(createPinia()).mount('#app');
+createApp(App).use(createPinia()).use(installApi).use(router).mount('#app');

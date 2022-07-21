@@ -2,7 +2,7 @@ import { menuSettingRouter } from '@pages/basic-setting/router';
 import { componentsExampleRouter } from '@pages/components-example/router';
 import { createRouter, createWebHistory } from 'vue-router';
 import progress from 'nprogress';
-import { loginBeforeEnter } from './guard/loginBeforeEnter';
+import { loginBeforeEnter } from './guard/login-before-enter';
 import 'nprogress/nprogress.css';
 
 const layout = () => import('@pages/layout/layout.vue');

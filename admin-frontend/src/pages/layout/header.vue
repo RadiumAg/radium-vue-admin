@@ -16,9 +16,14 @@
       </div>
 
       <div class="right">
+        <el-avatar
+          class="avatar"
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        ></el-avatar>
+
         <el-switch
           v-model="isDark"
-          size="large"
+          size="default"
           inline-prompt
           :active-icon="Moon"
           :inactive-icon="Sunny"
@@ -49,7 +54,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useMenuStore } from '@core/pinia/stores/menuStore';
+import { useMenuStore } from '@core/pinia/stores/menu-store';
 import { Fold, Moon, Sunny } from '@element-plus/icons-vue';
 import { useRoute } from 'vue-router';
 import { useDark } from '@vueuse/core';
@@ -87,6 +92,15 @@ onMounted(() => {
   .left {
     display: flex;
     align-items: center;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+
+    .avatar {
+      margin-right: 10px;
+    }
   }
 
   .fold {
