@@ -1,8 +1,10 @@
 <template>
   <router-view v-slot="{ Component }">
-    <keep-alive :include="menuInclude">
-      <component :is="Component"></component>
-    </keep-alive>
+    <transition name="fade">
+      <keep-alive :include="menuInclude">
+        <component :is="Component"></component>
+      </keep-alive>
+    </transition>
   </router-view>
 </template>
 
@@ -12,3 +14,7 @@ import { useMenuStore } from '@core/pinia/stores/menu-store';
 
 const { menuInclude } = toRefs(useMenuStore());
 </script>
+
+<style lang="scss" scoped>
+@use '@assets/css/transition/transition.scss';
+</style>

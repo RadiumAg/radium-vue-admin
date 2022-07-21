@@ -50,9 +50,12 @@
           :key="tag.menuId"
           :path="tag.menuPath"
           :name="tag.menuName"
+          @click.right="handleMouseRight(tag.menuId, $event)"
         ></tag-item>
       </el-scrollbar>
     </div>
+
+    <menucontext></menucontext>
   </div>
 </template>
 
@@ -62,6 +65,7 @@ import { Fold, Moon, Sunny } from '@element-plus/icons-vue';
 import { useRoute } from 'vue-router';
 import { useDark } from '@vueuse/core';
 import { useUserStore } from '@core/pinia/stores/user-store';
+import Menucontext from './components/menucontext/menucontext.vue';
 import RoleDropdown from './components/role-dropdown/role-dropdown.vue';
 import TagItem from './components/tag-item/tag-item.vue';
 import { LAYOUT_PROVIDE_KEY, type LayoutProvide } from '.';
@@ -73,6 +77,10 @@ const { userInfo } = useUserStore();
 const route = useRoute();
 const { currentMenus, activeMenuId } = toRefs(useMenuStore());
 const isDark = useDark();
+
+const handleMouseRight = (menuId: string, mouseEvent: MouseEvent) => {
+  console.log(menuId, mouseEvent);
+};
 
 onMounted(() => {
   if (activeMenuId.value === '') {

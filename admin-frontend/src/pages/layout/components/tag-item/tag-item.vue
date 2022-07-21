@@ -2,9 +2,11 @@
   <div class="tag" :class="{ active: isActive }" @click="handleToPage">
     {{ name }}
     <el-icon
-      v-show="isActive"
       v-if="closeIcon"
       class="close-icon"
+      :style="{
+        width: isActive ? '1em' : '',
+      }"
       @click.stop="handleClose"
       ><close></close
     ></el-icon>
@@ -66,16 +68,24 @@ const handleClose = () => {
   margin-right: 4px;
   align-items: center;
   border: 1px solid #42b983;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
   .close-icon {
+    width: 0;
     padding: 2px;
     margin-left: 5px;
     border-radius: 50%;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: inherit;
 
     &:hover {
       color: #fff;
       background-color: #b4bccc;
+    }
+  }
+
+  &:hover {
+    .close-icon {
+      width: 1em;
     }
   }
 }
