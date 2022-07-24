@@ -16,12 +16,10 @@
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
-import {
-  removeCurrentMenus,
-  setActiveMenuId,
-  useMenuStore,
-} from '@core/pinia/stores/menu-store';
+import { setActiveMenuId, useMenuStore } from '@core/pinia/stores/menu-store';
 import { Close } from '@element-plus/icons-vue';
+import { useClosePage } from '@core/hooks/use-close-page';
+
 const props = defineProps({
   closeIcon: {
     type: Boolean,
@@ -40,7 +38,7 @@ const props = defineProps({
     required: true,
   },
 });
-
+const closePage = useClosePage();
 const router = useRouter();
 const { activeMenuId } = toRefs(useMenuStore());
 const isActive = computed(() => {
@@ -53,8 +51,7 @@ const handleToPage = () => {
 };
 
 const handleClose = () => {
-  const nextMenu = removeCurrentMenus(props.id);
-  router.replace(nextMenu.menuPath);
+  closePage(props.id);
 };
 </script>
 

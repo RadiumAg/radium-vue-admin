@@ -55,7 +55,12 @@
       </el-scrollbar>
     </div>
 
-    <menucontext></menucontext>
+    <menu-context
+      v-model="menuContextData.visible"
+      :left="menuContextData.x"
+      :top="menuContextData.y"
+      @after-close="handleContextClose"
+    ></menu-context>
   </div>
 </template>
 
@@ -65,21 +70,57 @@ import { Fold, Moon, Sunny } from '@element-plus/icons-vue';
 import { useRoute } from 'vue-router';
 import { useDark } from '@vueuse/core';
 import { useUserStore } from '@core/pinia/stores/user-store';
-import Menucontext from './components/menucontext/menucontext.vue';
+import { useClosePage } from '@core/hooks/use-close-page';
+import MenuContext from './components/menu-context/menu-context.vue';
 import RoleDropdown from './components/role-dropdown/role-dropdown.vue';
 import TagItem from './components/tag-item/tag-item.vue';
+import { EventType } from './components/menu-context';
 import { LAYOUT_PROVIDE_KEY, type LayoutProvide } from '.';
 
 const { isCollapse } = inject<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
   isCollapse: ref(false),
 });
+
 const { userInfo } = useUserStore();
 const route = useRoute();
+const closePage = useClosePage();
 const { currentMenus, activeMenuId } = toRefs(useMenuStore());
 const isDark = useDark();
+const menuContextData = reactive({
+  x: 0,
+  y: 0,
+  menuId: '',
+  visible: false,
+});
 
 const handleMouseRight = (menuId: string, mouseEvent: MouseEvent) => {
-  console.log(menuId, mouseEvent);
+  mouseEvent.preventDefault();
+  menuContextData.x = mouseEvent.clientX;
+  menuContextData.y = mouseEvent.clientY;
+  menuContextData.visible = true;
+  menuContextData.menuId = menuId;
+};
+
+const handleContextClose = (event: EventType) => {
+  menuContextData.visible = false;
+  switch (event) {
+    case EventType.关闭: {
+      closePage(menuContextData.menuId);
+      break;
+    }
+
+    case EventType.刷新: {
+      break;
+    }
+
+    case EventType.关闭左侧: {
+      break;
+    }
+
+    case EventType.关闭右侧: {
+      break;
+    }
+  }
 };
 
 onMounted(() => {

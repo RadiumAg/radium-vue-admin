@@ -18,9 +18,12 @@
       :data="roleData"
       @selection-change="selectionRows = $event"
     ></role-table>
-  </admin-card>
 
-  <add-dialog v-model="adminDialogVisible" @after-close="getData"></add-dialog>
+    <add-dialog
+      v-model="adminDialogVisible"
+      @after-close="getData"
+    ></add-dialog>
+  </admin-card>
 </template>
 
 <script lang="ts" setup>
