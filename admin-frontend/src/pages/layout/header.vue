@@ -114,10 +114,27 @@ const handleContextClose = (event: EventType) => {
     }
 
     case EventType.关闭左侧: {
+      const leftMenus = currentMenus.value.slice(
+        0,
+        currentMenus.value.findIndex(
+          menu => menu.menuId === menuContextData.menuId,
+        ),
+      );
+      leftMenus.forEach(({ menuId }) => {
+        closePage(menuId);
+      });
       break;
     }
 
     case EventType.关闭右侧: {
+      const rightMenus = currentMenus.value.slice(
+        currentMenus.value.findIndex(
+          menu => menu.menuId === menuContextData.menuId,
+        ) + 1,
+      );
+      rightMenus.forEach(({ menuId }) => {
+        closePage(menuId);
+      });
       break;
     }
   }
