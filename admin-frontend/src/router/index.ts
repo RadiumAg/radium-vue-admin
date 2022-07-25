@@ -21,6 +21,11 @@ export const router = createRouter({
       beforeEnter: [loginBeforeEnter],
       children: [
         {
+          path: 'redirect',
+          name: 'redirect',
+          component: () => import('@components/redirect-page.vue'),
+        },
+        {
           path: '',
           component: () => import('@pages/home/home.vue'),
         },

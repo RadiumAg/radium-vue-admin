@@ -22,6 +22,13 @@ export const useMenuStore = defineStore('menu-tags', () => {
     menusInfo.value.menuInclude.push(componentName);
   };
 
+  const removeInclude = (componentName: string) => {
+    if (!menusInfo.value.menuInclude.includes(componentName)) return;
+    menusInfo.value.menuInclude = menusInfo.value.menuInclude.filter(
+      name => !(name === componentName),
+    );
+  };
+
   const setActiveMenuId = (menuId: string) => {
     menusInfo.value.activeMenuId = menuId;
   };
@@ -67,6 +74,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
     setAllMenus,
     setCurrentMenus,
     setActiveMenuId,
+    removeInclude,
     removeCurrentMenus,
   };
 });
@@ -74,6 +82,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
 export const {
   setAllMenus,
   setInclude,
+  removeInclude,
   setCurrentMenus,
   setActiveMenuId,
   removeCurrentMenus,
