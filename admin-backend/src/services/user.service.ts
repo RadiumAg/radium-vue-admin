@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from '@schemas/user';
 import { CreateUserInfoDto } from '@dto/user/mogodb/create-userInfo.dto';
+import { Menu } from '@schemas/menu';
 
 @Injectable()
 export class UserService {
@@ -55,14 +56,34 @@ export class UserService {
             .findById(userId)
             .populate({
                 path: 'roles',
-                populate: { path: 'menus', populate: { path: 'children' } },
+                populate: {
+                    path: 'menus',
+                    populate: {
+                        path: 'children',
+                    },
+                },
             })
             .exec();
 
         userData.roles.forEach((role: any) => {
-            role.menus = role.menus.filter(menu => menu.parentId === '');
+            const parentMenus = role.menus.filter(menu => menu.parentId === '');
+            parentMenus.forEach(parent => {
+                console.log(role.menus);
+                organizationMenus(parent, role.menus);
+            });
+            role.menus = parentMenus;
         });
 
         return userData;
     }
 }
+
+const organizationMenus = (parentMenu: Menu, menus: Menu[]) => {
+    if (!parentMenu.children.length) return [];
+    parentMenu.children = menus.filter(
+        menu => menu.parentId === parentMenu['id'],
+    );
+    parentMenu.children.forEach(menu => {
+        organizationMenus(menu, menus);
+    });
+};
