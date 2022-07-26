@@ -87,7 +87,7 @@ const handleClick = (event: EventType) => {
   overflow: hidden;
   z-index: 9999;
   position: fixed;
-  background-color: #fff;
+  background-color: var(--el-fill-color-blank);
   border-radius: 10px;
   box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 30%);
 

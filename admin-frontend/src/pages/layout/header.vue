@@ -65,11 +65,7 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  removeCurrentMenus,
-  removeInclude,
-  useMenuStore,
-} from '@core/pinia/stores/menu-store';
+import { removeInclude, useMenuStore } from '@core/pinia/stores/menu-store';
 import { Fold, Moon, Sunny } from '@element-plus/icons-vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDark } from '@vueuse/core';
@@ -98,6 +94,10 @@ const menuContextData = reactive({
   visible: false,
 });
 
+useEventListener('click', () => {
+  menuContextData.visible = false;
+});
+
 const handleMouseRight = (menuId: string, mouseEvent: MouseEvent) => {
   mouseEvent.preventDefault();
   menuContextData.x = mouseEvent.clientX;
@@ -116,9 +116,15 @@ const handleContextClose = (event: EventType) => {
 
     case EventType.刷新: {
       removeInclude(
-        currentMenus.value.find(menu => menu.menuId === props.menuId).menuName,
+        currentMenus.value.find(menu => menu.menuId === menuContextData.menuId)
+          .menuName,
       );
-      router.replace({ name: '/redirect', params: route.params });
+      router.replace({
+        name: 'redirect',
+        params: {
+          redirect: route.path,
+        },
+      });
       break;
     }
 
