@@ -87,18 +87,20 @@ const handleClick = (event: EventType) => {
   overflow: hidden;
   z-index: 9999;
   position: fixed;
-  background-color: var(--el-fill-color-blank);
   border-radius: 10px;
+  background-color: var(--el-color-primary-light-9);
   box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 30%);
 
   li {
+    color: var(--el-text-color-primary);
+    background-color: var(--el-fill-color-blank);
     font-size: 14px;
     cursor: pointer;
     padding: 5px 10px;
     list-style: none;
 
     &:hover {
-      background-color: #efef;
+      background-color: var(--el-color-primary-light-8);
     }
   }
 }
