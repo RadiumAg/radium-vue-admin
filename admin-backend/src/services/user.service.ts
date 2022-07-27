@@ -4,6 +4,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from '@schemas/user';
 import { CreateUserInfoDto } from '@dto/user/mogodb/create-userInfo.dto';
 import { Menu } from '@schemas/menu';
+import { Role } from '@schemas/role';
+import { cloneDeep } from 'lodash';
 
 @Injectable()
 export class UserService {
@@ -65,15 +67,13 @@ export class UserService {
             })
             .exec();
 
-        userData.roles.forEach((role: any) => {
+        userData.roles.forEach(((role: Role) => {
             const parentMenus = role.menus.filter(menu => menu.parentId === '');
             parentMenus.forEach(parent => {
-                console.log(role.menus);
                 organizationMenus(parent, role.menus);
             });
-            role.menus = parentMenus;
-        });
-
+            role.menus = cloneDeep(parentMenus);
+        }) as any);
         return userData;
     }
 }
@@ -83,6 +83,7 @@ const organizationMenus = (parentMenu: Menu, menus: Menu[]) => {
     parentMenu.children = menus.filter(
         menu => menu.parentId === parentMenu['id'],
     );
+
     parentMenu.children.forEach(menu => {
         organizationMenus(menu, menus);
     });
