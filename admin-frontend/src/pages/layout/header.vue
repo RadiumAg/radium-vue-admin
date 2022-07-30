@@ -16,9 +16,25 @@
       </div>
 
       <div class="right">
+        <div class="operate">
+          <el-button-group>
+            <el-button
+              text
+              :icon="Brush"
+              @click="themeDrawerVisible = true"
+            ></el-button>
+
+            <el-button
+              text
+              :icon="FullScreen"
+              @click="handleToggleScreenFull"
+            ></el-button>
+          </el-button-group>
+        </div>
+
         <el-switch
           v-model="isDark"
-          size="default"
+          class="dark-switch"
           inline-prompt
           :active-icon="Moon"
           :inactive-icon="Sunny"
@@ -61,16 +77,19 @@
       :top="menuContextData.y"
       @after-close="handleContextClose"
     ></menu-context>
+
+    <theme-drawer v-model="themeDrawerVisible"></theme-drawer>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { removeInclude, useMenuStore } from '@core/pinia/stores/menu-store';
-import { Fold, Moon, Sunny } from '@element-plus/icons-vue';
+import { Brush, Fold, FullScreen, Moon, Sunny } from '@element-plus/icons-vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDark } from '@vueuse/core';
 import { useUserStore } from '@core/pinia/stores/user-store';
 import { useClosePage } from '@core/hooks/use-close-page';
+import ThemeDrawer from './components/theme-drawer/theme-drawer.vue';
 import MenuContext from './components/menu-context/menu-context.vue';
 import RoleDropdown from './components/role-dropdown/role-dropdown.vue';
 import TagItem from './components/tag-item/tag-item.vue';
@@ -81,9 +100,11 @@ const { isCollapse } = inject<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
   isCollapse: ref(false),
 });
 
+const toggleScreen = useFullscreen();
 const { userInfo } = useUserStore();
 const route = useRoute();
 const router = useRouter();
+const themeDrawerVisible = ref(false);
 const closePage = useClosePage();
 const { currentMenus, activeMenuId } = toRefs(useMenuStore());
 const isDark = useDark();
@@ -155,6 +176,10 @@ const handleContextClose = (event: EventType) => {
   }
 };
 
+const handleToggleScreenFull = () => {
+  toggleScreen.toggle();
+};
+
 onMounted(() => {
   if (activeMenuId.value === '') {
     activeMenuId.value = 'home';
@@ -191,6 +216,10 @@ onMounted(() => {
     .username {
       font-size: 14px;
       margin-right: 10px;
+    }
+
+    .dark-switch {
+      margin-left: 10px;
     }
 
     .role-arrow {

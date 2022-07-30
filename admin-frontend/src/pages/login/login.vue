@@ -78,6 +78,8 @@ const loginHandler = useThrottleFn(
       ElMessage.success(res.msg);
     } catch (e) {
       useErrorMessage(e);
+    } finally {
+      isLoading.value = false;
     }
   },
   defaultThrottleTime,

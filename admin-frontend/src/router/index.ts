@@ -27,6 +27,7 @@ export const router = createRouter({
         },
         {
           path: '',
+          name: '首页',
           component: () => import('@pages/home/home.vue'),
         },
         {
