@@ -119,6 +119,7 @@ importers:
       '@vitejs/plugin-vue': 3.0.0
       '@vueuse/core': ^8.9.4
       axios: ^0.27.2
+      echarts: ^5.3.3
       element-plus: 2.2.6
       eslint: ^8.20.0
       mockjs: ^1.1.0
@@ -140,6 +141,7 @@ importers:
       '@element-plus/icons-vue': 2.0.4_vue@3.2.27
       '@vueuse/core': 8.9.4_vue@3.2.27
       axios: 0.27.2
+      echarts: registry.npmmirror.com/echarts/5.3.3
       element-plus: 2.2.6_vue@3.2.27
       mockjs: 1.1.0
       nprogress: 0.2.0
@@ -7374,7 +7376,7 @@ packages:
     peerDependencies:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
     dependencies:
-      tslib: 1.14.1
+      tslib: registry.npmmirror.com/tslib/1.14.1
       typescript: 4.7.4
     dev: true
 
@@ -8077,6 +8079,15 @@ packages:
     version: 2.11.7
     dev: false
 
+  registry.npmmirror.com/echarts/5.3.3:
+    resolution: {integrity: sha512-BRw2serInRwO5SIwRviZ6Xgm5Lb7irgz+sLiFMmy/HOaf4SQ+7oYqxKzRHAKp4xHQ05AuHw1xvoQWJjDQq/FGw==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/echarts/-/echarts-5.3.3.tgz}
+    name: echarts
+    version: 5.3.3
+    dependencies:
+      tslib: registry.npmmirror.com/tslib/2.3.0
+      zrender: registry.npmmirror.com/zrender/5.3.2
+    dev: false
+
   registry.npmmirror.com/esbuild-android-64/0.14.49:
     resolution: {integrity: sha512-vYsdOTD+yi+kquhBiFWl3tyxnj2qZJsl4tAqwhT90ktUdnyTizgle7TjNx6Ar1bN7wcwWqZ9QInfdk2WVagSww==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/esbuild-android-64/-/esbuild-android-64-0.14.49.tgz}
     name: esbuild-android-64
@@ -8304,4 +8315,24 @@ packages:
     engines: {node: '>= v0.10.32'}
     dependencies:
       swagger-ui-dist: registry.npmmirror.com/swagger-ui-dist/4.13.0
+    dev: false
+
+  registry.npmmirror.com/tslib/1.14.1:
+    resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/tslib/-/tslib-1.14.1.tgz}
+    name: tslib
+    version: 1.14.1
+    dev: true
+
+  registry.npmmirror.com/tslib/2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz}
+    name: tslib
+    version: 2.3.0
+    dev: false
+
+  registry.npmmirror.com/zrender/5.3.2:
+    resolution: {integrity: sha512-8IiYdfwHj2rx0UeIGZGGU4WEVSDEdeVCaIg/fomejg1Xu6OifAL1GVzIPHg2D+MyUkbNgPWji90t0a8IDk+39w==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/zrender/-/zrender-5.3.2.tgz}
+    name: zrender
+    version: 5.3.2
+    dependencies:
+      tslib: registry.npmmirror.com/tslib/2.3.0
     dev: false

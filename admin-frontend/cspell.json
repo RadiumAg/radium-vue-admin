@@ -5,10 +5,12 @@
     "dictionaryDefinitions": [],
     "dictionaries": [],
     "words": [
+        "echarts",
         "fastify",
         "nestjs",
         "Pinia",
         "prebuild",
+        "Unocss",
         "unplugin",
         "vueuse"
     ],
