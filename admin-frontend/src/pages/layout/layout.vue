@@ -4,7 +4,7 @@
       <admin-slider class="slider" :collapse="isCollapse"></admin-slider>
       <el-container>
         <el-header><admin-header></admin-header></el-header>
-        <el-main>
+        <el-main class="main-content">
           <keep-alive-router-view></keep-alive-router-view>
         </el-main>
       </el-container>
@@ -44,5 +44,9 @@ provide<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
 
 .slider:not(.el-menu--collapse) {
   width: 200px;
+}
+
+.main-content {
+  background-color: #f6f8f9;
 }
 </style>

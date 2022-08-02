@@ -21,6 +21,7 @@ defineProps({
   .title {
     font-size: 14px;
     color: #333;
+    margin-top: 20px;
     margin-bottom: 10px;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <admin-card class="card-wrapper" margin="0">
+  <admin-card class="card-wrapper" margin="0 10px 0 0">
     <header><slot name="header"></slot></header>
     <slot></slot>
   </admin-card>

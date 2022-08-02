@@ -1,8 +1,12 @@
 <template>
   <div>
     <el-drawer direction="rtl" custom-class="drawer" v-bind="$attrs">
-      <theme-item title="主题">
-        <el-color-picker v-model="theme"></el-color-picker>
+      <theme-item title="Primary">
+        <el-color-picker v-model="primary"></el-color-picker>
+      </theme-item>
+
+      <theme-item title="Danger">
+        <el-color-picker v-model="danger"></el-color-picker>
       </theme-item>
     </el-drawer>
   </div>
@@ -11,7 +15,8 @@
 <script lang="ts" setup>
 import ThemeItem from './theme-item.vue';
 
-const theme = useCssVar('--el-color-primary', document.documentElement);
+const primary = useCssVar('--el-color-primary', document.documentElement);
+const danger = useCssVar('--el-color-danger', document.documentElement);
 </script>
 
 <style lang="scss" scoped>
