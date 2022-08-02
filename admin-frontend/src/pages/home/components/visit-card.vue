@@ -46,6 +46,6 @@ onMounted(() => {
 <style lang="scss" scoped>
 .visit-card-wrapper {
   flex-shrink: 0;
-  flex-basis: 300px;
+  flex-basis: 400px;
 }
 </style>

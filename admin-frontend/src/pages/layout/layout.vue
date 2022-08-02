@@ -38,7 +38,6 @@ provide<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
 }
 
 .el-main {
-  // background-color: #f6f8f9;
   --el-main-padding: 10px;
 }
 
@@ -47,6 +46,6 @@ provide<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
 }
 
 .main-content {
-  background-color: #f6f8f9;
+  background-color: var(--el-bg-color-page);
 }
 </style>

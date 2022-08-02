@@ -12,6 +12,7 @@ import AdminCard from '@components/admin-card/admin-card.vue';
 <style lang="scss" scoped>
 header {
   display: flex;
+  font-size: 14px;
   padding-bottom: 10px;
   border-bottom: 1px solid #ebeef5;
 }

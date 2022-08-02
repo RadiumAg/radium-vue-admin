@@ -1,11 +1,5 @@
 <template>
-  <admin-card
-    margin="0"
-    height="100%"
-    :border="false"
-    padding="0"
-    flex-direction="column"
-  >
+  <admin-card margin="0" height="100%" :border="false" flex-direction="column">
     <div class="operate">
       <el-button type="primary" @click="adminDialogVisible = true"
         >添加</el-button

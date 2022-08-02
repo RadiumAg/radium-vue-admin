@@ -36,7 +36,7 @@ const props = defineProps({
     type: String,
     default: 'max-content',
   },
-  border: { type: Boolean, default: true },
+  border: { type: Boolean, default: false },
 });
 
 const flexGrow = computed(() => {
@@ -45,7 +45,7 @@ const flexGrow = computed(() => {
 });
 
 const backgroundColor = computed(() => {
-  if (props.background) return 'var(--el-fill-color-blank)';
+  if (props.background) return 'var(--el-bg-color)';
   else return 'transparent';
 });
 
@@ -60,7 +60,7 @@ const borderStyle = computed(() => {
 
 <style lang="scss" scoped>
 .card-wrapper {
-  display: inline-flex;
+  display: flex;
   overflow: hidden;
   border-radius: 2.5px;
   margin: v-bind(margin);
