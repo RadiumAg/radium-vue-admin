@@ -1,5 +1,25 @@
-<template></template>
+<template>
+  <admin-card height="100%" background margin="0">
+    <input ref="inputRef" type="file" />
+    <el-button type="primary" @click="handleUpload">上传</el-button>
+  </admin-card>
+</template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import AdminCard from '@components/admin-card/admin-card.vue';
+import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useApi } from '@core/http/api-instance.js';
+const { upload } = useApi();
+
+const inputRef = ref<HTMLInputElement>();
+
+const handleUpload = async () => {
+  try {
+    await upload.file(inputRef.value.files.item(0), '上传');
+  } catch (e) {
+    useErrorMessage(e);
+  }
+};
+</script>
 
 <style lang="scss" scoped></style>
