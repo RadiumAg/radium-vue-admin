@@ -11,6 +11,7 @@
   "dependencies": {
     "@csstools/normalize.css": "^12.0.0",
     "@element-plus/icons-vue": "2.0.6",
+    "@types/spark-md5": "^3.0.2",
     "@vueuse/core": "^9.1.0",
     "axios": "^0.27.2",
     "echarts": "^5.3.3",
@@ -30,6 +31,7 @@
     "@unocss/vite": "^0.45.5",
     "@vitejs/plugin-vue": "3.0.1",
     "eslint": "^8.21.0",
+    "spark-md5": "^3.0.2",
     "typescript": "^4.7.4",
     "unocss": "^0.45.5",
     "unplugin-auto-import": "0.11.0",
