@@ -13,15 +13,12 @@ export class Upload {
    * @return {*}
    * @memberof Upload
    */
-  async file(file: File, dir: string) {
+  async file(file: Blob, dir: string) {
     const formData = new FormData();
     formData.append('files', file);
 
     return (
       await this.http.post('file', formData, {
-        headers: {
-          Range: `${0}-${500}`,
-        },
         params: {
           dir,
         },

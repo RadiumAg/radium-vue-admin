@@ -9,6 +9,7 @@
 import AdminCard from '@components/admin-card/admin-card.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance.js';
+import { createFileChunk } from '.';
 const { upload } = useApi();
 new Worker('./hash.ts');
 
@@ -16,7 +17,10 @@ const inputRef = ref<HTMLInputElement>();
 
 const handleUpload = async () => {
   try {
-    await upload.file(inputRef.value.files.item(0), '上传');
+    const fileChunk = createFileChunk(inputRef.value.files.item(0));
+    fileChunk.forEach(async ({ file }) => {
+      upload.file(file, 'upload');
+    });
   } catch (e) {
     useErrorMessage(e);
   }
