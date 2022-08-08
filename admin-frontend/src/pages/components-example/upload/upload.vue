@@ -10,6 +10,7 @@ import AdminCard from '@components/admin-card/admin-card.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance.js';
 const { upload } = useApi();
+new Worker('./hash.ts');
 
 const inputRef = ref<HTMLInputElement>();
 

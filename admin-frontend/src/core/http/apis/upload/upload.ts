@@ -19,6 +19,9 @@ export class Upload {
 
     return (
       await this.http.post('file', formData, {
+        headers: {
+          Range: `${0}-${500}`,
+        },
         params: {
           dir,
         },
