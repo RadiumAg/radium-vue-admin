@@ -41,9 +41,9 @@ export class UploadController {
     @UseInterceptors(FilesInterceptor('files'))
     @Post('file')
     async uploadFile(
-        @Query('dir') directory: string,
+        @Query('hash') fileName: string,
         @UploadedFiles() files: Array<Express.Multer.File>,
     ) {
-        console.log(files, directory);
+        console.log(files, fileName);
     }
 }
