@@ -13,14 +13,21 @@ export class Upload {
    * @return {*}
    * @memberof Upload
    */
-  async file(file: Blob, dir: string) {
+  async file(
+    file: Blob,
+    filename: string,
+    uploadProgressFn: (event: ProgressEvent) => void,
+  ) {
     const formData = new FormData();
     formData.append('files', file);
 
     return (
       await this.http.post('file', formData, {
         params: {
-          dir,
+          filename,
+        },
+        onUploadProgress(event: ProgressEvent) {
+          uploadProgressFn(event);
         },
       })
     ).data;

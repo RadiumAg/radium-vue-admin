@@ -3,13 +3,25 @@
     <input ref="inputRef" type="file" />
     <el-button type="primary" @click="handleUpload">上传</el-button>
 
-    <div>
+    <div class="hash-progress">
       文件hash:
       <el-progress
         :width="500"
         type="line"
         :percentage="fileInfo.hashPercentage"
       ></el-progress>
+    </div>
+
+    <div class="hash-progress">
+      上传切片:
+      <div v-for="item in fileInfo.hashList" :key="item.percentage">
+        {{ item.name }}
+        <el-progress
+          :width="500"
+          type="line"
+          :percentage="item.percentage"
+        ></el-progress>
+      </div>
     </div>
   </admin-card>
 </template>
@@ -18,12 +30,13 @@
 import AdminCard from '@components/admin-card/admin-card.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance.js';
-import { createFileChunk } from '.';
+import { FileInfo, createFileChunk } from '.';
 
 const { upload } = useApi();
-const fileInfo = reactive({
+const fileInfo = reactive<FileInfo>({
   hash: '',
   hashPercentage: 0,
+  hashList: [],
 });
 const hashWork = new Worker(new URL('./hash', import.meta.url), {
   type: 'module',
@@ -45,13 +58,23 @@ const createFileHash = () => {
 
 const handleUpload = async () => {
   try {
-    const fileChunkList = createFileChunk(inputRef.value.files.item(0));
+    const uploadFile = inputRef.value.files.item(0);
+    const fileChunkList = createFileChunk(uploadFile);
     hashWork.postMessage({ fileChunkList });
     fileInfo.hash = await createFileHash();
+    fileInfo.hashList = fileChunkList.map(({ file }, index) => ({
+      file,
+      percentage: 0,
+      name: `${fileInfo.hash}${index}${uploadFile.name.slice(
+        uploadFile.name.lastIndexOf('.'),
+      )}`,
+    }));
 
-    // fileChunk.forEach(async ({ file }) => {
-    //   upload.file(file, 'upload');
-    // });
+    fileInfo.hashList.forEach(async file => {
+      upload.file(file.file, file.name, event => {
+        file.percentage = +(event.loaded / event.total).toFixed(2) * 100;
+      });
+    });
   } catch (e) {
     useErrorMessage(e);
   }
@@ -61,5 +84,10 @@ const handleUpload = async () => {
 <style lang="scss" scoped>
 .upload-wrapper {
   display: block;
+}
+
+.hash-progress {
+  font-size: 14px;
+  margin-top: 20px;
 }
 </style>

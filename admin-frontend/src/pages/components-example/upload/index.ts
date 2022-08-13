@@ -7,3 +7,13 @@ export const createFileChunk = (file: File, size = 10 * 1024 * 1024) => {
   }
   return fileChunkList;
 };
+
+export type FileInfo = {
+  hash: string;
+  hashPercentage: number;
+  hashList: {
+    file: Blob;
+    name: string;
+    percentage: number;
+  }[];
+};
