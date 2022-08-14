@@ -16,5 +16,10 @@ export const componentsExampleRouter: RouteRecordRaw = {
       path: 'upload',
       component: () => import('./upload/upload.vue'),
     },
+    {
+      name: '富文本编辑器',
+      path: 'editor',
+      component: () => import('./rich-editor/rich-editor.vue'),
+    },
   ],
 };
