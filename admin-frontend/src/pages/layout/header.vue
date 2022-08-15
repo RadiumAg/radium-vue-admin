@@ -62,11 +62,11 @@
         <tag-item id="home" path="/" name="首页" :close-icon="false"></tag-item>
         <tag-item
           v-for="tag in currentMenus"
-          :id="tag.menuId"
-          :key="tag.menuId"
+          :id="tag.id"
+          :key="tag.id"
           :path="tag.menuPath"
           :name="tag.menuName"
-          @click.right="handleMouseRight(tag.menuId, $event)"
+          @click.right="handleMouseRight(tag.id, $event)"
         ></tag-item>
       </el-scrollbar>
     </div>
@@ -137,7 +137,7 @@ const handleContextClose = (event: EventType) => {
 
     case EventType.刷新: {
       removeInclude(
-        currentMenus.value.find(menu => menu.menuId === menuContextData.menuId)
+        currentMenus.value.find(menu => menu.id === menuContextData.menuId)
           .menuName,
       );
       router.replace({
@@ -153,10 +153,10 @@ const handleContextClose = (event: EventType) => {
       const leftMenus = currentMenus.value.slice(
         0,
         currentMenus.value.findIndex(
-          menu => menu.menuId === menuContextData.menuId,
+          menu => menu.id === menuContextData.menuId,
         ),
       );
-      leftMenus.forEach(({ menuId }) => {
+      leftMenus.forEach(({ id: menuId }) => {
         closePage(menuId);
       });
       break;
@@ -165,10 +165,10 @@ const handleContextClose = (event: EventType) => {
     case EventType.关闭右侧: {
       const rightMenus = currentMenus.value.slice(
         currentMenus.value.findIndex(
-          menu => menu.menuId === menuContextData.menuId,
+          menu => menu.id === menuContextData.menuId,
         ) + 1,
       );
-      rightMenus.forEach(({ menuId }) => {
+      rightMenus.forEach(({ id: menuId }) => {
         closePage(menuId);
       });
       break;
