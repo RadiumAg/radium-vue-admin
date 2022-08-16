@@ -1,6 +1,6 @@
 <template>
   <router-view v-slot="{ Component }">
-    <keep-alive :include="menuInclude">
+    <keep-alive :include="menuInclude.map(menu => menu.componentName)">
       <component :is="Component"></component>
     </keep-alive>
   </router-view>

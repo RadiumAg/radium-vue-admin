@@ -1,9 +1,11 @@
 import { Api } from '@core/http/decorators/api';
 import type { AxiosInstance } from 'axios';
 import type { IResponse } from '@core/http/IResponse';
-import type { TGetAllUserRes } from './models/TGetAllUserRes';
-import type { TGetLoginUserInfo } from './models/TGetLoginUserInfo';
-import type { TGetUserMenusInfo } from './models/TGetUserMenuInfoRes';
+import type {
+  GetAllUserRes,
+  GetLoginUserInfo,
+  GetUserMenusInfo,
+} from './types';
 
 @Api({ prefix: 'user' })
 export class User {
@@ -17,7 +19,7 @@ export class User {
    */
   async getUserMenusInfo() {
     return (
-      await this.http.get<IResponse<TGetUserMenusInfo>>('getUserMenusInfo')
+      await this.http.get<IResponse<GetUserMenusInfo>>('getUserMenusInfo')
     ).data;
   }
 
@@ -39,7 +41,7 @@ export class User {
    * @memberof User
    */
   async getAllUser() {
-    return (await this.http.get<IResponse<TGetAllUserRes>>('getAllUser')).data;
+    return (await this.http.get<IResponse<GetAllUserRes>>('getAllUser')).data;
   }
 
   /**
@@ -64,7 +66,7 @@ export class User {
    */
   async getLoginUserInfo() {
     return (
-      await this.http.get<IResponse<TGetLoginUserInfo>>('getLoginUserInfo')
+      await this.http.get<IResponse<GetLoginUserInfo>>('getLoginUserInfo')
     ).data;
   }
 

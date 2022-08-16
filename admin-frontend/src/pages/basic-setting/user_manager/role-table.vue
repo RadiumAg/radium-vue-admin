@@ -22,9 +22,9 @@ import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
 import { defaultThrottleTime } from '@core/utils';
+import { ElMessage, ElTable } from 'element-plus';
 import { USER_MANAGER_PROVIDE_KEY, type userManagerProvide } from '.';
-import type { ElTable } from 'element-plus';
-import type { TGetPageRoleRes } from '@core/http/apis/role/models/TGetPageRoleRes';
+import type { GetPageRoleRes } from '@core/http/apis/role/types';
 
 const tableRef = ref<InstanceType<typeof ElTable>>();
 const { role, user } = useApi();
@@ -69,7 +69,7 @@ const getUserRoles = useThrottleFn(async () => {
   }
 }, defaultThrottleTime);
 
-const handleSelectionChange = (selection: TGetPageRoleRes[]) => {
+const handleSelectionChange = (selection: GetPageRoleRes[]) => {
   selection = selection.filter(_ => _);
   selectionRoles.value = selection.map(_ => _._id);
 };

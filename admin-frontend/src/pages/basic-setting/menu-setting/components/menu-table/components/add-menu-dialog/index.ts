@@ -1,10 +1,12 @@
-import type { TGetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
-import type { TUpdateMenu } from '@core/http/apis/menu/models/TUpdateMenu';
-import type { TInsertMenuData } from '@core/http/apis/menu/models/TInsertMenuData';
+import type {
+  GetAllRes,
+  InsertMenuData,
+  UpdateMenu,
+} from '@core/http/apis/menu/types';
 
-export type FormType = TInsertMenuData & TUpdateMenu;
+export type FormType = InsertMenuData & UpdateMenu;
 
-export const searchTableData = (tableData: TGetAllRes[], id: string) => {
+export const searchTableData = (tableData: GetAllRes[], id: string) => {
   if (tableData.length === 0) return;
   for (const data of tableData) {
     const res = searchNext(data, id);
@@ -12,7 +14,7 @@ export const searchTableData = (tableData: TGetAllRes[], id: string) => {
   }
 };
 
-const searchNext = (data: TGetAllRes, id: string) => {
+const searchNext = (data: GetAllRes, id: string) => {
   if (data._id === id) return data;
   else return searchTableData(data.children, id);
 };

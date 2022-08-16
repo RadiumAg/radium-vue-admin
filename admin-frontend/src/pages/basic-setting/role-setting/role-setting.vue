@@ -28,13 +28,13 @@ import { useApi } from '@core/http/api-instance';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import AddDialog from './add-dialog.vue';
 import RoleTable from './role-table.vue';
-import type { TGetPageRoleRes } from '@core/http/apis/role/models/TGetPageRoleRes';
+import type { GetPageRoleRes } from '@core/http/apis/role/types';
 
 const { role } = useApi();
 const isLoading = ref(false);
 const adminDialogVisible = ref(false);
-const selectionRows = ref<TGetPageRoleRes[]>([]);
-const roleData = ref<TGetPageRoleRes[]>([]);
+const selectionRows = ref<GetPageRoleRes[]>([]);
+const roleData = ref<GetPageRoleRes[]>([]);
 
 const getData = async () => {
   try {

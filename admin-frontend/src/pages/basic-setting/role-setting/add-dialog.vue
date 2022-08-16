@@ -22,7 +22,7 @@ import { UPDATE_MODEL_VALUE_EVENT } from '@core/utils';
 import { useApi } from '@core/http/api-instance';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { ElMessage, FormInstance } from 'element-plus';
-import type { Role } from '@core/http/apis/role/models/Role';
+import type { Role } from '@core/http/apis/role/types';
 
 const { role } = useApi();
 const isLoading = ref(false);

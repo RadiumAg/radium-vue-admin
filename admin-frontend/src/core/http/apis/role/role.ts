@@ -1,9 +1,7 @@
 import { Api } from '@core/http/decorators/api';
 import type { IResponse } from '@core/http/IResponse';
 import type { AxiosInstance } from 'axios';
-import type { TGetPageRoleRes } from './models/TGetPageRoleRes';
-import type { TInserTRoleData } from './models/TInsertRoleData';
-import type { TUpdateRoleData } from './models/TUpdateRoleData';
+import type { GetPageRoleRes, InserTRoleData, UpdateRoleData } from './types';
 
 @Api({ prefix: 'role' })
 export class Role {
@@ -29,7 +27,7 @@ export class Role {
    * @memberof Role
    */
   async getAllRole() {
-    return (await this.http.get<IResponse<TGetPageRoleRes[]>>('getAllRole'))
+    return (await this.http.get<IResponse<GetPageRoleRes[]>>('getAllRole'))
       .data;
   }
 
@@ -40,7 +38,7 @@ export class Role {
    * @return {*}
    * @memberof Role
    */
-  async insertRole(data: TInserTRoleData) {
+  async insertRole(data: InserTRoleData) {
     return (await this.http.post('insertRole', data)).data;
   }
 
@@ -54,7 +52,7 @@ export class Role {
    */
   async getPageRole(pageIndex: number, pageSize: number) {
     return (
-      await this.http.get<IResponse<TGetPageRoleRes[]>>('getPageRole', {
+      await this.http.get<IResponse<GetPageRoleRes[]>>('getPageRole', {
         params: { pageSize, pageIndex },
       })
     ).data;
@@ -67,7 +65,7 @@ export class Role {
    * @return {*}
    * @memberof Role
    */
-  async updateRole(data: TUpdateRoleData) {
+  async updateRole(data: UpdateRoleData) {
     return (await this.http.post<IResponse>('updateRole', data)).data;
   }
 

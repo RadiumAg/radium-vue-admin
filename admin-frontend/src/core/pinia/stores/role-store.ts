@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import type { TGetUserMenusInfo } from '@core/http/apis/user/models/TGetUserMenuInfoRes';
+import type { GetUserMenusInfo } from '@core/http/apis/user/types';
 
 type Role = {
   currentRole: string;
-  roles: TGetUserMenusInfo['roles'];
+  roles: GetUserMenusInfo['roles'];
 };
 
 export const useRoleStore = defineStore('role', () => {

@@ -1,3 +1,5 @@
+import type { Ref } from 'vue';
+
 export const USER_MANAGER_PROVIDE_KEY = Symbol('USER_MANAGER_PROVIDE_KEY');
 
 export type userManagerProvide = {

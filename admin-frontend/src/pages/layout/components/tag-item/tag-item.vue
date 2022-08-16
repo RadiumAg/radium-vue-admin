@@ -47,7 +47,7 @@ const isActive = computed(() => {
 
 const handleToPage = () => {
   router.replace(props.path);
-  setActiveMenuId(props.id, props.path);
+  setActiveMenuId(props.id);
 };
 
 const handleClose = () => {

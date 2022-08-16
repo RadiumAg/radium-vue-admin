@@ -1,8 +1,8 @@
-import { Menu } from './apis/menu/menu';
-import { OAth } from './apis/oath/login';
+import { Menu } from './apis/menu';
+import { OAth } from './apis/oath';
 import { Role } from './apis/role/role';
 import { User } from './apis/user/user';
-import { Upload } from './apis/upload/upload';
+import { Upload } from './apis/upload';
 import type { App, InjectionKey } from 'vue';
 
 export class ApiInstance {

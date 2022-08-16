@@ -75,15 +75,15 @@ import { ElMessage, ElMessageBox, ElTable } from 'element-plus';
 import { MENU_SETTING_PROVIDE, type MenuSettingProvide } from '../..';
 import AddMenuDialog from './components/add-menu-dialog/add-menu-dialog.vue';
 import { searchTableData } from './components/add-menu-dialog';
-import type { TGetAllRes } from '@core/http/apis/menu/models/TGetAllRes';
+import type { GetAllRes } from '@core/http/apis/menu/types';
 
 const { menu, role } = useApi();
 const tableRef = ref<InstanceType<typeof ElTable>>();
 const { roleId } = inject<MenuSettingProvide>(MENU_SETTING_PROVIDE, {
   roleId: ref(),
 });
-const selectionRows = ref<TGetAllRes[]>([]);
-const tableData = ref<TGetAllRes[]>([]);
+const selectionRows = ref<GetAllRes[]>([]);
+const tableData = ref<GetAllRes[]>([]);
 const isLoading = ref(false);
 const addMenuDialogData = reactive({
   id: '',

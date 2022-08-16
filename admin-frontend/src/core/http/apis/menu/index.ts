@@ -1,10 +1,7 @@
 import { Api } from '@core/http/decorators/api';
 import type { IResponse } from '@core/http/IResponse';
 import type { AxiosInstance } from 'axios';
-import type { TGetAllRes } from './models/TGetAllRes';
-import type { TGetById } from './models/TGetByIdRes';
-import type { TInsertMenuData } from './models/TInsertMenuData';
-import type { TUpdateMenu } from './models/TUpdateMenu';
+import type { GetAllRes, GetById, InsertMenuData, UpdateMenu } from './types';
 
 @Api({ prefix: 'menu' })
 export class Menu {
@@ -18,9 +15,8 @@ export class Menu {
    * @memberof Menu
    */
   async deleteById(_id: string) {
-    return (
-      await this.http.post<IResponse<TGetAllRes[]>>('deleteById', { _id })
-    ).data;
+    return (await this.http.post<IResponse<GetAllRes[]>>('deleteById', { _id }))
+      .data;
   }
 
   /**
@@ -30,7 +26,7 @@ export class Menu {
    * @memberof Menu
    */
   async getAllMenu() {
-    return (await this.http.get<IResponse<TGetAllRes[]>>('getAllMenu')).data;
+    return (await this.http.get<IResponse<GetAllRes[]>>('getAllMenu')).data;
   }
 
   /**
@@ -40,7 +36,7 @@ export class Menu {
    * @return {*}
    * @memberof Menu
    */
-  async insertMenu(data: TInsertMenuData) {
+  async insertMenu(data: InsertMenuData) {
     return (await this.http.post('insertMenu', data)).data;
   }
 
@@ -51,7 +47,7 @@ export class Menu {
    * @return {*}
    * @memberof Menu
    */
-  async updateMenu(data: TUpdateMenu) {
+  async updateMenu(data: UpdateMenu) {
     return (await this.http.post('updateMenu', data)).data;
   }
 
@@ -64,7 +60,7 @@ export class Menu {
    */
   async getById(id: string) {
     return (
-      await this.http.get<IResponse<TGetById>>('getById', { params: { id } })
+      await this.http.get<IResponse<GetById>>('getById', { params: { id } })
     ).data;
   }
 }

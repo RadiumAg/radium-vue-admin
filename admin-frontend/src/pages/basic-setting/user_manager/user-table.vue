@@ -18,7 +18,7 @@
 import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance';
-import { ElMessageBox } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { USER_MANAGER_PROVIDE_KEY, userManagerProvide } from '.';
 
 const { userId } = inject<userManagerProvide>(USER_MANAGER_PROVIDE_KEY);
