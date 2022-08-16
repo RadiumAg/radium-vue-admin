@@ -16,13 +16,18 @@
 import '@wangeditor/editor/dist/css/style.css';
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
 import AdminCard from '@components/admin-card/admin-card.vue';
-
+import { setInclude } from '@core/pinia/stores/menu-store';
+defineOptions({
+  name: 'RichEditorPage',
+});
 const editorRef = ref();
 const html = ref();
 
 const handleCreated = editor => {
   editorRef.value = editor;
 };
+
+setInclude('RichEditorPage');
 </script>
 
 <style lang="scss" scoped></style>

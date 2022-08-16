@@ -1,10 +1,14 @@
-import { removeCurrentMenus } from '@core/pinia/stores/menu-store';
+import {
+  removeCurrentMenus,
+  removeInclude,
+} from '@core/pinia/stores/menu-store';
 import { useRouter } from 'vue-router';
 
 export const useClosePage = () => {
   const router = useRouter();
-  return (menuId: string) => {
-    const nextMenu = removeCurrentMenus(menuId);
+  return (id: string) => {
+    removeInclude(id);
+    const nextMenu = removeCurrentMenus(id);
     router.replace(nextMenu.menuPath);
   };
 };

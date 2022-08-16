@@ -5,6 +5,7 @@ import type { GetAllRes } from '@core/http/apis/menu/types';
 
 type Menu = {
   id: string;
+  parentId: string;
   menuName: string;
   menuPath: string;
 };
@@ -14,29 +15,61 @@ type MenuInclude = {
   componentName: string;
 };
 
-const createMenuId = (menuId: string, path: string) => {
-  return [menuId, path].join('-');
+const joinSpread = '-';
+const routerMeta = 'router';
+
+const createMenuId = (menuId: string, path: string, router = false) => {
+  const joinMeta = [menuId, path];
+  if (router) joinMeta.push(routerMeta);
+  return [menuId, path].join(joinSpread);
 };
 
 export const useMenuStore = defineStore('menu-tags', () => {
   const menusInfo = ref({
     allMenus: [] as GetAllRes[],
     currentMenus: useLocalStorage<Menu[]>('current-menus', []),
-    menuInclude: useLocalStorage<MenuInclude[]>('menu-include', []),
+    menuInclude: useSessionStorage<MenuInclude[]>('menu-include', []),
     activeMenuId: useLocalStorage('active-menu-id', ''),
   });
 
-  const setInclude = (componentName: string) => {
+  const setInclude = (
+    componentName: string,
+    { router } = { router: false },
+  ) => {
     const currentMenu = getCurrentMenu();
-    if (menusInfo.value.menuInclude.some(menu => menu.id === currentMenu.id))
+    if (
+      menusInfo.value.menuInclude.some(
+        menu => menu.componentName === componentName,
+      )
+    )
       return;
+    const [, path] = currentMenu.id.split(joinSpread);
     menusInfo.value.menuInclude.push({
       componentName,
-      id: currentMenu.id,
+      id: router
+        ? createMenuId(currentMenu.parentId, path, true)
+        : currentMenu.id,
     });
   };
 
   const removeInclude = (id: string) => {
+    const removeMenu = menusInfo.value.currentMenus.find(
+      menu => menu.id === id,
+    );
+    const removeMenuRouter = menusInfo.value.menuInclude.find(menu =>
+      menu.id.includes(removeMenu.parentId),
+    );
+
+    if (
+      menusInfo.value.currentMenus.filter(
+        menu => menu.parentId === removeMenuRouter.id.split(joinSpread)[0],
+      ).length <= 1
+    ) {
+      menusInfo.value.menuInclude = menusInfo.value.menuInclude.filter(
+        menu => !(menu.id === removeMenuRouter.id),
+      );
+    }
+
     if (!menusInfo.value.menuInclude.some(menu => menu.id === id)) return;
     menusInfo.value.menuInclude = menusInfo.value.menuInclude.filter(
       menu => !(menu.id === id),
@@ -69,13 +102,16 @@ export const useMenuStore = defineStore('menu-tags', () => {
   };
 
   const getCurrentMenu = () => {
-    return menusInfo.value.currentMenus.find(menu => menu.id);
+    return menusInfo.value.currentMenus.find(
+      menu => menu.id === menusInfo.value.activeMenuId,
+    );
   };
 
   const setCurrentMenus = (
     menuId: string,
     menuPath: string,
     menuName: string,
+    parentId: string,
   ) => {
     menusInfo.value.activeMenuId = createMenuId(menuId, menuPath);
     if (
@@ -89,6 +125,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
       id: menusInfo.value.activeMenuId,
       menuPath,
       menuName,
+      parentId,
     });
   };
   return {

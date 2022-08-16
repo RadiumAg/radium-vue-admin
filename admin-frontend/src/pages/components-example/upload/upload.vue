@@ -30,7 +30,12 @@
 import AdminCard from '@components/admin-card/admin-card.vue';
 import { useErrorMessage } from '@core/hooks/use-error-message';
 import { useApi } from '@core/http/api-instance.js';
+import { setInclude } from '@core/pinia/stores/menu-store';
 import { FileInfo, createFileChunk } from '.';
+
+defineOptions({
+  name: 'UploadPage',
+});
 
 const { upload } = useApi();
 const fileInfo = reactive<FileInfo>({
@@ -79,6 +84,8 @@ const handleUpload = async () => {
     useErrorMessage(e);
   }
 };
+
+setInclude('UploadPage');
 </script>
 
 <style lang="scss" scoped>

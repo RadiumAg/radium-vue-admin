@@ -49,8 +49,8 @@ const { menu } = defineProps({
 });
 
 const handleSetTags = () => {
-  const { menuUrl, _id, menuName } = menu;
-  setCurrentMenus(_id, menuUrl, menuName);
+  const { menuUrl, _id, menuName, parentId } = menu;
+  setCurrentMenus(_id, menuUrl, menuName, parentId);
 };
 </script>
 
