@@ -77,7 +77,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
   };
 
   const setActiveMenuId = (id: string) => {
-    menusInfo.value.activeMenuId.value = id;
+    menusInfo.value.activeMenuId = id;
   };
 
   const setAllMenus = (menus: GetAllRes[]) => {
@@ -113,7 +113,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
     menuName: string,
     parentId: string,
   ) => {
-    menusInfo.value.activeMenuId.value = createMenuId(menuId, menuPath);
+    menusInfo.value.activeMenuId = createMenuId(menuId, menuPath);
     if (
       menusInfo.value.currentMenus.some(
         _ => _.id === menusInfo.value.activeMenuId,
