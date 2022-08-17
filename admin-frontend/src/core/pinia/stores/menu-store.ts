@@ -29,7 +29,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
     allMenus: [] as GetAllRes[],
     currentMenus: useLocalStorage<Menu[]>('current-menus', []),
     menuInclude: useSessionStorage<MenuInclude[]>('menu-include', []),
-    activeMenuId: useLocalStorage('active-menu-id', ''),
+    activeMenuId: useLocalStorage<string>('active-menu-id', ''),
   });
 
   const setInclude = (
@@ -77,7 +77,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
   };
 
   const setActiveMenuId = (id: string) => {
-    menusInfo.value.activeMenuId = id;
+    menusInfo.value.activeMenuId.value = id;
   };
 
   const setAllMenus = (menus: GetAllRes[]) => {
@@ -113,7 +113,7 @@ export const useMenuStore = defineStore('menu-tags', () => {
     menuName: string,
     parentId: string,
   ) => {
-    menusInfo.value.activeMenuId = createMenuId(menuId, menuPath);
+    menusInfo.value.activeMenuId.value = createMenuId(menuId, menuPath);
     if (
       menusInfo.value.currentMenus.some(
         _ => _.id === menusInfo.value.activeMenuId,
