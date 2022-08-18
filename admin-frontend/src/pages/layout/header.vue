@@ -2,7 +2,12 @@
   <div class="header">
     <div class="nav">
       <div class="left">
-        <el-icon class="fold" @click="isCollapse = !isCollapse"
+        <el-icon
+          class="fold"
+          :class="{
+            ['is-open']: isCollapse,
+          }"
+          @click="isCollapse = !isCollapse"
           ><fold></fold
         ></el-icon>
         <el-breadcrumb separator="/">
@@ -205,6 +210,7 @@ onMounted(() => {
   }
 
   .right {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
 
@@ -231,6 +237,11 @@ onMounted(() => {
     cursor: pointer;
     font-size: 20px;
     margin-right: 10px;
+    transform: rotate(180deg);
+
+    &.is-open {
+      transform: rotate(0);
+    }
   }
 }
 </style>
