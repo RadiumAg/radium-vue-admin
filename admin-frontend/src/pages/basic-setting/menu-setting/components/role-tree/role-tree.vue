@@ -9,8 +9,8 @@
 
 <script lang="ts" setup>
 import { inject, ref } from 'vue';
-import { useApi } from '@core/http/api-instance';
-import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useApi } from '@core/http';
+import { useErrorMessage } from '@core/hooks';
 import { MENU_SETTING_PROVIDE } from '../..';
 import type { Tree } from '.';
 import type { MenuSettingProvide } from '../..';

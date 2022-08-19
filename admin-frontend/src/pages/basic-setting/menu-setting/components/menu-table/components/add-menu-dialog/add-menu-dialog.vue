@@ -30,10 +30,10 @@
 <script lang="ts" setup>
 import IconSelect from '@components/icon-select/icon-select.vue';
 import AdminDialog from '@components/admin-dialog/admin-dialog.vue';
-import { useApi } from '@core/http/api-instance';
+import { useApi } from '@core/http';
 import { computed, reactive, ref } from 'vue';
 import { UPDATE_MODEL_VALUE_EVENT, autoMap } from '@core/utils';
-import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useErrorMessage } from '@core/hooks';
 import { ElMessage, FormRules } from 'element-plus';
 import type { FormType } from '.';
 

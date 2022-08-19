@@ -67,7 +67,7 @@
 import { inject, reactive, ref } from 'vue';
 import * as icons from '@element-plus/icons-vue';
 import AdminTable from '@components/admin-table/admin-table.vue';
-import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useErrorMessage } from '@core/hooks';
 import { useApi } from '@core/http/api-instance';
 import AdminCard from '@components/admin-card/admin-card.vue';
 import { defaultThrottleTime } from '@core/utils';

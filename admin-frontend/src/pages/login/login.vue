@@ -35,7 +35,7 @@ import { useThrottleFn } from '@vueuse/core';
 import { ElMessage, FormInstance } from 'element-plus';
 import { useApi } from '@core/http/api-instance';
 import { defaultThrottleTime } from '@core/utils';
-import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useErrorMessage } from '@core/hooks';
 import { useRoute, useRouter } from 'vue-router';
 
 const api = useApi();

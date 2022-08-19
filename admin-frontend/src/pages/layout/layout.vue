@@ -27,7 +27,7 @@
 
 <script lang="ts" setup>
 import KeepAliveRouterView from '@components/keep-alive-router-view/keep-alive-router-view.vue';
-import { useMobile } from '@core/hooks/use-mobile';
+import { useMobile } from '@core/hooks';
 import AdminHeader from './header.vue';
 import AdminSlider from './slider.vue';
 import { LAYOUT_PROVIDE_KEY, LayoutProvide } from '.';

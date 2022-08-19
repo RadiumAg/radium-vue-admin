@@ -20,7 +20,7 @@ import { computed, reactive, ref } from 'vue';
 import AdminDialog from '@components/admin-dialog/admin-dialog.vue';
 import { UPDATE_MODEL_VALUE_EVENT } from '@core/utils';
 import { useApi } from '@core/http/api-instance';
-import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useErrorMessage } from '@core/hooks';
 import { ElMessage, FormInstance } from 'element-plus';
 import type { Role } from '@core/http/apis/role/types';
 

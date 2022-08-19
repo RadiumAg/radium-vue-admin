@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { installApi } from '@core/http/api-instance';
+import { installApi } from '@core/http';
 import { router } from './router';
 import '@csstools/normalize.css';
 import '@assets/css/common.scss';

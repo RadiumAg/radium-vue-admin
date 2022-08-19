@@ -93,7 +93,7 @@ import { Brush, Fold, FullScreen, Moon, Sunny } from '@element-plus/icons-vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDark } from '@vueuse/core';
 import { useUserStore } from '@core/pinia/stores/user-store';
-import { useClosePage } from '@core/hooks/use-close-page';
+import { useClosePage } from '@core/hooks';
 import ThemeDrawer from './components/theme-drawer/theme-drawer.vue';
 import MenuContext from './components/menu-context/menu-context.vue';
 import RoleDropdown from './components/role-dropdown/role-dropdown.vue';

@@ -28,9 +28,9 @@
 
 <script lang="ts" setup>
 import AdminCard from '@components/admin-card/admin-card.vue';
-import { useErrorMessage } from '@core/hooks/use-error-message';
-import { useApi } from '@core/http/api-instance.js';
-import { setInclude } from '@core/pinia/stores/menu-store';
+import { useErrorMessage } from '@core/hooks';
+import { useApi } from '@core/http';
+import { setInclude } from '@core/pinia';
 import { FileInfo, createFileChunk } from '.';
 
 defineOptions({

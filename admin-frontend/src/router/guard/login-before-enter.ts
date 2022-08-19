@@ -1,4 +1,4 @@
-import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useErrorMessage } from '@core/hooks';
 import { User } from '@core/http/apis/user/user';
 import { AxiosError } from 'axios';
 import { ElMessage } from 'element-plus';

@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
 import AdminTable from '@components/admin-table/admin-table.vue';
-import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useErrorMessage } from '@core/hooks';
 import { useApi } from '@core/http/api-instance';
 import { defaultThrottleTime } from '@core/utils';
 import { ElMessage, ElTable } from 'element-plus';

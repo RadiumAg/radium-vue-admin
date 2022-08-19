@@ -23,8 +23,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import AdminCard from '@components/admin-card/admin-card.vue';
-import { useErrorMessage } from '@core/hooks/use-error-message';
-import { useApi } from '@core/http/api-instance';
+import { useErrorMessage } from '@core/hooks';
+import { useApi } from '@core/http';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import AddDialog from './add-dialog.vue';
 import RoleTable from './role-table.vue';

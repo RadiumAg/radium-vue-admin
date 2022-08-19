@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import AdminTable from '@components/admin-table/admin-table.vue';
-import { useErrorMessage } from '@core/hooks/use-error-message';
+import { useErrorMessage } from '@core/hooks';
 import { useApi } from '@core/http/api-instance';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { USER_MANAGER_PROVIDE_KEY, userManagerProvide } from '.';

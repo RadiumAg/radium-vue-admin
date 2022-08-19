@@ -18,7 +18,7 @@ import { computed, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 import { setActiveMenuId, useMenuStore } from '@core/pinia/stores/menu-store';
 import { Close } from '@element-plus/icons-vue';
-import { useClosePage } from '@core/hooks/use-close-page';
+import { useClosePage } from '@core/hooks';
 
 const props = defineProps({
   closeIcon: {
