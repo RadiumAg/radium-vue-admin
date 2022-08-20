@@ -21,5 +21,3 @@ export const useUserStore = defineStore('user', () => {
     setUserInfo,
   };
 });
-
-export const { setUserInfo } = useUserStore();

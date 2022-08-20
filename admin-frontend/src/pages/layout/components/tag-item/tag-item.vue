@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
-import { setActiveMenuId, useMenuStore } from '@core/pinia/stores/menu-store';
+import { useMenuStore } from '@core/pinia';
 import { Close } from '@element-plus/icons-vue';
 import { useClosePage } from '@core/hooks';
 
@@ -40,14 +40,14 @@ const props = defineProps({
 });
 const closePage = useClosePage();
 const router = useRouter();
-const { activeMenuId } = toRefs(useMenuStore());
+const { activeMenuId, setActiveMenuId } = toRefs(useMenuStore());
 const isActive = computed(() => {
   return activeMenuId.value === props.id;
 });
 
 const handleToPage = () => {
   router.replace(props.path);
-  setActiveMenuId(props.id);
+  setActiveMenuId.value(props.id);
 };
 
 const handleClose = () => {

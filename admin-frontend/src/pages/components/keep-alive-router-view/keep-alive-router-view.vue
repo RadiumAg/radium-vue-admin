@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import { toRefs } from 'vue';
-import { useMenuStore } from '@core/pinia/stores/menu-store';
+import { useMenuStore } from '@core/pinia';
 
 const { menuInclude } = toRefs(useMenuStore());
 </script>

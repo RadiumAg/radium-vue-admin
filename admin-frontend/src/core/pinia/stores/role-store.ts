@@ -21,5 +21,3 @@ export const useRoleStore = defineStore('role', () => {
     setRoles,
   };
 });
-
-export const { setRoles } = useRoleStore();

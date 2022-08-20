@@ -18,10 +18,10 @@
 
 <script lang="ts" setup>
 import { ArrowDown } from '@element-plus/icons-vue';
-import { useRoleStore } from '@core/pinia/stores/role-store';
-import { setAllMenus } from '@core/pinia/stores/menu-store';
+import { useMenuStore, useRoleStore } from '@core/pinia';
 
 const { roleInfo } = useRoleStore();
+const { setAllMenus } = useMenuStore();
 
 const handleCommand = (roleId: string) => {
   roleInfo.currentRole = roleId;

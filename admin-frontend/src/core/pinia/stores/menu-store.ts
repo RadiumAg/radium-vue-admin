@@ -140,13 +140,3 @@ export const useMenuStore = defineStore('menu-tags', () => {
     removeCurrentMenus,
   };
 });
-
-export const {
-  setAllMenus,
-  setInclude,
-  removeInclude,
-  setCurrentMenus,
-  getCurrentMenu,
-  setActiveMenuId,
-  removeCurrentMenus,
-} = useMenuStore();

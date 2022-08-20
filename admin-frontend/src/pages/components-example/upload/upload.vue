@@ -30,13 +30,13 @@
 import AdminCard from '@components/admin-card/admin-card.vue';
 import { useErrorMessage } from '@core/hooks';
 import { useApi } from '@core/http';
-import { setInclude } from '@core/pinia';
+import { useMenuStore } from '@core/pinia';
 import { FileInfo, createFileChunk } from '.';
 
 defineOptions({
   name: 'UploadPage',
 });
-
+const { setInclude } = useMenuStore();
 const { upload } = useApi();
 const fileInfo = reactive<FileInfo>({
   hash: '',

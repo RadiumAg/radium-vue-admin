@@ -88,11 +88,10 @@
 </template>
 
 <script lang="ts" setup>
-import { removeInclude, useMenuStore } from '@core/pinia/stores/menu-store';
+import { useMenuStore, useUserStore } from '@core/pinia';
 import { Brush, Fold, FullScreen, Moon, Sunny } from '@element-plus/icons-vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDark } from '@vueuse/core';
-import { useUserStore } from '@core/pinia/stores/user-store';
 import { useClosePage } from '@core/hooks';
 import ThemeDrawer from './components/theme-drawer/theme-drawer.vue';
 import MenuContext from './components/menu-context/menu-context.vue';
@@ -101,6 +100,7 @@ import TagItem from './components/tag-item/tag-item.vue';
 import { EventType } from './components/menu-context';
 import { LAYOUT_PROVIDE_KEY, type LayoutProvide } from '.';
 
+const { removeInclude } = useMenuStore();
 const { isCollapse } = inject<LayoutProvide>(LAYOUT_PROVIDE_KEY, {
   isCollapse: ref(false),
 });

@@ -16,10 +16,11 @@
 import '@wangeditor/editor/dist/css/style.css';
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
 import AdminCard from '@components/admin-card/admin-card.vue';
-import { setInclude } from '@core/pinia/stores/menu-store';
+import { useMenuStore } from '@core/pinia';
 defineOptions({
   name: 'RichEditorPage',
 });
+const { setInclude } = useMenuStore();
 const editorRef = ref();
 const html = ref();
 

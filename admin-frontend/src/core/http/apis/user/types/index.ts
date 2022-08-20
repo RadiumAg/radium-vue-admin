@@ -1,5 +1,6 @@
 import type { Base } from '../../common/types/Base';
 import type { GetAllRes } from '../../menu/types';
+import type { GetPageRoleRes } from '../../role/types';
 
 export type GetAllUserRes = ({ userName: string } & Base)[];
 
