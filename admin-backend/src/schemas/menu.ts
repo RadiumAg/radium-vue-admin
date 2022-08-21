@@ -17,8 +17,23 @@ export class Menu {
     @Prop()
     parentId: string;
 
-    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Menu' }] })
+    @Prop({
+        type: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Menu',
+                pre: function () {},
+            },
+        ],
+    })
     children: Menu[];
 }
 
 export const MenuSchema = SchemaFactory.createForClass(Menu);
+
+MenuSchema.pre('find', function (next) {
+    this.populate({
+        path: 'children',
+    });
+    next();
+});

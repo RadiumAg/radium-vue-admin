@@ -19,3 +19,11 @@ export class User {
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+UserSchema.pre(['find', 'findOne'], function (next) {
+    this.populate({
+        path: 'roles',
+        populate: { path: 'menus' },
+    });
+    next();
+});

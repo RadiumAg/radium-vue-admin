@@ -1,3 +1,4 @@
+import { nestedRouter } from './nested/router';
 import type { RouteRecordRaw } from 'vue-router';
 
 export const componentsExampleRouter: RouteRecordRaw = {
@@ -21,5 +22,6 @@ export const componentsExampleRouter: RouteRecordRaw = {
       path: 'editor',
       component: () => import('./rich-editor/rich-editor.vue'),
     },
+    nestedRouter,
   ],
 };

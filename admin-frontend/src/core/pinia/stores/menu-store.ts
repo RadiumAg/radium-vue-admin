@@ -61,8 +61,9 @@ export const useMenuStore = defineStore('menu-tags', () => {
     );
 
     if (
+      removeMenuRouter &&
       menusInfo.value.currentMenus.filter(
-        menu => menu.parentId === removeMenuRouter.id.split(joinSpread)[0],
+        menu => menu.parentId === removeMenuRouter?.id.split(joinSpread)[0],
       ).length <= 1
     ) {
       menusInfo.value.menuInclude = menusInfo.value.menuInclude.filter(

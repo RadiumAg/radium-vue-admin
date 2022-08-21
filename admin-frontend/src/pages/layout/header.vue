@@ -116,7 +116,7 @@ const isDark = useDark();
 const menuContextData = reactive({
   x: 0,
   y: 0,
-  menuId: '',
+  id: '',
   visible: false,
 });
 
@@ -124,27 +124,24 @@ useEventListener('click', () => {
   menuContextData.visible = false;
 });
 
-const handleMouseRight = (menuId: string, mouseEvent: MouseEvent) => {
+const handleMouseRight = (id: string, mouseEvent: MouseEvent) => {
   mouseEvent.preventDefault();
   menuContextData.x = mouseEvent.clientX;
   menuContextData.y = mouseEvent.clientY;
   menuContextData.visible = true;
-  menuContextData.menuId = menuId;
+  menuContextData.id = id;
 };
 
 const handleContextClose = (event: EventType) => {
   menuContextData.visible = false;
   switch (event) {
     case EventType.关闭: {
-      closePage(menuContextData.menuId);
+      closePage(menuContextData.id);
       break;
     }
 
     case EventType.刷新: {
-      removeInclude(
-        currentMenus.value.find(menu => menu.id === menuContextData.menuId)
-          .menuName,
-      );
+      removeInclude(menuContextData.id);
       router.replace({
         name: 'redirect',
         params: {
@@ -157,24 +154,21 @@ const handleContextClose = (event: EventType) => {
     case EventType.关闭左侧: {
       const leftMenus = currentMenus.value.slice(
         0,
-        currentMenus.value.findIndex(
-          menu => menu.id === menuContextData.menuId,
-        ),
+        currentMenus.value.findIndex(menu => menu.id === menuContextData.id),
       );
       leftMenus.forEach(({ id: menuId }) => {
-        closePage(menuId);
+        closePage(menuId, false);
       });
       break;
     }
 
     case EventType.关闭右侧: {
       const rightMenus = currentMenus.value.slice(
-        currentMenus.value.findIndex(
-          menu => menu.id === menuContextData.menuId,
-        ) + 1,
+        currentMenus.value.findIndex(menu => menu.id === menuContextData.id) +
+          1,
       );
       rightMenus.forEach(({ id: menuId }) => {
-        closePage(menuId);
+        closePage(menuId, false);
       });
       break;
     }

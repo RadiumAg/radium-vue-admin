@@ -54,18 +54,7 @@ export class UserService {
     }
 
     async getUserMenus(userId: string) {
-        const userData = await this.userModel
-            .findById(userId)
-            .populate({
-                path: 'roles',
-                populate: {
-                    path: 'menus',
-                    populate: {
-                        path: 'children',
-                    },
-                },
-            })
-            .exec();
+        const userData = await this.userModel.findById(userId).exec();
 
         userData.roles.forEach(((role: Role) => {
             const parentMenus = role.menus.filter(menu => menu.parentId === '');

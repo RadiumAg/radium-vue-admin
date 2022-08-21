@@ -50,10 +50,7 @@ export class MenuService {
     }
 
     async getAll() {
-        const allMenus = this.menuModel
-            .find({ parentId: '' })
-            .populate('children')
-            .exec();
+        const allMenus = this.menuModel.find({ parentId: '' }).exec();
         return allMenus;
     }
 
