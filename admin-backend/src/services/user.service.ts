@@ -54,7 +54,9 @@ export class UserService {
     }
 
     async getUserMenus(userId: string) {
-        const userData = await this.userModel.findById(userId).exec();
+        const userData = await this.userModel
+            .findById(userId, undefined)
+            .exec();
 
         userData.roles.forEach(((role: Role) => {
             const parentMenus = role.menus.filter(menu => menu.parentId === '');

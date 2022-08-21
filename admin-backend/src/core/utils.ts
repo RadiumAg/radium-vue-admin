@@ -1,4 +1,3 @@
-import { Menu } from '@schemas/menu';
 import { Result } from '@vo/result';
 
 type DataType<T> = null | T;
@@ -14,5 +13,3 @@ export class AdminResponse {
         return res;
     }
 }
-
-export const organizationMenus = (menu: Menu, menus: Menu[]) => {};

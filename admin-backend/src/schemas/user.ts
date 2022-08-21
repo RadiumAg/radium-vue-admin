@@ -1,5 +1,6 @@
 import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
+import * as mongooseAutoPopulate from 'mongoose-autopopulate';
 
 export type UserDocument = User & Document;
 
@@ -14,16 +15,18 @@ export class User {
     @Prop()
     avatar: string;
 
-    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }] })
+    @Prop({
+        type: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Role',
+                autopopulate: true,
+            },
+        ],
+    })
     roles: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
-UserSchema.pre(['find', 'findOne'], function (next) {
-    this.populate({
-        path: 'roles',
-        populate: { path: 'menus' },
-    });
-    next();
-});
+UserSchema.plugin(mongooseAutoPopulate as any);

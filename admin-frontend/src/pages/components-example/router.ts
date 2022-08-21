@@ -7,12 +7,6 @@ export const componentsExampleRouter: RouteRecordRaw = {
   component: () => import('./router.vue'),
   children: [
     {
-      path: '',
-      redirect: {
-        name: '上传组件',
-      },
-    },
-    {
       name: '上传组件',
       path: 'upload',
       component: () => import('./upload/upload.vue'),

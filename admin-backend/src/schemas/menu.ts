@@ -1,6 +1,6 @@
 import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
-
+import * as mongooseAutoPopulate from 'mongoose-autopopulate';
 export type MenuDocument = Menu & Document;
 
 @Schema()
@@ -22,7 +22,7 @@ export class Menu {
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Menu',
-                pre: function () {},
+                autopopulate: true,
             },
         ],
     })
@@ -31,9 +31,4 @@ export class Menu {
 
 export const MenuSchema = SchemaFactory.createForClass(Menu);
 
-MenuSchema.pre('find', function (next) {
-    this.populate({
-        path: 'children',
-    });
-    next();
-});
+MenuSchema.plugin(mongooseAutoPopulate as any);

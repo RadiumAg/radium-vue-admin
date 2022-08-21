@@ -3,12 +3,15 @@ import { useRouter } from 'vue-router';
 
 export const useClosePage = () => {
   const router = useRouter();
-  const { removeCurrentMenus, removeInclude } = useMenuStore();
+  const { removeCurrentMenus, removeInclude, activeMenuId } = toRefs(
+    useMenuStore(),
+  );
 
   return (id: string, isRouter = true) => {
-    removeInclude(id);
-    const nextMenu = removeCurrentMenus(id);
+    removeInclude.value(id);
+    const nextMenu = removeCurrentMenus.value(id);
     if (isRouter) {
+      activeMenuId.value = nextMenu.id;
       router.replace(nextMenu.menuPath);
     }
   };

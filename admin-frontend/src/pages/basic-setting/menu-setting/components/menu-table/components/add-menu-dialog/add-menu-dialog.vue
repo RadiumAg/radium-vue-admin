@@ -8,7 +8,7 @@
         <el-input v-model="formData.menuUrl"></el-input>
       </el-form-item>
       <el-form-item label="图标" prop="menuIcon">
-        <icon-select v-model="formData.menuIcon"></icon-select>
+        <icon-select v-model="formData.menuIcon" clearable></icon-select>
       </el-form-item>
     </el-form>
 

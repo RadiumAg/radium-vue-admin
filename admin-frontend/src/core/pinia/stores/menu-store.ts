@@ -98,7 +98,6 @@ export const useMenuStore = defineStore('menu-tags', () => {
           menuName: '首页',
           menuPath: '/',
         };
-    menusInfo.value.activeMenuId = nextMenu?.id || '';
     return nextMenu;
   };
 

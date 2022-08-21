@@ -6,12 +6,6 @@ export const menuSettingRouter: RouteRecordRaw = {
   component: () => import('./router.vue'),
   children: [
     {
-      path: '',
-      redirect: {
-        name: '菜单设置',
-      },
-    },
-    {
       name: '菜单设置',
       path: 'menu_setting',
       component: () => import('./menu-setting/menu-setting.vue'),
