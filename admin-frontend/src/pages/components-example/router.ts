@@ -7,6 +7,11 @@ export const componentsExampleRouter: RouteRecordRaw = {
   component: () => import('./router.vue'),
   children: [
     {
+      name: '表格',
+      path: 'edit_table',
+      component: () => import('./edit-table/edit-table.vue'),
+    },
+    {
       name: '上传组件',
       path: 'upload',
       component: () => import('./upload/upload.vue'),
