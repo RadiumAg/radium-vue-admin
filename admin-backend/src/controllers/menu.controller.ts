@@ -7,12 +7,14 @@ import {
 import { Body, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { UpdateMenuData } from '@dto/menu/view/update-menu.data';
 import { InsertMenuData } from '@dto/menu/view/insert-menu.data';
-import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
 import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
 import { AdminResponse } from '@core/utils';
 import { MenuService } from '@services/menu.service';
-import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
-import { AdminController } from '@decorator/admin-controller.decorator';
+import {
+    AdminApiResponse,
+    AdminApiExtraModels,
+    AdminController,
+} from '@decorator';
 import { GetAllMenuRes } from '@dto/menu/view/get-all-menu.res';
 import { DeleteByIdData } from '@dto/menu/view/delete-by-id.data';
 

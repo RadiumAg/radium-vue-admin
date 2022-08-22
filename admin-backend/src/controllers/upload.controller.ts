@@ -1,5 +1,5 @@
 import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
-import { AdminController } from '@decorator/admin-controller.decorator';
+import { AdminController } from '@decorator';
 import {
     Get,
     Post,

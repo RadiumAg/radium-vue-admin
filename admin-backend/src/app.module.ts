@@ -1,3 +1,4 @@
+import { ExampleModule } from './modules/example.module';
 import { UploadModule } from './modules/upload.module';
 import { RoleModule } from './modules/role.module';
 import { LoginModule } from './modules/login.module';
@@ -11,6 +12,7 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
     imports: [
+        ExampleModule,
         UploadModule,
         RoleModule,
         LoginModule,

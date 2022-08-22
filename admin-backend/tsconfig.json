@@ -24,7 +24,7 @@
             "@modules/*": ["./src/modules/*"],
             "@schemas/*": ["./src/schemas/*"],
             "@services/*": ["./src/services/*"],
-            "@decorator/*": ["./src/decorator/*"],
+            "@decorator": ["./src/decorator/index.ts"],
             "@controllers/*": ["./src/controllers/*"]
         }
     }

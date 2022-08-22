@@ -3,7 +3,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { UserService } from '@services/user.service';
 import { AdminResponse } from 'src/core/utils';
 import { OAthService } from '@services/oath.service';
-import { AdminController } from '@decorator/admin-controller.decorator';
+import { AdminController } from '@decorator';
 import { LoginData } from '@dto/login/view/login-data';
 
 @ApiTags('oath')

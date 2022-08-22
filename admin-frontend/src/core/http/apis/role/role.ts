@@ -1,5 +1,5 @@
 import { Api } from '@core/http/decorators/api';
-import type { IResponse } from '@core/http/IResponse';
+import type { IResponse } from '@core/http/type';
 import type { AxiosInstance } from 'axios';
 import type { GetPageRoleRes, InserTRoleData, UpdateRoleData } from './types';
 
