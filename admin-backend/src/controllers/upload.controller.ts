@@ -1,5 +1,4 @@
 import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
-import { AdminController } from '@decorator';
 import {
     Get,
     Post,
@@ -13,6 +12,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import { resolve } from 'path';
+import { AdminController } from '@decorator/admin-controller.decorator';
 
 @ApiTags('upload')
 @AdminController('upload')

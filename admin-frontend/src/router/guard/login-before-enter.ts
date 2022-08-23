@@ -1,5 +1,5 @@
 import { useErrorMessage } from '@core/hooks';
-import { User } from '@core/http/apis/user/user';
+import { User } from '@core/http/apis/user';
 import { AxiosError } from 'axios';
 import { ElMessage } from 'element-plus';
 import type { RouteLocationNormalized } from 'vue-router';

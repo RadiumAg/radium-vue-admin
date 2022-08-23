@@ -10,15 +10,13 @@ import {
 } from '@nestjs/swagger';
 import { UserService } from '@services/user.service';
 import { JwtAuthGuard } from 'src/core/auth/guards/jwt-auth.guard';
-import {
-    AdminApiResponse,
-    AdminApiExtraModels,
-    AdminController,
-} from '@decorator';
 import { OAthService } from '@services/oath.service';
 import { UpdateUserRoleData } from '@dto/user/view/update-user-role.data';
 import { GetAllUserInfoRes } from '@dto/user/view/get-all-userinfo.res';
 import { GetUserMenusInfoRes } from '@dto/menu/view/get-user-menus-info.res';
+import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
+import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
+import { AdminController } from '@decorator/admin-controller.decorator';
 
 @ApiTags('user')
 @AdminApiExtraModels(

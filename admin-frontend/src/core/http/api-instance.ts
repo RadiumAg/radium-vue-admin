@@ -1,8 +1,4 @@
-import { Menu } from './apis/menu';
-import { OAth } from './apis/oath';
-import { Role } from './apis/role/role';
-import { User } from './apis/user/user';
-import { Upload } from './apis/upload';
+import { Example, Menu, OAth, Role, Upload, User } from './apis';
 import type { App, InjectionKey } from 'vue';
 
 export class ApiInstance {
@@ -10,6 +6,7 @@ export class ApiInstance {
   readonly oath = new OAth();
   readonly role = new Role();
   readonly user = new User();
+  readonly example = new Example();
   readonly upload = new Upload();
 }
 

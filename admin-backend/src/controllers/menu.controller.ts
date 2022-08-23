@@ -10,13 +10,11 @@ import { InsertMenuData } from '@dto/menu/view/insert-menu.data';
 import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
 import { AdminResponse } from '@core/utils';
 import { MenuService } from '@services/menu.service';
-import {
-    AdminApiResponse,
-    AdminApiExtraModels,
-    AdminController,
-} from '@decorator';
 import { GetAllMenuRes } from '@dto/menu/view/get-all-menu.res';
 import { DeleteByIdData } from '@dto/menu/view/delete-by-id.data';
+import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
+import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
+import { AdminController } from '@decorator/admin-controller.decorator';
 
 @ApiTags('menu')
 @ApiBearerAuth()

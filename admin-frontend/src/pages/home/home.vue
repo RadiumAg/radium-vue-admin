@@ -42,7 +42,7 @@ import img from '@assets/img/home/img.png';
 import learning from '@assets/img/home/learning.png';
 import movie from '@assets/img/home/movie.png';
 import writing from '@assets/img/home/writing.png';
-import AdminCard from '../components/admin-card/admin-card.vue';
+import { AdminCard } from '../components';
 
 import VisitCard from './components/visit-card.vue';
 import DownloadCard from './components/download-card.vue';
