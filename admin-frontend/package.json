@@ -23,7 +23,7 @@
     "qs": "^6.11.0",
     "sass": "^1.54.4",
     "vue": "3.2.37",
-    "vue-router": "^4.1.3"
+    "vue-router": "4.1.4"
   },
   "devDependencies": {
     "@raag/eslint-config-vue": "1.1.4",
