@@ -74,7 +74,7 @@ import { defaultThrottleTime } from '@core/utils';
 import { ElMessage, ElMessageBox, ElTable } from 'element-plus';
 import { MENU_SETTING_PROVIDE, type MenuSettingProvide } from '../..';
 import AddMenuDialog from './components/add-menu-dialog/add-menu-dialog.vue';
-import { searchTableData } from './components/add-menu-dialog';
+import { searchTableData } from '.';
 import type { GetAllRes } from '@core/http/apis/menu/types';
 
 const { menu, role } = useApi();
