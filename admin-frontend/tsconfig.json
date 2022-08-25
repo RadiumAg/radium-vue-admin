@@ -27,6 +27,7 @@
     "baseUrl": ".",
     "paths": {
       "@core/*": ["./src/core/*"],
+      "@components": ["./src/pages/components/index.ts"],
       "@components/*": ["./src/pages/components/*"],
       "@pages/*": ["./src/pages/*"],
       "@assets/*": ["./src/assets/*"]

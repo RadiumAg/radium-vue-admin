@@ -5,7 +5,7 @@ https://docs.nestjs.com/controllers#controllers
 
 import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
 import { mock } from 'mockjs';
-import { UseGuards, Post, Get } from '@nestjs/common';
+import { UseGuards, Get } from '@nestjs/common';
 import {
     ApiTags,
     ApiBearerAuth,
