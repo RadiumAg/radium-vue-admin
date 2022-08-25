@@ -21,6 +21,11 @@ export const componentsExampleRouter: RouteRecordRaw = {
       path: 'editor',
       component: () => import('./rich-editor/rich-editor.vue'),
     },
+    {
+      name: '贝塞尔曲线',
+      path: 'bezier-curve',
+      component: () => import('./bezier-curve/bezier-curve.vue'),
+    },
     nestedRouter,
   ],
 };

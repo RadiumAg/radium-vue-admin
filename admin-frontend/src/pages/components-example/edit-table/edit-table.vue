@@ -20,33 +20,36 @@ import { useApi } from '@core/http';
 import InputCell from './input-cell';
 import type { Column } from 'element-plus';
 
-
-
 const { example } = useApi();
 const tableData = ref([]);
-
+const radioPrefix = 'radio';
 const cellRenderer = ({ rowData, column }) => {
-  return rowData[column.dataKey]
+  const radioKey = radioPrefix + column.dataKey;
+  const value = rowData[column.dataKey];
+  return rowData[radioKey]
     ? h(InputCell, {
         forwardRef: ref => {
           ref?.focus?.();
         },
         onKeydownEnter() {
-          rowData[column.dataKey] = false;
+          rowData[radioKey] = false;
+        },
+        onBlur() {
+          rowData[radioKey] = false;
         },
         onChange(val) {
           rowData[column.dataKey] = val;
         },
-        value: rowData[column.dataKey],
+        value,
       })
     : h(
         'div',
         {
           onclick() {
-            rowData[column.dataKey] = true;
+            rowData[radioKey] = true;
           },
         },
-        [rowData[column.dataKey]],
+        [value],
       );
 };
 
@@ -55,6 +58,7 @@ const columns: Column<any>[] = [
     title: '姓名',
     dataKey: 'name',
     width: 100,
+    cellRenderer,
   },
   {
     title: '地址',
