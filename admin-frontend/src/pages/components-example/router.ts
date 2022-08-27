@@ -23,7 +23,7 @@ export const componentsExampleRouter: RouteRecordRaw = {
     },
     {
       name: '贝塞尔曲线',
-      path: 'bezier-curve',
+      path: 'bezier_curve',
       component: () => import('./bezier-curve/bezier-curve.vue'),
     },
     nestedRouter,
