@@ -1,6 +1,6 @@
 <template>
   <admin-card height="100%" margin="0">
-    <canvas ref="canvasRef" class="canvas"></canvas>
+    <canvas ref="canvasRef" class="canvas" width="400" height="400"></canvas>
   </admin-card>
 </template>
 
@@ -12,8 +12,6 @@ const canvasRef = ref<HTMLCanvasElement>();
 
 <style lang="scss" scoped>
 .canvas {
-  width: 400px;
-  height: 400px;
   border: 1px solid #ccc;
 }
 </style>
