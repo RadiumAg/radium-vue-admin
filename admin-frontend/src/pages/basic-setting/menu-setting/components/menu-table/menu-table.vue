@@ -12,19 +12,21 @@
     </div>
 
     <admin-card padding="0" auto-fill margin="0" :border="false">
-      <admin-table
+      <tree-table
         v-loading="isLoading"
-        :to-ref="
+        selection
+        :forward-ref="
           ref => {
             tableRef = ref;
           }
         "
+        :tree-props="{
+          children: 'children',
+        }"
         :data="tableData"
         row-key="_id"
         @selection-change="selectionRows = $event"
       >
-        <el-table-column type="selection"></el-table-column>
-
         <el-table-column label="菜单名称" prop="menuName"></el-table-column>
 
         <el-table-column label="菜单名称" prop="menuName"></el-table-column>
@@ -50,7 +52,7 @@
             >
           </template>
         </el-table-column>
-      </admin-table>
+      </tree-table>
     </admin-card>
 
     <add-menu-dialog
@@ -66,10 +68,9 @@
 <script lang="ts" setup>
 import { inject, reactive, ref } from 'vue';
 import * as icons from '@element-plus/icons-vue';
-import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks';
 import { useApi } from '@core/http/api-instance';
-import AdminCard from '@components/admin-card/admin-card.vue';
+import { AdminCard, TreeTable } from '@components';
 import { defaultThrottleTime } from '@core/utils';
 import { ElMessage, ElMessageBox, ElTable } from 'element-plus';
 import { MENU_SETTING_PROVIDE, type MenuSettingProvide } from '../..';
@@ -78,6 +79,7 @@ import { searchTableData } from '.';
 import type { GetAllRes } from '@core/http/apis/menu/types';
 
 const { menu, role } = useApi();
+const permissionRoles = ref([]);
 const tableRef = ref<InstanceType<typeof ElTable>>();
 const { roleId } = inject<MenuSettingProvide>(MENU_SETTING_PROVIDE, {
   roleId: ref(),
@@ -133,11 +135,7 @@ const handleEdit = (id: string) => {
 const getRoleMenu = async () => {
   try {
     const resData = await role.getRoleMenu(roleId.value);
-    tableRef.value.clearSelection();
-    resData.data.forEach(_ => {
-      const row = searchTableData(tableData.value, _);
-      tableRef.value.toggleRowSelection(row, true);
-    });
+    permissionRoles.value = resData.data;
   } catch (e) {
     useErrorMessage(e);
   }
