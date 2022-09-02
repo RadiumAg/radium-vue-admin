@@ -101,6 +101,7 @@ export default defineComponent({
                     indeterminateRows.value.set(rowKey, row);
                   } else {
                     if (
+                      children?.length > 0 &&
                       checkRows?.length > 0 &&
                       checkRows?.length === children?.length
                     ) {
@@ -163,7 +164,7 @@ export default defineComponent({
     });
 
     watch(
-      tableData,
+      [tableData, () => props.checkRowKeys],
       () => {
         props.checkRowKeys?.forEach(key => {
           const row = getDataRow(
@@ -172,7 +173,9 @@ export default defineComponent({
             props.rowKey,
             treeChildrenProp.value,
           );
-          selectionRows.value.set(row[props.rowKey], row);
+          if (row) {
+            selectionRows.value.set(row[props.rowKey], row);
+          }
         });
       },
       { immediate: true, flush: 'post' },

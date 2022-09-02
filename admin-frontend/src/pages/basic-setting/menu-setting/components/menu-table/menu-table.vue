@@ -20,6 +20,7 @@
             tableRef = ref;
           }
         "
+        :check-row-keys="permissionRoles"
         :tree-props="{
           children: 'children',
         }"

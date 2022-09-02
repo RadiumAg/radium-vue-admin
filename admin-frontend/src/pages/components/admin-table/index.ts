@@ -41,17 +41,15 @@ export const getDataRow = (
   rowKey: string,
   treeChildrenProps: string,
 ) => {
-  data.forEach(row => {
+  for (const row of data) {
     const children = data[treeChildrenProps];
     const checkKey = row[rowKey];
     if (checkKey === checkRowKey) {
       return row;
-    } else if (children && children.length > 0) {
-      getDataRow(checkKey, children, rowKey, treeChildrenProps);
     }
-  });
-};
 
-export const installPjTable: (app: App, ...options: any[]) => any = app => {
-  app.component('PjTable', PjTable);
+    if (children && children.length > 0) {
+      return getDataRow(checkRowKey, children, rowKey, treeChildrenProps);
+    }
+  }
 };
