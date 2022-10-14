@@ -23,7 +23,7 @@
     "qs": "^6.11.0",
     "sass": "^1.54.5",
     "unplugin-element-plus": "^0.4.1",
-    "vue": "3.2.37",
+    "vue": "3.2.41",
     "vue-router": "^4.1.4"
   },
   "devDependencies": {
