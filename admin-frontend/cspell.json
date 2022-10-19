@@ -7,10 +7,12 @@
     "words": [
         "echarts",
         "fastify",
+        "konva",
         "mockjs",
         "nestjs",
         "Pinia",
         "prebuild",
+        "raag",
         "resizer",
         "Unocss",
         "unplugin",

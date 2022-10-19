@@ -136,6 +136,7 @@ importers:
       echarts: ^5.3.3
       element-plus: 2.2.14
       eslint: ^8.22.0
+      konva: ^8.3.13
       nprogress: ^0.2.0
       pinia: ^2.0.20
       qs: ^6.11.0
@@ -149,6 +150,7 @@ importers:
       unplugin-vue-define-options: ^0.10.0
       vite: ^3.1.8
       vue: ^3.2.37
+      vue-konva: ^3.0.1
       vue-router: ^4.1.4
       vue-tsc: ^1.0.8
     dependencies:
@@ -161,12 +163,14 @@ importers:
       axios: 0.27.2
       echarts: 5.3.3
       element-plus: 2.2.14_vue@3.2.37
+      konva: registry.npmmirror.com/konva/8.3.13
       nprogress: 0.2.0
       pinia: 2.0.20_j6bzmzd4ujpabbp5objtwxyjp4
       qs: 6.11.0
       sass: 1.54.5
       unplugin-element-plus: registry.npmmirror.com/unplugin-element-plus/0.4.1_vite@3.1.8
       vue: 3.2.37
+      vue-konva: registry.npmmirror.com/vue-konva/3.0.1
       vue-router: 4.1.4_vue@3.2.37
     devDependencies:
       '@raag/eslint-config-vue': 1.1.4_4rv7y5c6xz3vfxwhbrcxxi73bq
@@ -9010,6 +9014,12 @@ packages:
     version: 7.0.0
     engines: {node: '>=0.12.0'}
 
+  registry.npmmirror.com/konva/8.3.13:
+    resolution: {integrity: sha512-O5VxHfRfTj4PscTglQH1NimS8+CC5hQYLeB8YQstu8MN/i2L8GjA1T9d7xxzITF2TD5+xcIs5ei7en3cztbNXg==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/konva/-/konva-8.3.13.tgz}
+    name: konva
+    version: 8.3.13
+    dev: false
+
   registry.npmmirror.com/magic-string/0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/magic-string/-/magic-string-0.25.9.tgz}
     name: magic-string
@@ -9240,6 +9250,13 @@ packages:
       sass: 1.54.5
     optionalDependencies:
       fsevents: registry.npmmirror.com/fsevents/2.3.2
+
+  registry.npmmirror.com/vue-konva/3.0.1:
+    resolution: {integrity: sha512-2RQrGs1oSJR9G+mPvTXZsuLk1Jiy8vImYssfYZrUXVcpYP2s3Ihq0AUbg4lUj/gFpEcd2iK389ByPysUOD07Tw==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/vue-konva/-/vue-konva-3.0.1.tgz}
+    name: vue-konva
+    version: 3.0.1
+    engines: {node: '>= 4.0.0', npm: '>= 3.0.0'}
+    dev: false
 
   registry.npmmirror.com/vue-template-compiler/2.7.13:
     resolution: {integrity: sha512-jYM6TClwDS9YqP48gYrtAtaOhRKkbYmbzE+Q51gX5YDr777n7tNI/IZk4QV4l/PjQPNh/FVa/E92sh/RqKMrog==, registry: https://packages.aliyun.com/6209fbc374c3f3b550744d56/npm/npm-registry/, tarball: https://registry.npmmirror.com/vue-template-compiler/-/vue-template-compiler-2.7.13.tgz}

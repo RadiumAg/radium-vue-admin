@@ -18,12 +18,14 @@
     "axios": "^0.27.2",
     "echarts": "^5.3.3",
     "element-plus": "2.2.14",
+    "konva": "^8.3.13",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.20",
     "qs": "^6.11.0",
     "sass": "^1.54.5",
     "unplugin-element-plus": "^0.4.1",
     "vue": "^3.2.37",
+    "vue-konva": "^3.0.1",
     "vue-router": "^4.1.4"
   },
   "devDependencies": {
