@@ -1,6 +1,24 @@
 <template>
   <admin-card height="100%" margin="0" flex-direction="row">
-    <div ref="containerRef" class="wrapper"></div>
+    <div class="content">
+      <div ref="containerRef"></div>
+      <div class="info">
+        <p class="name">
+          cubic-bezier({{ controlPoints.control1[0] }},{{
+            controlPoints.control1[1]
+          }},{{ controlPoints.control2[0] }},{{ controlPoints.control2[1] }})
+        </p>
+
+        <div
+          class="move-block"
+          :style="{
+            transition,
+            transform: `translateX(${transformX}px)`,
+          }"
+          @click="handleMove"
+        ></div>
+      </div>
+    </div>
   </admin-card>
 </template>
 
@@ -9,13 +27,25 @@ import Konva from 'konva';
 import { AdminCard } from '@components';
 
 const ctxMove = 10;
+const transformX = ref(0);
 const coordinateAxisSize = 400;
 const containerRef = ref<HTMLDivElement>();
-
 const controlPoints = reactive({
   control1: [0.2, 0.2],
   control2: [0.8, 0.8],
 });
+
+const transition = computed(() => {
+  return `all 1s cubic-bezier(${controlPoints.control1[0]},${controlPoints.control1[1]},${controlPoints.control2[0]},${controlPoints.control2[1]})`;
+});
+
+const handleMove = () => {
+  if (transformX.value === 0) {
+    transformX.value = 999;
+  } else {
+    transformX.value = 0;
+  }
+};
 
 onMounted(() => {
   const layer = new Konva.Layer();
@@ -134,4 +164,24 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.content {
+  display: flex;
+
+  .name {
+    font-size: 20px;
+  }
+
+  .info {
+    margin-left: 20px;
+  }
+
+  .move-block {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    margin-top: 200px;
+    background-color: red;
+  }
+}
+</style>
