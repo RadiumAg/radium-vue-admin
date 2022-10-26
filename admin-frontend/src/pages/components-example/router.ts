@@ -26,6 +26,7 @@ export const componentsExampleRouter: RouteRecordRaw = {
       path: 'bezier_curve',
       component: () => import('./bezier-curve/bezier-curve.vue'),
     },
+    { name: '图表', path: '/form', component: () => import('./form/form.vue') },
     nestedRouter,
   ],
 };

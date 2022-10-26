@@ -1,6 +1,3 @@
-import PjTable from './pj-table.vue';
-import type { App } from 'vue';
-
 export const defaultCheckboxWidth = 80;
 export const defaultRadioWidth = 80;
 

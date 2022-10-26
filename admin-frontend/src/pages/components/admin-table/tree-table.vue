@@ -15,18 +15,18 @@ import type { PropType } from 'vue';
 
 export default defineComponent({
   props: {
-    forwardRef: {
-      type: Function as PropType<(ref) => void>,
-    },
     rowKey: {
       type: String,
       required: true,
     },
-    checkboxConfig: {
-      type: Object as PropType<CheckConfig>,
-    },
     selection: {
       type: Boolean,
+    },
+    forwardRef: {
+      type: Function as PropType<(ref) => void>,
+    },
+    checkboxConfig: {
+      type: Object as PropType<CheckConfig>,
     },
     checkRowKeys: {
       type: Array as PropType<string[]>,

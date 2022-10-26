@@ -145,7 +145,9 @@ const handleSave = useThrottleFn(
   false,
 );
 
-const handleSelection = event => {};
+const handleSelection = ({ selection }) => {
+  selectionRows.value = selection;
+};
 
 watch(roleId, getRoleMenu);
 
