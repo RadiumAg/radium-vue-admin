@@ -34,7 +34,7 @@
     "@types/node": "^18.7.11",
     "@types/nprogress": "^0.2.0",
     "@unocss/vite": "^0.45.12",
-    "@vitejs/plugin-vue": "3.0.3",
+    "@vitejs/plugin-vue": "3.1.2",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
     "eslint": "^8.22.0",
     "spark-md5": "^3.0.2",
