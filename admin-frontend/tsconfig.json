@@ -36,6 +36,6 @@
   "vueCompilerOptions": {
     "jsxTemplates": false
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/pages/components-example/upload/hash.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/pages/components-example/upload/hash.ts", "src/global.d.ts", "src/global.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

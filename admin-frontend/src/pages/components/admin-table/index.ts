@@ -42,14 +42,17 @@ export const getDataRow = (
   treeChildrenProps: string,
 ) => {
   for (const row of data) {
-    const children = data[treeChildrenProps];
+    const children = row[treeChildrenProps];
     const checkKey = row[rowKey];
     if (checkKey === checkRowKey) {
       return row;
     }
 
     if (children && children.length > 0) {
-      return getDataRow(checkRowKey, children, rowKey, treeChildrenProps);
+      const row = getDataRow(checkRowKey, children, rowKey, treeChildrenProps);
+      if (row) {
+        return row;
+      }
     }
   }
 };

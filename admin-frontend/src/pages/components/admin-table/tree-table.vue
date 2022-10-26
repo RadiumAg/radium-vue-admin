@@ -166,6 +166,7 @@ export default defineComponent({
     watch(
       [tableData, () => props.checkRowKeys],
       () => {
+        selectionRows.value.clear();
         props.checkRowKeys?.forEach(key => {
           const row = getDataRow(
             key,
@@ -178,7 +179,7 @@ export default defineComponent({
           }
         });
       },
-      { immediate: true, flush: 'post' },
+      { immediate: true },
     );
 
     watch(tableData, () => {

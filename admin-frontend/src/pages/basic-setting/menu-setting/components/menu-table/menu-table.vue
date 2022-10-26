@@ -26,7 +26,7 @@
         }"
         :data="tableData"
         row-key="_id"
-        @selection-change="selectionRows = $event"
+        @selection-change="handleSelection"
       >
         <el-table-column label="菜单名称" prop="menuName"></el-table-column>
 
@@ -94,14 +94,10 @@ const addMenuDialogData = reactive({
 });
 
 const getData = async () => {
-  try {
-    isLoading.value = true;
-    const resData = await menu.getAllMenu();
-    isLoading.value = false;
-    tableData.value = resData.data;
-  } catch (e) {
-    useErrorMessage(e);
-  }
+  isLoading.value = true;
+  const resData = await menu.getAllMenu();
+  isLoading.value = false;
+  tableData.value = resData.data;
 };
 
 const handleAdd = (parentId: string) => {
@@ -111,14 +107,10 @@ const handleAdd = (parentId: string) => {
 };
 
 const handleDelete = async (id: string) => {
-  try {
-    await ElMessageBox.confirm('确认删除吗');
-    const res = await menu.deleteById(id);
-    ElMessage.success(res.msg);
-    getData();
-  } catch (e) {
-    useErrorMessage(e);
-  }
+  await ElMessageBox.confirm('确认删除吗');
+  const res = await menu.deleteById(id);
+  ElMessage.success(res.msg);
+  getData();
 };
 
 const handleRootAdd = () => {
@@ -133,12 +125,8 @@ const handleEdit = (id: string) => {
 };
 
 const getRoleMenu = async () => {
-  try {
-    const resData = await role.getRoleMenu(roleId.value);
-    permissionRoles.value = resData.data;
-  } catch (e) {
-    useErrorMessage(e);
-  }
+  const resData = await role.getRoleMenu(roleId.value);
+  permissionRoles.value = resData.data;
 };
 
 const handleSave = useThrottleFn(
@@ -156,6 +144,8 @@ const handleSave = useThrottleFn(
   defaultThrottleTime,
   false,
 );
+
+const handleSelection = event => {};
 
 watch(roleId, getRoleMenu);
 
