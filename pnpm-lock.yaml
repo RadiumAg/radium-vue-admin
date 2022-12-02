@@ -132,7 +132,7 @@ importers:
       '@vueuse/core': ^9.6.0
       '@wangeditor/editor': ^5.1.23
       '@wangeditor/editor-for-vue': ^5.1.12
-      axios: ^0.27.2
+      axios: ^1.0.0
       echarts: ^5.4.0
       element-plus: ^2.2.26
       eslint: ^8.28.0
@@ -160,7 +160,7 @@ importers:
       '@vueuse/core': 9.6.0_vue@3.2.45
       '@wangeditor/editor': 5.1.23
       '@wangeditor/editor-for-vue': 5.1.12_3apfu3xbp6awzuex7ed3sbrv6y
-      axios: 0.27.2
+      axios: 1.2.0
       echarts: 5.4.0
       element-plus: 2.2.26_vue@3.2.45
       konva: 8.3.14
@@ -3369,11 +3369,12 @@ packages:
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  /axios/0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
+  /axios/1.2.0:
+    resolution: {integrity: sha512-zT7wZyNYu3N5Bu0wuZ6QccIf93Qk1eV8LOewxgjOZFd2DenOs98cJ7+Y6703d0wkaXGY6/nZd4EweJaHz9uzQw==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: false
@@ -7449,6 +7450,10 @@ packages:
     dependencies:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
+
+  /proxy-from-env/1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+    dev: false
 
   /pump/3.0.0:
     resolution: {integrity: sha512-LwZy+p3SFs1Pytd/jYct4wpv49HiYCqd9Rlc5ZVdk0V+8Yzv6jR5Blk3TRmPL1ft69TxP0IMZGJ+WPFU2BFhww==}
