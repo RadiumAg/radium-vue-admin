@@ -4,7 +4,6 @@ import type { RouteRecordRaw } from 'vue-router';
 export const componentsExampleRouter: RouteRecordRaw = {
   name: '组件',
   path: 'components_example',
-  component: () => import('./router.vue'),
   children: [
     {
       name: '表格',

@@ -3,7 +3,6 @@ import type { RouteRecordRaw } from 'vue-router';
 export const menuSettingRouter: RouteRecordRaw = {
   name: '基础设置',
   path: 'basic_setting',
-  component: () => import('./router.vue'),
   children: [
     {
       name: '菜单设置',
