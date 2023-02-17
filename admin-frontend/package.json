@@ -23,7 +23,7 @@
     "pinia": "^2.0.28",
     "qs": "^6.11.0",
     "sass": "^1.57.1",
-    "unplugin-element-plus": "^0.4.1",
+    "unplugin-element-plus": "^0.7.0",
     "vue": "^3.2.45",
     "vue-konva": "^3.0.2",
     "vue-router": "^4.1.6"
