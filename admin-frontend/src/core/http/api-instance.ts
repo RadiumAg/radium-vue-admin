@@ -6,8 +6,8 @@ export class ApiInstance {
   readonly oath = new OAth();
   readonly role = new Role();
   readonly user = new User();
-  readonly example = new Example();
   readonly upload = new Upload();
+  readonly example = new Example();
 }
 
 const key: InjectionKey<ApiInstance> = Symbol();

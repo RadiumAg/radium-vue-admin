@@ -1,4 +1,4 @@
-export const createFileChunk = (file: File, size = 10 * 1024 * 1024) => {
+const createFileChunk = (file: File, size = 10 * 1024 * 1024) => {
   const fileChunkList: { file: Blob }[] = [];
   let cur = 0;
   while (cur < file.size) {
@@ -8,7 +8,7 @@ export const createFileChunk = (file: File, size = 10 * 1024 * 1024) => {
   return fileChunkList;
 };
 
-export type FileInfo = {
+type FileInfo = {
   hash: string;
   hashPercentage: number;
   hashList: {
@@ -17,3 +17,6 @@ export type FileInfo = {
     percentage: number;
   }[];
 };
+
+export type { FileInfo };
+export { createFileChunk };

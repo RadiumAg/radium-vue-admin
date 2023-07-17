@@ -28,9 +28,9 @@
 
 <script lang="ts" setup>
 import AdminCard from '@components/admin-card/admin-card.vue';
-import { useErrorMessage } from '@core/hooks';
 import { useApi } from '@core/http';
 import { useMenuStore } from '@core/pinia';
+import { ElMessage } from 'element-plus';
 import { FileInfo, createFileChunk } from '.';
 
 defineOptions({
@@ -62,27 +62,32 @@ const createFileHash = () => {
 };
 
 const handleUpload = async () => {
-  try {
-    const uploadFile = inputRef.value.files.item(0);
-    const fileChunkList = createFileChunk(uploadFile);
-    hashWork.postMessage({ fileChunkList });
-    fileInfo.hash = await createFileHash();
-    fileInfo.hashList = fileChunkList.map(({ file }, index) => ({
-      file,
-      percentage: 0,
-      name: `${fileInfo.hash}${index}${uploadFile.name.slice(
-        uploadFile.name.lastIndexOf('.'),
-      )}`,
-    }));
+  const uploadFile = inputRef.value.files.item(0);
+  const fileType = `${uploadFile.name.slice(uploadFile.name.lastIndexOf('.'))}`;
 
-    fileInfo.hashList.forEach(async file => {
-      upload.file(file.file, file.name, event => {
+  if (!uploadFile) {
+    ElMessage.warning('请选择文件');
+    return;
+  }
+
+  const fileChunkList = createFileChunk(uploadFile);
+  hashWork.postMessage({ fileChunkList });
+  fileInfo.hash = await createFileHash();
+  fileInfo.hashList = fileChunkList.map(({ file }, index) => ({
+    file,
+    percentage: 0,
+    name: `${fileInfo.hash}-${index}${fileType}`,
+  }));
+
+  await Promise.all(
+    fileInfo.hashList.map(file => {
+      return upload.file(file.file, file.name, event => {
         file.percentage = +(event.loaded / event.total).toFixed(2) * 100;
       });
-    });
-  } catch (e) {
-    useErrorMessage(e);
-  }
+    }),
+  );
+
+  upload.merge(`${fileInfo.hash}${fileType}`, 1024 * 1024);
 };
 
 setInclude('UploadPage');

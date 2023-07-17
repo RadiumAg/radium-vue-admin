@@ -1,5 +1,5 @@
 import { Api } from '@core/http/decorators/api';
-import type { AxiosInstance } from 'axios';
+import type { AxiosInstance, AxiosProgressEvent } from 'axios';
 
 @Api({ prefix: 'upload' })
 export class Upload {
@@ -16,7 +16,7 @@ export class Upload {
   async file(
     file: Blob,
     filename: string,
-    uploadProgressFn: (event: ProgressEvent) => void,
+    uploadProgressFn: (event: AxiosProgressEvent) => void,
   ) {
     const formData = new FormData();
     formData.append('files', file);
@@ -26,10 +26,22 @@ export class Upload {
         params: {
           filename,
         },
-        onUploadProgress(event: ProgressEvent) {
+        onUploadProgress(event: AxiosProgressEvent) {
           uploadProgressFn(event);
         },
       })
     ).data;
+  }
+
+  /**
+   * 合并文件
+   *
+   * @param {string} filename
+   * @param {number} size
+   * @return {*}
+   * @memberof Upload
+   */
+  async merge(filename: string, size: number) {
+    return (await this.http.get('merge', { params: { filename, size } })).data;
   }
 }
