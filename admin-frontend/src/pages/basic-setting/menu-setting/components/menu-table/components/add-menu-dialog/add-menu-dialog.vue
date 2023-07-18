@@ -28,14 +28,13 @@
 </template>
 
 <script lang="ts" setup>
-import IconSelect from '@components/icon-select/icon-select.vue';
-import AdminDialog from '@components/admin-dialog/admin-dialog.vue';
+import { AdminDialog, IconSelect } from '@components';
 import { useApi } from '@core/http';
 import { computed, reactive, ref } from 'vue';
 import { UPDATE_MODEL_VALUE_EVENT, autoMap } from '@core/utils';
 import { useErrorMessage } from '@core/hooks';
-import { ElMessage, FormRules } from 'element-plus';
-import type { FormType } from '.';
+import { ElMessage } from 'element-plus';
+import type { FormRules } from 'element-plus';
 
 const props = defineProps({
   parentId: {
@@ -84,7 +83,7 @@ const rules: FormRules = {
   ],
 };
 
-const formData = reactive<FormType>({
+const formData = reactive({
   _id: props.id,
   menuIcon: '',
   menuName: '',

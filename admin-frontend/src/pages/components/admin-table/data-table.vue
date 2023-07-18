@@ -6,12 +6,10 @@ import type { Columns } from 'element-plus';
 
 export default defineComponent({
   props: {
-    rowKey: {
-      type: String,
-    },
     selection: {
       type: Boolean,
     },
+    ...ElTableV2.props,
   },
   setup(props, { attrs }) {
     const dataCount = ref(0);
@@ -77,7 +75,7 @@ export default defineComponent({
 
             return (
               <ElCheckbox
-                value={isChecked}
+                modelValue={isChecked}
                 indeterminate={indeterminateRows.value.has(
                   rowData[props.rowKey],
                 )}
@@ -98,7 +96,7 @@ export default defineComponent({
 
             return (
               <ElCheckbox
-                value={isChecked}
+                modelValue={isChecked}
                 indeterminate={isIndeterminateRows}
                 onChange={value => {
                   tableData.value.forEach(row => {
@@ -125,11 +123,10 @@ export default defineComponent({
             default: ({ height, width }) => {
               return (
                 <ElTableV2
-                  {...attrs}
-                  rowKey={props.rowKey}
                   columns={columns.value}
                   height={height}
                   width={width}
+                  {...(props as any)}
                 />
               );
             },

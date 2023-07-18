@@ -68,8 +68,9 @@
 
 <script lang="ts" setup>
 import { AdminCard } from '@components';
-import { ElMessageBox, FormInstance } from 'element-plus';
+import { ElMessageBox } from 'element-plus';
 import { reactive } from 'vue';
+import type { FormInstance } from 'element-plus';
 
 const form = reactive({
   name: '',

@@ -2,7 +2,7 @@
 https://docs.nestjs.com/controllers#controllers
 */
 
-import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '@core/auth/guards';
 import { mock } from 'mockjs';
 import { UseGuards, Get } from '@nestjs/common';
 import {

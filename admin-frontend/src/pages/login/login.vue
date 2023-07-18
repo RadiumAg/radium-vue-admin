@@ -32,11 +32,12 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { useThrottleFn } from '@vueuse/core';
-import { ElMessage, FormInstance } from 'element-plus';
+import { ElMessage } from 'element-plus';
 import { useApi } from '@core/http/api-instance';
 import { defaultThrottleTime } from '@core/utils';
 import { useErrorMessage } from '@core/hooks';
 import { useRoute, useRouter } from 'vue-router';
+import type { FormInstance } from 'element-plus';
 
 const api = useApi();
 const route = useRoute();

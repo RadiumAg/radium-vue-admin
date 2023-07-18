@@ -1,7 +1,12 @@
-import type { Ref } from 'vue';
+import type { InjectionKey, Ref } from 'vue';
 
-export const USER_MANAGER_PROVIDE_KEY = Symbol('USER_MANAGER_PROVIDE_KEY');
+const USER_MANAGER_PROVIDE_KEY: InjectionKey<UserManagerProvide> = Symbol(
+  'USER_MANAGER_PROVIDE_KEY',
+);
 
-export type userManagerProvide = {
+type UserManagerProvide = {
   userId: Ref<string>;
 };
+
+export { USER_MANAGER_PROVIDE_KEY };
+export type { UserManagerProvide };

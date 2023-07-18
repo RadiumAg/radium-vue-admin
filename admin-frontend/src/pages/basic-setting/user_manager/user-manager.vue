@@ -17,9 +17,9 @@
 import AdminCard from '@components/admin-card/admin-card.vue';
 import RoleTable from './role-table.vue';
 import UserTable from './user-table.vue';
-import { USER_MANAGER_PROVIDE_KEY, userManagerProvide } from '.';
+import { USER_MANAGER_PROVIDE_KEY } from '.';
 
-provide<userManagerProvide>(USER_MANAGER_PROVIDE_KEY, {
+provide(USER_MANAGER_PROVIDE_KEY, {
   userId: ref(),
 });
 </script>

@@ -30,7 +30,8 @@ import KeepAliveRouterView from '@components/keep-alive-router-view/keep-alive-r
 import { useMobile } from '@core/hooks';
 import AdminHeader from './header.vue';
 import AdminSlider from './slider.vue';
-import { LAYOUT_PROVIDE_KEY, LayoutProvide } from '.';
+import { LAYOUT_PROVIDE_KEY } from '.';
+import type { LayoutProvide } from '.';
 
 const isMobile = useMobile();
 const isCollapse = ref(false);

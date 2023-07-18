@@ -9,8 +9,7 @@
     "jsxFactory": "h",
     "sourceMap": true,
     "experimentalDecorators": true,
-    "importsNotUsedAsValues": "error",
-    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "strictNullChecks": false,
@@ -32,9 +31,6 @@
       "@pages/*": ["./src/pages/*"],
       "@assets/*": ["./src/assets/*"]
     }
-  },
-  "vueCompilerOptions": {
-    "jsxTemplates": false
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/pages/components-example/upload/hash.ts", "src/global.d.ts", "src/global.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

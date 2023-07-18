@@ -1,9 +1,10 @@
-import type { Ref } from 'vue';
+import type { InjectionKey, Ref } from 'vue';
 
-export type MenuSettingProvide = {
+type MenuSettingProvide = {
   roleId: Ref<string>;
 };
 
-export const MENU_SETTING_PROVIDE = Symbol();
+const MENU_SETTING_PROVIDE: InjectionKey<MenuSettingProvide> = Symbol();
 
-
+export { MENU_SETTING_PROVIDE };
+export type { MenuSettingProvide };

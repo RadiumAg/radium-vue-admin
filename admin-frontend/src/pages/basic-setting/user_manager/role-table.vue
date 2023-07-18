@@ -18,19 +18,19 @@
 </template>
 
 <script lang="ts" setup>
-import AdminTable from '@components/admin-table/admin-table.vue';
+import { AdminTable } from '@components';
 import { useErrorMessage } from '@core/hooks';
-import { useApi } from '@core/http/api-instance';
+import { useApi } from '@core/http';
 import { defaultThrottleTime } from '@core/utils';
 import { ElMessage, ElTable } from 'element-plus';
-import { USER_MANAGER_PROVIDE_KEY, type userManagerProvide } from '.';
+import { USER_MANAGER_PROVIDE_KEY } from '.';
 import type { GetPageRoleRes } from '@core/http/apis/role/types';
 
 const tableRef = ref<InstanceType<typeof ElTable>>();
 const { role, user } = useApi();
 const tableData = ref([]);
 const selectionRoles = ref<string[]>([]);
-const { userId } = inject<userManagerProvide>(USER_MANAGER_PROVIDE_KEY);
+const { userId } = inject(USER_MANAGER_PROVIDE_KEY);
 
 const getData = async () => {
   try {

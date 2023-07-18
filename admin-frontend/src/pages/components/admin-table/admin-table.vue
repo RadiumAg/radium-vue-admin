@@ -1,6 +1,7 @@
 <script lang="ts">
 import { ElTable } from 'element-plus';
-import { PropType, defineComponent, h } from 'vue';
+import { defineComponent, h } from 'vue';
+import type { PropType } from 'vue';
 
 export default defineComponent({
   props: {

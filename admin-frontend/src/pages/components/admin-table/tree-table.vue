@@ -242,7 +242,6 @@ export default defineComponent({
         border={true}
         highlightCurrentRow={true}
         height="100%"
-        resizable={true}
         ref={ref => {
           dataTableRef.value = ref as any;
           props.forwardRef?.(ref);

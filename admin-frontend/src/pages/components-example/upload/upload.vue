@@ -16,7 +16,9 @@
       上传切片:
       <div v-for="item in fileInfo.hashList" :key="item.percentage">
         {{ item.name }}
+
         {{ item.file.size }}
+
         <el-progress
           :width="500"
           type="line"
@@ -28,11 +30,12 @@
 </template>
 
 <script lang="ts" setup>
-import AdminCard from '@components/admin-card/admin-card.vue';
+import { AdminCard } from '@components';
 import { useApi } from '@core/http';
 import { useMenuStore } from '@core/pinia';
 import { ElMessage } from 'element-plus';
-import { FileInfo, createFileChunk } from '.';
+import { createFileChunk } from '.';
+import type { FileInfo } from '.';
 
 defineOptions({
   name: 'UploadPage',

@@ -1,5 +1,5 @@
-import type { AxiosRequestConfig } from 'axios';
+import type { InternalAxiosRequestConfig } from 'axios';
 
-export const requestInterceptors = (value: AxiosRequestConfig) => {
+export const requestInterceptors = (value: InternalAxiosRequestConfig) => {
   return value;
 };

@@ -16,13 +16,13 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive, ref } from 'vue';
-import AdminDialog from '@components/admin-dialog/admin-dialog.vue';
+import { AdminDialog } from '@components';
 import { UPDATE_MODEL_VALUE_EVENT } from '@core/utils';
 import { useApi } from '@core/http/api-instance';
 import { useErrorMessage } from '@core/hooks';
-import { ElMessage, FormInstance } from 'element-plus';
+import { ElMessage } from 'element-plus';
 import type { Role } from '@core/http/apis/role/types';
+import type { FormInstance } from 'element-plus';
 
 const { role } = useApi();
 const isLoading = ref(false);

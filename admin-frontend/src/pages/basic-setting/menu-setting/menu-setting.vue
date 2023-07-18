@@ -10,12 +10,12 @@
 </template>
 
 <script lang="ts" setup>
-import AdminCard from '@components/admin-card/admin-card.vue';
+import { AdminCard } from '@components';
 import { useMenuStore } from '@core/pinia';
 import { provide, ref } from 'vue';
 import MenuTable from './components/menu-table/menu-table.vue';
 import RoleTree from './components/role-tree/role-tree.vue';
-import { MENU_SETTING_PROVIDE, MenuSettingProvide } from '.';
+import { MENU_SETTING_PROVIDE } from '.';
 
 defineOptions({
   name: 'MenuSettingPage',
@@ -23,7 +23,7 @@ defineOptions({
 
 const { setInclude } = useMenuStore();
 
-provide<MenuSettingProvide>(MENU_SETTING_PROVIDE, {
+provide(MENU_SETTING_PROVIDE, {
   roleId: ref(),
 });
 setInclude('MenuSettingPage');

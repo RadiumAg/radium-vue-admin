@@ -38,9 +38,6 @@ export class UploadController {
                                     format: 'binary',
                                 },
                             },
-                            directory: {
-                                type: 'string',
-                            },
                         },
                     },
                 },
@@ -120,6 +117,7 @@ export class UploadController {
             }),
         );
 
+        console.log(chunkFileDir);
         await rmdir(chunkFileDir);
     }
 }

@@ -19,9 +19,9 @@ import AdminTable from '@components/admin-table/admin-table.vue';
 import { useErrorMessage } from '@core/hooks';
 import { useApi } from '@core/http/api-instance';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { USER_MANAGER_PROVIDE_KEY, userManagerProvide } from '.';
+import { USER_MANAGER_PROVIDE_KEY } from '.';
 
-const { userId } = inject<userManagerProvide>(USER_MANAGER_PROVIDE_KEY);
+const { userId } = inject(USER_MANAGER_PROVIDE_KEY);
 const { user } = useApi();
 const tableData = reactive({
   data: [],
