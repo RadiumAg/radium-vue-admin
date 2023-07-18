@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from '@schemas/user';
-import { CreateUserInfoDto } from '@dto/user/mogodb/create-userInfo.dto';
+import { CreateUserInfoDto } from '@dto/user/mogodb';
 import { Menu } from '@schemas/menu';
 import { Role } from '@schemas/role';
 import { cloneDeep } from 'lodash';

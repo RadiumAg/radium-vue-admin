@@ -5,16 +5,20 @@ import {
     getSchemaPath,
 } from '@nestjs/swagger';
 import { Body, Get, Post, Query, UseGuards } from '@nestjs/common';
-import { UpdateMenuData } from '@dto/menu/view/update-menu.data';
-import { InsertMenuData } from '@dto/menu/view/insert-menu.data';
-import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
+import {
+    UpdateMenuData,
+    InsertMenuData,
+    GetAllMenuRes,
+    DeleteByIdData,
+} from '@dto/menu/view';
+import { JwtAuthGuard } from '@core/auth';
 import { AdminResponse } from '@core/utils';
-import { MenuService } from '@services/menu.service';
-import { GetAllMenuRes } from '@dto/menu/view/get-all-menu.res';
-import { DeleteByIdData } from '@dto/menu/view/delete-by-id.data';
-import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
-import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
-import { AdminController } from '@decorator/admin-controller.decorator';
+import { MenuService } from '@services';
+import {
+    AdminApiExtraModels,
+    AdminApiResponse,
+    AdminController,
+} from '@decorator';
 
 @ApiTags('menu')
 @ApiBearerAuth()

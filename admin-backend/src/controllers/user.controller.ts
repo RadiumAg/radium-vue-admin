@@ -1,6 +1,10 @@
 import { AdminResponse } from '@core/utils';
-import { GetLoginUserInfoRes } from '@dto/user/view/get-login-userInfo.res';
-import { InsertUserInfoData } from '@dto/user/view/Insert-userInfo.data';
+import {
+    GetLoginUserInfoRes,
+    InsertUserInfoData,
+    UpdateUserRoleData,
+    GetAllUserInfoRes,
+} from '@dto/user/view';
 import { Body, Get, Post, Query, Req, UseGuards } from '@nestjs/common';
 import {
     ApiBearerAuth,
@@ -8,15 +12,14 @@ import {
     ApiTags,
     getSchemaPath,
 } from '@nestjs/swagger';
-import { UserService } from '@services/user.service';
-import { JwtAuthGuard } from 'src/core/auth/guards/jwt-auth.guard';
-import { OAthService } from '@services/oath.service';
-import { UpdateUserRoleData } from '@dto/user/view/update-user-role.data';
-import { GetAllUserInfoRes } from '@dto/user/view/get-all-userinfo.res';
-import { GetUserMenusInfoRes } from '@dto/menu/view/get-user-menus-info.res';
-import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
-import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
-import { AdminController } from '@decorator/admin-controller.decorator';
+import { UserService, OAthService } from '@services';
+import { JwtAuthGuard } from '@core/auth';
+import { GetUserMenusInfoRes } from '@dto/menu/view';
+import {
+    AdminApiExtraModels,
+    AdminApiResponse,
+    AdminController,
+} from '@decorator';
 
 @ApiTags('user')
 @AdminApiExtraModels(

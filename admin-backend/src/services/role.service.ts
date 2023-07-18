@@ -6,8 +6,7 @@ https://docs.nestjs.com/providers#services
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Role, RoleDocument } from '@schemas/role';
-import { CreateRoleDto } from '@dto/role/mogodb/create-role.dto';
-import { UpdateRoleDto } from '@dto/role/mogodb/update-role-dto';
+import { CreateRoleDto, UpdateRoleDto } from '@dto/role/mogodb';
 
 @Injectable()
 export class RoleService {

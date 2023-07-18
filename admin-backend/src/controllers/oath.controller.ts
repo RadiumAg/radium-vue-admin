@@ -1,10 +1,9 @@
 import { Body, HttpStatus, Post, Res } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { UserService } from '@services/user.service';
-import { AdminResponse } from 'src/core/utils';
-import { OAthService } from '@services/oath.service';
-import { LoginData } from '@dto/login/view/login-data';
-import { AdminController } from '@decorator/admin-controller.decorator';
+import { UserService, OAthService } from '@services';
+import { AdminResponse } from '@core/utils';
+import { LoginData } from '@dto/login/view';
+import { AdminController } from '@decorator';
 
 @ApiTags('oath')
 @AdminController('oath')

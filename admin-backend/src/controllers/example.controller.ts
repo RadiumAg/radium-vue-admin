@@ -1,4 +1,3 @@
-import { AdminResponse } from './../core/utils';
 /*
 https://docs.nestjs.com/controllers#controllers
 */
@@ -12,10 +11,13 @@ import {
     ApiOperation,
     getSchemaPath,
 } from '@nestjs/swagger';
-import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
-import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
-import { AdminController } from '@decorator/admin-controller.decorator';
+import {
+    AdminApiExtraModels,
+    AdminApiResponse,
+    AdminController,
+} from '@decorator';
 import { GetEditTableData } from '@dto/example/view';
+import { AdminResponse } from '@core/utils';
 
 @ApiTags('example')
 @ApiBearerAuth()

@@ -1,4 +1,4 @@
-import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '@core/auth';
 import {
     Get,
     Post,
@@ -9,18 +9,16 @@ import {
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { writeFile, mkdir, readdir, rmdir, rm } from 'fs/promises';
+import { writeFile, mkdir, readdir, rmdir } from 'fs/promises';
 import {
     WriteStream,
     createReadStream,
     createWriteStream,
     existsSync,
-    rmdirSync,
-    unlink,
     unlinkSync,
 } from 'fs';
 import { resolve } from 'path';
-import { AdminController } from '@decorator/admin-controller.decorator';
+import { AdminController } from '@decorator';
 
 @ApiTags('upload')
 @AdminController('upload')
@@ -80,7 +78,10 @@ export class UploadController {
     @UseGuards(JwtAuthGuard)
     @UseInterceptors(FilesInterceptor('files'))
     @Get('merge')
-    async merge(@Query('filename') filename: string, @Query('size') size) {
+    async merge(
+        @Query('filename') filename: string,
+        @Query('size') size: number,
+    ) {
         const targetsFile = resolve(process.cwd(), 'targets');
         const chunkFileDir = resolve(
             targetsFile,

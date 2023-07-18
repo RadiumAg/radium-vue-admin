@@ -16,6 +16,7 @@
       上传切片:
       <div v-for="item in fileInfo.hashList" :key="item.percentage">
         {{ item.name }}
+        {{ item.file.size }}
         <el-progress
           :width="500"
           type="line"

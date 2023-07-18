@@ -4,12 +4,12 @@ https://docs.nestjs.com/controllers#controllers
 
 import { JwtAuthGuard } from '@core/auth/guards/jwt-auth.guard';
 import { AdminResponse } from '@core/utils';
-import { AdminApiExtraModels } from '@decorator/admin-api-extra-models.decorator';
-import { AdminApiResponse } from '@decorator/admin-api-response.decorator';
-import { AdminController } from '@decorator/admin-controller.decorator';
-import { GetPageRoleRes } from '@dto/role/view/get-page-role.res';
-import { InsertRoleData } from '@dto/role/view/insert-role.data';
-import { UpdateRoleData } from '@dto/role/view/update-role.data';
+import {
+    AdminApiExtraModels,
+    AdminApiResponse,
+    AdminController,
+} from '@decorator';
+import { GetPageRoleRes, InsertRoleData, UpdateRoleData } from '@dto/role/view';
 import { Body, Get, Post, Query, UseGuards } from '@nestjs/common';
 import {
     ApiBearerAuth,
@@ -18,7 +18,7 @@ import {
     ApiTags,
     getSchemaPath,
 } from '@nestjs/swagger';
-import { RoleService } from '@services/role.service';
+import { RoleService } from '@services';
 
 @ApiTags('role')
 @ApiBearerAuth()
