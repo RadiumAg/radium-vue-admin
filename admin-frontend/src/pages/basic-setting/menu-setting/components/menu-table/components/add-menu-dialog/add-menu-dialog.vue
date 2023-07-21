@@ -95,16 +95,17 @@ const save = async () => {
   try {
     if (props.id) {
       isLoading.value = true;
-      await menu.updateMenu(formData);
+      await menu.updateMenu({
+        ...formData,
+        menuIcon: formData.menuIcon || '',
+      });
       isLoading.value = false;
       ElMessage.success('更新成功');
     } else {
       isLoading.value = true;
       await menu.insertMenu({
-        menuIcon: formData.menuIcon,
-        menuName: formData.menuName,
-        menuUrl: formData.menuUrl,
-        parentId: formData.parentId,
+        ...formData,
+        menuIcon: formData.menuIcon || '',
       });
       isLoading.value = false;
       ElMessage.success('保存成功');

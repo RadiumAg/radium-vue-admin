@@ -1,14 +1,6 @@
 <script lang="tsx">
 import { ElCheckbox, ElTable, ElTableColumn } from 'element-plus';
-import {
-  defineComponent,
-  onMounted,
-  reactive,
-  ref,
-  toRef,
-  toRefs,
-  watch,
-} from 'vue';
+import { defineComponent, onMounted, reactive, ref, toRef, watch } from 'vue';
 import { defaultCheckboxWidth, getDataCount, getDataRow } from '.';
 import type { CheckConfig } from '.';
 import type { PropType } from 'vue';
@@ -39,8 +31,9 @@ export default defineComponent({
     const selectionRows = ref<Map<string, any>>(new Map());
     const indeterminateRows = ref<Map<string, any>>(new Map());
     const tableSlots = reactive({ default: slots.default });
-    const { 'tree-props': treeProps, data: tableData } = toRefs(attrs as any);
-    const treeChildrenProp = toRef(treeProps.value, 'children');
+    const treeProps = ref(attrs['tree-props']);
+    const tableData = toRef(attrs, 'data');
+    const treeChildrenProp = toRef(treeProps.value as any, 'children');
 
     const setDeepCheck = (row, checked) => {
       const rowKey = row[props.rowKey];

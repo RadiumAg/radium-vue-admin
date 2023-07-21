@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-drawer direction="rtl" custom-class="drawer" v-bind="$attrs">
+    <el-drawer direction="rtl" v-bind="$attrs">
       <theme-item title="Primary">
         <el-color-picker v-model="primary"></el-color-picker>
       </theme-item>

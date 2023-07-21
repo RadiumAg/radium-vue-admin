@@ -9,7 +9,7 @@ const route = useRoute();
 const router = useRouter();
 
 const redirect = () => {
-  router.replace({ path: route.params.redirect as string });
+  router.replace({ path: route.query.redirect as string });
 };
 
 redirect();

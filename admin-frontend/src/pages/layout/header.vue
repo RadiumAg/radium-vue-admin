@@ -144,7 +144,7 @@ const handleContextClose = (event: EventType) => {
       removeInclude(menuContextData.id);
       router.replace({
         name: 'redirect',
-        params: {
+        query: {
           redirect: route.path,
         },
       });
@@ -188,7 +188,9 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .header {
-  box-shadow: 0 1px 3px 0 rgba(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
+  box-shadow:
+    0 1px 3px 0 rgba(0 0 0 / 12%),
+    0 0 3px 0 rgb(0 0 0 / 4%);
 
   .nav {
     display: flex;
