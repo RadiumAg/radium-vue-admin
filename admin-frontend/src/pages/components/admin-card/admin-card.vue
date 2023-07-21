@@ -62,7 +62,6 @@ const borderStyle = computed(() => {
 <style lang="scss" scoped>
 .card-wrapper {
   display: flex;
-  overflow: hidden;
   border-radius: 2.5px;
   margin: v-bind(margin);
   height: v-bind(height);

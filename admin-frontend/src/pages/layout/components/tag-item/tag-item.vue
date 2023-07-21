@@ -63,7 +63,9 @@ const handleClose = () => {
   font-size: 12px;
   user-select: none;
   margin-right: 4px;
+  white-space: nowrap;
   align-items: center;
+  overflow-wrap: break-word;
   border: 1px solid #42b983;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
