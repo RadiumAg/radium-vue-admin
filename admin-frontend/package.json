@@ -33,7 +33,7 @@
     "@types/mockjs": "^1.0.7",
     "@types/node": "^20.4.1",
     "@types/nprogress": "^0.2.0",
-    "@unocss/vite": "^0.53.5",
+    "@unocss/vite": "^0.55.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "eslint": "^8.44.0",
